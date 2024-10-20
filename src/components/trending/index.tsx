@@ -34,6 +34,7 @@ export function TrendingFoods() {
         renderItem={({ item }) => <FoodItem food={item} />}
         horizontal={true}
         contentContainerStyle={{ gap: 10 }}
+        showsHorizontalScrollIndicator={false}
       />
     </Container>
   );
