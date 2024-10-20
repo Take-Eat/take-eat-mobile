@@ -3,6 +3,7 @@ import { Header } from "@/src/components/header";
 import { View, ScrollView } from "react-native";
 
 import Constants from "expo-constants";
+import { Container } from "@/src/components/container";
 
 const statusBarHeight = Constants.statusBarHeight;
 
@@ -17,9 +18,9 @@ export default function TabLayout({ children }: Props) {
       className="bg-slate-20"
       showsVerticalScrollIndicator={false}
     >
-      <View className="px-4" style={{ marginTop: statusBarHeight + 8 }}>
+      <Container>
         <Header />
-      </View>
+      </Container>
 
       <View>{children}</View>
     </ScrollView>
