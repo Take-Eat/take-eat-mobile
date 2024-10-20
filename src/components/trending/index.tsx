@@ -1,0 +1,40 @@
+import { useEffect, useState } from "react";
+import { FlatList, Text, View } from "react-native";
+import FoodItem from "./food";
+import { Container } from "../container";
+
+export interface FoodProps {
+  id: string;
+  name: string;
+  price: number;
+  time: string;
+  delivery: number;
+  rating: number;
+  image: string;
+  restaurantId: "1";
+}
+
+export function TrendingFoods() {
+  const [foods, setFoods] = useState<FoodProps[]>([]);
+
+  useEffect(() => {
+    async function getFoods() {
+      const response = await fetch("http://192.168.3.27:3000/foods");
+      const data = await response.json();
+      setFoods(data);
+    }
+
+    getFoods();
+  }, []);
+
+  return (
+    <Container>
+      <FlatList
+        data={foods}
+        renderItem={({ item }) => <FoodItem food={item} />}
+        horizontal={true}
+        contentContainerStyle={{ gap: 10 }}
+      />
+    </Container>
+  );
+}
