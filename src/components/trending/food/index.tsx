@@ -1,8 +1,6 @@
 import { Image, Pressable, Text, View } from "react-native";
 
 import { FoodProps } from "..";
-import { Ionicons } from "@expo/vector-icons";
-import { colors } from "@/src/assets/styles/Global";
 
 export default function FoodItem({ food }: { food: FoodProps }) {
   return (

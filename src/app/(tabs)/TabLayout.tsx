@@ -1,11 +1,7 @@
-// src/app/tabs/TabLayout.tsx
 import { Header } from "@/src/components/header";
 import { View, ScrollView } from "react-native";
 
-import Constants from "expo-constants";
 import { Container } from "@/src/components/container";
-
-const statusBarHeight = Constants.statusBarHeight;
 
 interface Props {
   children: React.ReactNode;

@@ -5,6 +5,7 @@ import { Banner } from "@/src/components/banner";
 import { Container } from "@/src/components/container";
 import { Section } from "@/src/components/section";
 import { TrendingFoods } from "@/src/components/trending";
+import { Donors } from "@/src/components/donors";
 // Importando o Layout das Tabs
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
         <Section
           name="Recomendados"
           size="text-2xl"
-          lable="Ver todos"
+          lable="Ver mais"
           action={() => {
             console.log("CLICOU NO VER TODOS");
           }}
@@ -27,13 +28,24 @@ export default function Home() {
         <Section
           name="Melhores avaliados"
           size="text-2xl"
-          lable="Ver todos"
+          lable="Ver mais"
           action={() => {
             console.log("CLICOU NO VER TODOS");
           }}
         />
 
         <TrendingFoods />
+
+        <Section
+          name="Doadores"
+          size="text-2xl"
+          lable="Ver todos"
+          action={() => {
+            console.log("CLICOU NO VER TODOS");
+          }}
+        />
+
+        <Donors />
       </Container>
     </TabLayout>
   );

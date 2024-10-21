@@ -9,7 +9,7 @@ interface Props {
 
 export function Section({ name, size, lable, action }: Props) {
   return (
-    <View className="w-full flex flex-row items-center justify-between px-4">
+    <View className="w-full flex flex-row items-center justify-between">
       <Text className={`${size} font-semibold my-4 self-start`}>{name}</Text>
 
       <Pressable onPress={action}>
