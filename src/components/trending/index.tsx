@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import FoodItem from "./food";
-import { Container } from "../container";
 
 export interface FoodProps {
   id: string;
@@ -28,14 +27,12 @@ export function TrendingFoods() {
   }, []);
 
   return (
-    <Container>
-      <FlatList
-        data={foods}
-        renderItem={({ item }) => <FoodItem food={item} />}
-        horizontal={true}
-        contentContainerStyle={{ gap: 10 }}
-        showsHorizontalScrollIndicator={false}
-      />
-    </Container>
+    <FlatList
+      data={foods}
+      renderItem={({ item }) => <FoodItem food={item} />}
+      horizontal={true}
+      contentContainerStyle={{ gap: 10 }}
+      showsHorizontalScrollIndicator={false}
+    />
   );
 }
