@@ -6,6 +6,7 @@ import { Container } from "@/src/components/container";
 import { Section } from "@/src/components/section";
 import { TrendingFoods } from "@/src/components/trending";
 import { Donors } from "@/src/components/donors";
+import DonorsList from "@/src/components/donorsList";
 // Importando o Layout das Tabs
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
         <TrendingFoods />
 
         <Section
-          name="Doadores"
+          name="Top Doadores"
           size="text-2xl"
           lable="Ver todos"
           action={() => {
@@ -46,6 +47,17 @@ export default function Home() {
         />
 
         <Donors />
+
+        <Section
+          name="Doadores"
+          size="text-2xl"
+          lable="Ver todos"
+          action={() => {
+            console.log("CLICOU NO VER TODOS");
+          }}
+        />
+
+        <DonorsList />
       </Container>
     </TabLayout>
   );
