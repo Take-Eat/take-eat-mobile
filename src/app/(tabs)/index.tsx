@@ -32,6 +32,8 @@ export default function Home() {
             console.log("CLICOU NO VER TODOS");
           }}
         />
+
+        <TrendingFoods />
       </Container>
     </TabLayout>
   );
