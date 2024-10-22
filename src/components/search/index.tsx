@@ -1,9 +1,9 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { Pressable, TextInput, View } from "react-native";
 
-export function Search() {
+export function SearchBar() {
   return (
-    <View className="w-full md:h-60 flex flex-row items-center h-14 px-2 gap-4">
+    <View className="w-full md:h-60 mt-3 flex flex-row items-center h-14 px-2 gap-4">
       <Pressable
         onPress={() => {
           console.log("CLICOU NO FILTRO");
