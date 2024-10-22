@@ -1,8 +1,8 @@
-import TabLayout from "./TabLayout";
 import { SearchBar } from "@/src/components/search";
 import { Section } from "@/src/components/section";
 import { TrendingFoods } from "@/src/components/trending";
 import { Donors } from "@/src/components/donors";
+import TabLayout from "@components/tabLayout";
 
 export default function Search() {
   return (

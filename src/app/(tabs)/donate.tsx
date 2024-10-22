@@ -1,7 +1,6 @@
-// src/app/tabs/index.tsx
 import { View, Text, Image } from "react-native";
-import TabLayout from "./TabLayout";
 import { Colors } from "@/constants/Colors";
+import TabLayout from "@/src/components/tabLayout";
 // Importando o Layout das Tabs
 
 export default function Donate() {
