@@ -1,7 +1,6 @@
 // src/app/tabs/index.tsx
 import { View, Text } from "react-native";
-import TabLayout from "./TabLayout";
-import { Banner } from "@/src/components/banner";
+import TabLayout from "@components/tabLayout";
 // Importando o Layout das Tabs
 
 export default function Order() {
