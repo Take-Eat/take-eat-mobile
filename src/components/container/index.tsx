@@ -10,7 +10,10 @@ interface Props {
 
 export function Container({ children }: Props) {
   return (
-    <View className="px-4" style={{ marginTop: statusBarHeight + 8 }}>
+    <View
+      className="px-4"
+      style={{ marginTop: statusBarHeight + 8 }}
+    >
       {children}
     </View>
   );

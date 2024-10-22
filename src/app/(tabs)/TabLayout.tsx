@@ -16,9 +16,9 @@ export default function TabLayout({ children }: Props) {
     >
       <Container>
         <Header />
-      </Container>
 
-      <View>{children}</View>
+        <View>{children}</View>
+      </Container>
     </ScrollView>
   );
 }
