@@ -18,7 +18,7 @@ export function TrendingFoods() {
 
   useEffect(() => {
     async function getFoods() {
-      const response = await fetch("http://10.0.0.207:3000/foods");
+      const response = await fetch(`http://${process.env.LOCAL_IP}:3000/foods`);
       const data = await response.json();
       setFoods(data);
     }
