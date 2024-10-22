@@ -5,7 +5,7 @@ import Constants from "expo-constants";
 const statusBarHeight = Constants.statusBarHeight;
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function Container({ children }: Props) {

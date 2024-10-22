@@ -1,12 +1,22 @@
-// src/app/tabs/index.tsx
-import { Text } from "react-native";
-import TabLayout from "@components/tabLayout";
+import { View, Text, Image } from "react-native";
+import { Colors } from "@/constants/Colors";
+import TabLayout from "@/src/components/tabLayout";
 // Importando o Layout das Tabs
 
 export default function Donate() {
   return (
     <TabLayout>
-      <Text>Donate Screen</Text>
+      <View className="w-full flex justify-center items-center">
+        <Image
+          source={require("../../assets/images/qrcode.png")}
+          className="mt-32 w-96 justify-end rounded-2xl"
+        />
+
+        <Text className="w-96 text-black mt-5 font-medium text-xl">
+          Contribua com a manutenção do App e com a nossa causa, através da
+          <Text className="color-primary"> chave pix</Text>!
+        </Text>
+      </View>
     </TabLayout>
   );
 }

@@ -10,7 +10,7 @@ export interface FoodProps {
   delivery: number;
   rating: number;
   image: string;
-  restaurantId: "1";
+  restaurantId: string;
 }
 
 export function TrendingFoods() {
@@ -18,7 +18,7 @@ export function TrendingFoods() {
 
   useEffect(() => {
     async function getFoods() {
-      const response = await fetch("http://10.0.0.207:3000/foods");
+      const response = await fetch("http://192.168.3.27:3000/foods");
       const data = await response.json();
       setFoods(data);
     }
