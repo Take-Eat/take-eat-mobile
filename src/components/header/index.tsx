@@ -4,7 +4,7 @@ import { colors } from "@/src/assets/styles/Global";
 
 export function Header() {
   return (
-    <View className="w-full flex flex-row justify-between items-center">
+      <View className="w-full h-24 flex flex-row justify-between items-center">
       <Pressable>
         <Image
           source={require("../../assets/images/logo_take_eat_black.png")}

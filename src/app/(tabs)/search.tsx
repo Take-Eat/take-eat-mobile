@@ -1,12 +1,33 @@
-// src/app/tabs/index.tsx
-import { View, Text } from "react-native";
+import { SearchBar } from "@/src/components/search";
+import { Section } from "@/src/components/section";
+import { TrendingFoods } from "@/src/components/trending";
+import { Donors } from "@/src/components/donors";
 import TabLayout from "@components/tabLayout";
-// Importando o Layout das Tabs
 
 export default function Search() {
   return (
     <TabLayout>
-      <Text>Search Screen</Text>
+      <SearchBar />
+
+      <Section
+        name="Mais procurados"
+        size="text-2xl"
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
+      <TrendingFoods />
+
+      <Section
+        name="Doadores fodásticos"
+        size="text-2xl"
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
+      <Donors />
     </TabLayout>
   );
 }
