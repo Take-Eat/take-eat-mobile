@@ -5,7 +5,7 @@ export default function Exp() {
 
     return (
         <View>
-            <Text>Testano</Text>
+            <Text>Testano login</Text>
         </View>
     )
 }
