@@ -5,7 +5,7 @@ import Container from "./container";
 import Donors from "./donors";
 import DonorsList from "./donorsList";
 import Header from "./header";
-import Search from "./search";
+import SearchBar from "./search";
 import Section from "./section";
 import TabLayout from "./tabLayout";
 import TrendingFoods from "./trending";
@@ -18,7 +18,7 @@ export {
 	Donors,
 	DonorsList,
 	Header,
-	Search,
+	SearchBar,
 	Section,
 	TabLayout,
 	TrendingFoods,
