@@ -1,8 +1,9 @@
-import { SearchBar } from "@/src/components/search";
-import { Section } from "@/src/components/section";
-import { TrendingFoods } from "@/src/components/trending";
-import { Donors } from "@/src/components/donors";
-import TabLayout from "@components/tabLayout";
+import {
+  SearchBar,
+  Section,
+  TrendingFoods,
+  Donors, TabLayout
+} from "@components";
 import { useState } from "react";
 import CustomBottomSheet from "@/src/components/bottomSheet";
 import { Button, Text, View } from "react-native";

@@ -5,7 +5,7 @@ interface Props {
   handleOpen: () => void;
 }
 
-export function SearchBar({ handleOpen }: Props) {
+export default function SearchBar({ handleOpen }: Props) {
   return (
     <>
       <View className="w-full md:h-60 mt-3 flex flex-row items-center h-14 px-2 gap-4">

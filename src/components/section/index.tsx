@@ -8,7 +8,7 @@ interface Props {
   action: () => void;
 }
 
-export function Section({ name, size, lable, action }: Props) {
+export default function Section({ name, size, lable, action }: Props) {
   return (
     <View className="w-full flex flex-row items-center justify-between">
       <Text className={`${size} font-semibold my-4 self-start`}>{name}</Text>

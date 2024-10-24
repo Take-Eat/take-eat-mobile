@@ -1,7 +1,5 @@
+import { TabLayout } from "@components";
 import { View, Text, Image } from "react-native";
-import { Colors } from "@/constants/Colors";
-import TabLayout from "@/src/components/tabLayout";
-// Importando o Layout das Tabs
 
 export default function Donate() {
   return (
