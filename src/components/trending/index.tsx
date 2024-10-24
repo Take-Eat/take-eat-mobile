@@ -10,7 +10,7 @@ export interface FoodProps {
   delivery: number;
   rating: number;
   image: string;
-  restaurantId: "1";
+  restaurantId: string;
 }
 
 export default function TrendingFoods() {

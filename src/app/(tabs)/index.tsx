@@ -10,53 +10,51 @@ import {
 export default function Home() {
   return (
     <TabLayout>
-      <Container>
-        <Banner />
+      <Banner />
 
-        <Section
-          name="Recomendados"
-          size="text-2xl"
-          lable="Ver mais"
-          action={() => {
-            console.log("CLICOU NO VER TODOS");
-          }}
-        />
+      <Section
+        name="Recomendados"
+        size="text-2xl"
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
 
-        <TrendingFoods />
+      <TrendingFoods />
 
-        <Section
-          name="Melhores avaliados"
-          size="text-2xl"
-          lable="Ver mais"
-          action={() => {
-            console.log("CLICOU NO VER TODOS");
-          }}
-        />
+      <Section
+        name="Melhores avaliados"
+        size="text-2xl"
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
 
-        <TrendingFoods />
+      <TrendingFoods />
 
-        <Section
-          name="Top Doadores"
-          size="text-2xl"
-          lable="Ver todos"
-          action={() => {
-            console.log("CLICOU NO VER TODOS");
-          }}
-        />
+      <Section
+        name="Top Doadores"
+        size="text-2xl"
+        lable="Ver todos"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
 
-        <Donors />
+      <Donors />
 
-        <Section
-          name="Doadores"
-          size="text-2xl"
-          lable="Ver todos"
-          action={() => {
-            console.log("CLICOU NO VER TODOS");
-          }}
-        />
+      <Section
+        name="Doadores"
+        size="text-2xl"
+        lable="Ver todos"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
 
-        <DonorsList />
-      </Container>
+      <DonorsList />
     </TabLayout>
   );
 }
