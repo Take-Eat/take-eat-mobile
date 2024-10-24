@@ -20,7 +20,7 @@ export default function CustomButton({
 		<TouchableOpacity
 			onPress={handlePress}
 			activeOpacity={0.7}
-			className={`bg-secondary rounded-xl min-h-[40px] flex flex-row justify-center items-center ${containerStyles} ${isLoading ? "opacity-50" : ""
+			className={`bg-secondary rounded-xl min-h-[52px] flex flex-row justify-center items-center ${containerStyles} ${isLoading ? "opacity-50" : ""
 				}`}
 			disabled={isLoading}
 		>
