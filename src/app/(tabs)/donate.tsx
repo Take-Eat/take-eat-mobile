@@ -1,7 +1,5 @@
-// src/app/tabs/index.tsx
 import { Text } from "react-native";
-import TabLayout from "@components/tabLayout";
-// Importando o Layout das Tabs
+import { TabLayout } from "@components";
 
 export default function Donate() {
   return (

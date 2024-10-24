@@ -13,7 +13,7 @@ export interface FoodProps {
   restaurantId: "1";
 }
 
-export function TrendingFoods() {
+export default function TrendingFoods() {
   const [foods, setFoods] = useState<FoodProps[]>([]);
 
   useEffect(() => {

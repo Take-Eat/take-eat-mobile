@@ -8,7 +8,7 @@ export interface DonorProps {
   image: string;
 }
 
-export function Donors() {
+export default function Donors() {
   const [donor, setDonor] = useState<DonorProps[]>([]);
 
   useEffect(() => {

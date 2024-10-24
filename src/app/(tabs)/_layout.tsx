@@ -1,4 +1,3 @@
-// src/app/_layout.tsx
 import "@/src/styles/global.css";
 
 import { Feather, FontAwesome } from "@expo/vector-icons";

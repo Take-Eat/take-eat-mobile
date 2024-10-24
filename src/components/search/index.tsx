@@ -1,7 +1,7 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
 import { Pressable, TextInput, View } from "react-native";
 
-export function Search() {
+export default function Search() {
   return (
     <View className="w-full md:h-60 flex flex-row items-center h-14 px-2 gap-4">
       <Pressable

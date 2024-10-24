@@ -1,7 +1,6 @@
-import { Header } from "@components/header";
 import { View, ScrollView } from "react-native";
-
-import { Container } from "@components/container";
+import Container from "../container";
+import Header from "../header"
 
 interface Props {
     children: React.ReactNode;

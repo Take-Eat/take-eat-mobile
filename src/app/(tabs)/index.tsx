@@ -1,12 +1,11 @@
-// src/app/tabs/index.tsx
-import TabLayout from "@components/tabLayout";
-import { Banner } from "@components/banner";
-import { Container } from "@components/container";
-import { Section } from "@components/section";
-import { TrendingFoods } from "@components/trending";
-import { Donors } from "@components/donors";
-import DonorsList from "@components/donorsList";
-// Importando o Layout das Tabs
+import {
+  TabLayout, Banner,
+  Container,
+  Section,
+  TrendingFoods,
+  Donors,
+  DonorsList
+} from "@components";
 
 export default function Home() {
   return (
