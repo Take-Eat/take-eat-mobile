@@ -34,28 +34,22 @@ export default function CustomBottomSheet({
   // Abrir o BottomSheet quando `isVisible` mudar
   if (isVisible) {
     bottomSheetRef.current?.expand();
-    console.log("AAAAAAAAAAAaaa");
   } else {
     bottomSheetRef.current?.close();
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <BottomSheet
-        ref={bottomSheetRef}
-        snapPoints={memoizedSnapPoints}
-        onChange={handleSheetChanges}
-        enablePanDownToClose={true}
-        index={1} // Mantém fechado inicialmente
-      >
-        <BottomSheetView style={styles.contentContainer}>
-          {children}
-          <View>
-            <Text className="text-2xl">AAAAAAAAAAAA</Text>
-          </View>
-        </BottomSheetView>
-      </BottomSheet>
-    </GestureHandlerRootView>
+    <BottomSheet
+      ref={bottomSheetRef}
+      snapPoints={memoizedSnapPoints}
+      onChange={handleSheetChanges}
+      enablePanDownToClose={true}
+      index={-1} // Mantém fechado inicialmente
+    >
+      <BottomSheetView style={styles.contentContainer}>
+        {children}
+      </BottomSheetView>
+    </BottomSheet>
   );
 }
 
