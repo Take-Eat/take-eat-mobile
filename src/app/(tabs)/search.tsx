@@ -9,6 +9,7 @@ import CustomBottomSheet from "@/src/components/bottomSheet";
 import { Button, Text, View } from "react-native";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import CheckBox from "@/src/components/checkBox";
 
 export default function Search() {
   const [isVisible, setIsVisible] = useState(false); // Controla a visibilidade do BottomSheet
@@ -59,7 +60,7 @@ export default function Search() {
           </View>
 
           <View className="py-5">
-            <Text>asdasdasdasdasdasdasd</Text>
+            <CheckBox />
           </View>
 
           <Button
