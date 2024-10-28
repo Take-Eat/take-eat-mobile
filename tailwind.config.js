@@ -40,7 +40,7 @@ module.exports = {
           100: "#CCEBD7",
           200: "#DDF3E4",
         },
-        alert: "#155bcb",
+        info: "#155bcb",
       },
     },
   },

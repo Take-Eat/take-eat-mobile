@@ -15,7 +15,7 @@ interface Props {
 export default function Card({ height, bgColor, children }: Props) {
   return (
     <View
-      className={`w-full ${height} flex flex-row justify-between items-center ${bgColor} rounded-xl p-2`}
+      className={`w-full ${height} flex flex-row justify-between items-center ${bgColor} rounded-2xl p-2`}
     >
       {children}
     </View>
