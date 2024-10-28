@@ -19,7 +19,11 @@ export default function SearchBar({ handleOpen }: Props) {
           />
         </Pressable>
 
-        <InputSearch />
+        <InputSearch
+          bgColor="bg-gray-600"
+          textColor="text-black"
+          title="Procure alimentos..."
+        />
 
         <Pressable
           onPress={() => {
