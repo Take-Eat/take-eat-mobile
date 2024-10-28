@@ -39,8 +39,8 @@ export default function Order() {
       <FlatList
         data={orders}
         renderItem={({ item }) => (
-          <Card>
-            <View className="flex-row items-center h-full gap-3 p-2">
+          <Card height="h-36" bgColor="bg-gray-700">
+            <View className="flex-row items-center h-full gap-3">
               {/* Foto do pedido */}
               <Image
                 source={{ uri: item.image }}
@@ -59,7 +59,7 @@ export default function Order() {
               </View>
             </View>
 
-            <View className="flex justify-center pr-2">
+            <View className="flex justify-center">
               {/* Status do pedido */}
               <View className="flex-row gap-2">
                 <Text>Status</Text>
