@@ -43,7 +43,7 @@ export default function MenuLayout() {
       <Stack.Screen
         name="map"
         options={{
-          title: "Termos de uso",
+          title: "Mapa",
         }}
       />
     </Stack>
