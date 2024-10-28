@@ -29,11 +29,11 @@ export default function CardMenu({
     <View
       className={`${color} w-full h-24 flex-row justify-between items-center px-5`}
     >
-      <View className="flex-row gap-3 items-center flex-1">
+      <View className="flex-row items-center gap-3">
         <Ionicons name={iconName} size={iconSize} color={"#F58F00"} />
 
         <Text
-          className={`${titleSize} ${titleColor} font-semibold w-40`}
+          className={`${titleSize} ${titleColor} font-semibold`}
           numberOfLines={2}
         >
           {title}
