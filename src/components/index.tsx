@@ -10,6 +10,7 @@ import Section from "./section";
 import TabLayout from "./tabLayout";
 import TrendingFoods from "./trending";
 import Card from "./card";
+import CardMenu from "./cardMenu";
 
 export {
   Banner,
@@ -24,4 +25,5 @@ export {
   TabLayout,
   TrendingFoods,
   Card,
+  CardMenu
 };

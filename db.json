@@ -85,11 +85,10 @@
   ],
 
   "orders": [
-     {
+    {
       "id": 1,
       "category": "Não perecível",
-      "image":
-        "https://images.pexels.com/photos/106972/pexels-photo-106972.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/106972/pexels-photo-106972.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Grão de bico",
       "time": "24h",
       "type": "Grão",
@@ -100,8 +99,7 @@
     {
       "id": 2,
       "category": "Prontos",
-      "image":
-        "https://media.istockphoto.com/id/1018583636/pt/foto/packed-lunch-beef-broccoli-and-carrot-baked-with-sesame-white-rice-and-black-beans.jpg?b=1&s=612x612&w=0&k=20&c=ZdROzoJcbnsfF_UcB3ABF0ZEvscQ2kTb138XXbJFaT4=",
+      "image": "https://media.istockphoto.com/id/1018583636/pt/foto/packed-lunch-beef-broccoli-and-carrot-baked-with-sesame-white-rice-and-black-beans.jpg?b=1&s=612x612&w=0&k=20&c=ZdROzoJcbnsfF_UcB3ABF0ZEvscQ2kTb138XXbJFaT4=",
       "name": "Marmita",
       "time": "2h",
       "type": "Não sei",
@@ -112,8 +110,7 @@
     {
       "id": 3,
       "category": "Perecível",
-      "image":
-        "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "image": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "name": "Tomate",
       "time": "1h",
       "type": "Fruta",
@@ -124,8 +121,7 @@
     {
       "id": 4,
       "category": "Congelados",
-      "image":
-        "https://images.pexels.com/photos/9016811/pexels-photo-9016811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "image": "https://images.pexels.com/photos/9016811/pexels-photo-9016811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "name": "Frango congelado",
       "time": "24h",
       "type": "Carne",
@@ -136,8 +132,7 @@
     {
       "id": 5,
       "category": "Bebidas",
-      "image":
-        "https://media.istockphoto.com/id/1407684263/pt/foto/glass-of-grape-juice-with-rural-background.jpg?b=1&s=612x612&w=0&k=20&c=hqrtuMhRMN8BI2sbNmftUhRAnSaaHk-rHLIgKoxbksI=",
+      "image": "https://media.istockphoto.com/id/1407684263/pt/foto/glass-of-grape-juice-with-rural-background.jpg?b=1&s=612x612&w=0&k=20&c=hqrtuMhRMN8BI2sbNmftUhRAnSaaHk-rHLIgKoxbksI=",
       "name": "Suco de uva",
       "time": "24h",
       "type": "Bebida",
@@ -148,8 +143,7 @@
     {
       "id": 6,
       "category": "Laticínios",
-      "image":
-        "https://media.istockphoto.com/id/535489242/pt/foto/verter-o-leite-no-vidro-no-fundo-de-natureza.jpg?b=1&s=612x612&w=0&k=20&c=Ed8iMUmaLECDvyd14RzvftA8WplWAJr6-fg5phGJQow=",
+      "image": "https://media.istockphoto.com/id/535489242/pt/foto/verter-o-leite-no-vidro-no-fundo-de-natureza.jpg?b=1&s=612x612&w=0&k=20&c=Ed8iMUmaLECDvyd14RzvftA8WplWAJr6-fg5phGJQow=",
       "name": "Leite",
       "time": "12h",
       "type": "Bebida",
@@ -160,8 +154,7 @@
     {
       "id": 7,
       "category": "Congelados",
-      "image":
-        "https://images.pexels.com/photos/3650159/pexels-photo-3650159.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/3650159/pexels-photo-3650159.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Peixe congelado",
       "time": "48h",
       "type": "Carne",
@@ -172,8 +165,7 @@
     {
       "id": 8,
       "category": "Frutas",
-      "image":
-        "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Maçã",
       "time": "5h",
       "type": "Fruta",
@@ -184,8 +176,7 @@
     {
       "id": 9,
       "category": "Prontos",
-      "image":
-        "https://images.pexels.com/photos/2821743/pexels-photo-2821743.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/2821743/pexels-photo-2821743.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Salada mista",
       "time": "1h",
       "type": "Vegetais",
@@ -196,8 +187,7 @@
     {
       "id": 10,
       "category": "Panificação",
-      "image":
-        "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Pão integral",
       "time": "12h",
       "type": "Grão",
@@ -208,8 +198,7 @@
     {
       "id": 11,
       "category": "Bebidas",
-      "image":
-        "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Água mineral",
       "time": "72h",
       "type": "Bebida",
@@ -220,8 +209,7 @@
     {
       "id": 12,
       "category": "Perecível",
-      "image":
-        "https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Queijo",
       "time": "8h",
       "type": "Laticínios",
@@ -232,8 +220,7 @@
     {
       "id": 13,
       "category": "Vegetais",
-      "image":
-        "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Cenoura",
       "time": "10h",
       "type": "Raiz",
@@ -244,8 +231,7 @@
     {
       "id": 14,
       "category": "Grãos",
-      "image":
-        "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Arroz",
       "time": "48h",
       "type": "Grão",
@@ -256,8 +242,7 @@
     {
       "id": 15,
       "category": "Bebidas",
-      "image":
-        "https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "image": "https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=600",
       "name": "Refrigerante",
       "time": "36h",
       "type": "Bebida",
@@ -265,6 +250,14 @@
       "amount": 4,
       "status": "concluido"
     }
-  
-  ]
+  ],
+  "users": {
+    "id": 1,
+    "name": "Ana Silva",
+    "email": "ana.silva@example.com",
+    "role": "Admin",
+    "image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353",
+    "isActive": true,
+    "createdAt": "2024-01-15"
+  }
 }

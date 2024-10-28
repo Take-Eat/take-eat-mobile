@@ -44,6 +44,8 @@ export default function Home() {
       />
 
       <Donors />
+      
+      <Banner />
 
       <Section
         name="Doadores"
@@ -55,6 +57,7 @@ export default function Home() {
       />
 
       <DonorsList />
+
     </TabLayout>
   );
 }
