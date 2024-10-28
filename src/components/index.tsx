@@ -11,6 +11,7 @@ import TabLayout from "./tabLayout";
 import TrendingFoods from "./trending";
 import Card from "./card";
 import CardMenu from "./cardMenu";
+import InputSearch from "./inputSearch";
 
 export {
   Banner,
@@ -25,5 +26,6 @@ export {
   TabLayout,
   TrendingFoods,
   Card,
-  CardMenu
+  CardMenu,
+  InputSearch,
 };
