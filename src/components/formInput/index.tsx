@@ -22,7 +22,7 @@ export default function FormInput({
 
 	return (
 		<View className={`space-y-2 ${otherStyles}`}>
-			<Text className="font-bold mb-1 ml-2 text-xl">{title}</Text>
+			<Text className="font-oregano mb-1 ml-2 text-2xl">{title}</Text>
 			<View className="w-full h-14 px-4 bg-gray-600 rounded-xl border-b-2 border-gray-500 flex flex-row items-center">
 				<TextInput
 					className="flex-1 font-psemibold text-base"
