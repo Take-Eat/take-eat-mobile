@@ -13,6 +13,7 @@ import { useState, useRef, useEffect } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import MapViewDirections from "react-native-maps-directions";
 import { MaterialIcons } from "@expo/vector-icons";
+import { colors } from "@/src/assets/styles/Global";
 
 const getMyLocation = async (): Promise<Region | undefined> => {
   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -66,11 +67,12 @@ export default function Address() {
               origin={location}
               destination={destination}
               apikey={process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE}
-              strokeWidth={3}
+              strokeWidth={4}
+              strokeColor="#F58F00"
               onReady={(result) => {
                 setDistance(result.distance);
 
-                setPrice(result.distance * 3);
+                setPrice(result.distance * 0.6);
 
                 setDuration(result.duration);
 
