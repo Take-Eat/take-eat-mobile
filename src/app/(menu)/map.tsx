@@ -35,6 +35,7 @@ export default function Address() {
   const [destination, setDestination] = useState<Region | null>(null);
   const [location, setLocation] = useState<Region | null>(null);
   const [distance, setDistance] = useState<number | null>(null);
+  const [duration, setDuration] = useState<number | null>(null);
   const [price, setPrice] = useState<number | null>(null);
 
   const mapRef = useRef<MapView>(null);
@@ -68,7 +69,11 @@ export default function Address() {
               strokeWidth={3}
               onReady={(result) => {
                 setDistance(result.distance);
-                setPrice(result.distance * 6);
+
+                setPrice(result.distance * 0.6);
+
+                setDuration(result.duration);
+
                 mapRef.current?.fitToCoordinates(result.coordinates, {
                   edgePadding: {
                     top: 50,
@@ -134,10 +139,13 @@ export default function Address() {
           enablePoweredByContainer={false}
         />
 
-        {distance && price && (
+        {distance && price && duration && (
           <View className="flex-1 justify-center items-center bg-tertiary-200 p-3">
             <Text className="text-white text-lg font-semibold">
-              Distância: {distance.toFixed(2).replace(".", ",")}km
+              Distância: {distance.toFixed(2).replace(".", ",")} km
+            </Text>
+            <Text className="text-white text-lg font-semibold">
+              Tempo: {duration.toFixed(0)} min
             </Text>
 
             <TouchableOpacity className="bg-primary rounded-lg p-7 mt-3 justify-center items-center">
