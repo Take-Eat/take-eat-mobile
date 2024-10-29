@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import MapView, { Region } from "react-native-maps";
+import MapView, { Marker, Region } from "react-native-maps";
 import * as Location from "expo-location";
 import { useState, useRef, useEffect } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -70,7 +70,7 @@ export default function Address() {
               onReady={(result) => {
                 setDistance(result.distance);
 
-                setPrice(result.distance * 0.6);
+                setPrice(result.distance * 3);
 
                 setDuration(result.duration);
 
@@ -85,6 +85,14 @@ export default function Address() {
               }}
             />
           )}
+        {destination && (
+          <Marker
+            coordinate={{
+              latitude: destination.latitude,
+              longitude: destination.longitude,
+            }}
+          />
+        )}
       </MapView>
       <KeyboardAvoidingView
         style={styles.searchContainer}
