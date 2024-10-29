@@ -1,9 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import MapView, { Region } from "react-native-maps";
 import * as Location from "expo-location";
 import { useState, useRef, useEffect } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-
 
 const getMyLocation = async (): Promise<Region | undefined> => {
   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -48,10 +53,13 @@ export default function Address() {
         initialRegion={location || undefined}
         showsUserLocation
       />
-      <View style={styles.search}>
+      <KeyboardAvoidingView
+        style={styles.searchContainer}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+      >
         <GooglePlacesAutocomplete
           placeholder="Endereço e número..."
-          
           fetchDetails={true}
           onPress={(data, details = null) => {
             if (details) {
@@ -68,15 +76,52 @@ export default function Address() {
           }}
           query={{
             key: process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE,
-            language: "pt-br",
+            language: "pt-BR",
             types: "(cities)",
           }}
           styles={{
-            listView: { height: 100 },
+            container: { flex: 1 },
+            textInputContainer: {
+              backgroundColor: "#ffffff",
+              borderRadius: 20,
+              padding: 8,
+              marginTop: 2,
+              marginHorizontal: 10,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.25,
+              shadowRadius: 4,
+              elevation: 5,
+            },
+            textInput: {
+              height: 44,
+              color: "#333",
+              fontSize: 16,
+              paddingLeft: 10,
+            },
+            listView: {
+              maxHeight: 120,
+              width: "100%", // Largura completa
+              alignSelf: "center", // Centraliza a lista
+              borderRadius: 10,
+            },
+            row: {
+              padding: 13,
+              height: 44,
+              flexDirection: "row",
+              backgroundColor: "#f1f1f1",
+              borderBottomWidth: 0.5,
+              borderBottomColor: "#ddd",
+            },
+            description: { color: "#555" },
+            poweredContainer: { display: "none" },
           }}
-          
+          textInputProps={{
+            placeholderTextColor: "#888",
+          }}
+          enablePoweredByContainer={false}
         />
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -85,14 +130,15 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     backgroundColor: "#fff",
-    justifyContent: "center",
   },
   map: {
-    height: "60%",
+    height: "50%",
     backgroundColor: "black",
   },
-  search: {
-    height: "40%",
-    backgroundColor: "gray",
+  searchContainer: {
+    backgroundColor: "#443936",
+    height: "50%",
+    justifyContent: "center",
+    paddingHorizontal: 10,
   },
 });
