@@ -9,7 +9,7 @@ interface Props {
 export default function SearchBar({ handleOpen }: Props) {
   return (
     <>
-      <View className="w-full md:h-60 mt-3 flex flex-row items-center h-14 px-2 gap-4">
+      <View className="w-full md:h-20 mt-3 flex flex-row items-center h-14 px-2 gap-4">
         <Pressable onPress={handleOpen}>
           <Feather
             name="filter"
@@ -21,8 +21,9 @@ export default function SearchBar({ handleOpen }: Props) {
 
         <InputSearch
           bgColor="bg-gray-600"
-          textColor="text-black"
+          textColor="text-white"
           title="Procure alimentos..."
+          placeholderColor="#888"
         />
 
         <Pressable

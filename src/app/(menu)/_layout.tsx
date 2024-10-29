@@ -12,7 +12,7 @@ export default function MenuLayout() {
     >
       {/* <Stack.Screen
         name="index"
-        options={{
+        options={
           headerShown: false,
         }}
       /> */}
