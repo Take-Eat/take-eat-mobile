@@ -3,6 +3,7 @@ import { CardMenu, TabLayout } from "@components";
 import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { globalStyles } from "@/src/assets/styles/Global";
 
 export interface UserProps {
   id: number;
@@ -38,20 +39,23 @@ export default function Menu() {
               <View className="flex-row items-center gap-4">
                 <Image
                   source={{ uri: user.image }}
-                  className="w-24 h-24 rounded-full"
+                  className="w-20 h-20"
+                  style={globalStyles.roundedFull}
                 />
 
                 <View>
                   <Text
                     numberOfLines={2}
-                    className="w-52 text-black text-xl font-semibold"
+                    className="w-52 font-semibold"
+                    style={globalStyles.textRegular}
                   >
                     {user.name}
                   </Text>
 
                   <Text
                     numberOfLines={1}
-                    className="w-52 font-extralight text-lg"
+                    className="w-52"
+                    style={globalStyles.textRegularGray}
                   >
                     {user.email}
                   </Text>
@@ -63,7 +67,7 @@ export default function Menu() {
                   console.log("CLICOU EM SAIR");
                 }}
               >
-                <Text className="text-xl font-bold">Sair</Text>
+                <Text style={globalStyles.textRegular}>Sair</Text>
               </Pressable>
             </View>
 

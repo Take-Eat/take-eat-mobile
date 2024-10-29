@@ -10,6 +10,7 @@ import { Button, Text, View } from "react-native";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CheckBox from "@/src/components/checkBox";
+import { globalStyles } from "@/src/assets/styles/Global";
 
 export default function Search() {
   const [isVisible, setIsVisible] = useState(false); // Controla a visibilidade do BottomSheet
@@ -31,7 +32,7 @@ export default function Search() {
 
         <Section
           name="Prioritários"
-          size="text-2xl"
+          size={globalStyles.heading2}
           lable="Ver mais"
           action={() => {
             console.log("CLICOU NO VER TODOS");
@@ -41,7 +42,7 @@ export default function Search() {
 
         <Section
           name="Doadores fodásticos"
-          size="text-2xl"
+          size={globalStyles.heading2}
           lable="Ver mais"
           action={() => {
             console.log("CLICOU NO VER TODOS");
@@ -52,11 +53,11 @@ export default function Search() {
       <CustomBottomSheet isVisible={isVisible} onClose={handleCloseBottomSheet}>
         <View className="flex-1">
           <View className="w-full bottom-4 flex flex-row justify-between">
-            <FontAwesome name="sort-amount-desc" size={30} />
+            <FontAwesome name="sort-amount-desc" size={25} />
 
-            <Text className="text-black text-2xl font-semibold">Filtros</Text>
+            <Text style={globalStyles.heading1}>Filtros</Text>
 
-            <FontAwesome name="trash" size={30} />
+            <FontAwesome name="trash" size={25} />
           </View>
 
           <View className="py-5">

@@ -1,10 +1,10 @@
+import { globalStyles } from "@/src/assets/styles/Global";
 import { ActivityIndicator, GestureResponderEvent, Text, TouchableOpacity } from "react-native";
 
 interface Props {
 	title: string;
 	handlePress: ((event: GestureResponderEvent) => void);
 	containerStyles?: string;
-	textStyles: string;
 	isLoading?: boolean;
 }
 
@@ -13,18 +13,18 @@ export default function CustomButton({
 	title,
 	handlePress,
 	containerStyles,
-	textStyles,
 	isLoading,
 }: Props) {
 	return (
 		<TouchableOpacity
 			onPress={handlePress}
 			activeOpacity={0.7}
-			className={`bg-secondary rounded-xl min-h-[52px] flex flex-row justify-center items-center ${containerStyles} ${isLoading ? "opacity-50" : ""
+			className={`bg-secondary min-h-[52px] flex flex-row justify-center items-center ${containerStyles} ${isLoading ? "opacity-50" : ""
 				}`}
 			disabled={isLoading}
+			style={globalStyles.roundedRegular}
 		>
-			<Text className={`text-primary font-psemibold text-xl ${textStyles}`}>
+			<Text className="text-white font-psemibold" style={globalStyles.textLarger}>
 				{title}
 			</Text>
 

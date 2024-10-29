@@ -1,7 +1,8 @@
+import { globalStyles } from "@/src/assets/styles/Global";
 import { Card, Container } from "@/src/components";
 import { AntDesign } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, SafeAreaView, Text, View } from "react-native";
 
 export interface DonorProps {
   id: string;
@@ -25,30 +26,30 @@ export default function Notifications() {
   }, []);
 
   return (
-    <View>
+    <SafeAreaView>
       <Container>
         <FlatList
           data={donor}
           contentContainerStyle={{ gap: 10 }}
           renderItem={({ item }) => (
-            <Card height="h-20" bgColor="bg-gray-600">
+            <Card bgColor="bg-gray-600">
               <View className="flex-row items-center gap-3">
                 <Image
                   source={{ uri: item.image }}
-                  className="w-16 h-16 rounded-full"
+                  className="w-16 h-16 full"
                 />
 
                 <View>
-                  <Text className="text-xl font-semibold">{item.name}</Text>
-                  <Text>precisa falar com você</Text>
+                  <Text className="font-semibold" style={globalStyles.textRegular}>{item.name}</Text>
+                  <Text style={globalStyles.textSmallGray}>precisa falar com você</Text>
                 </View>
               </View>
 
-              <AntDesign name="right" size={20} />
+              <AntDesign name="right" size={25} />
             </Card>
           )}
         />
       </Container>
-    </View>
+    </SafeAreaView>
   );
 }
