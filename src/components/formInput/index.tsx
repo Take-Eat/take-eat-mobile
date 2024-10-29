@@ -2,23 +2,23 @@ import { useRef, useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 
 interface Props {
-	title: string;
-	value: string;
-	placeholder?: string;
-	handleChangeText: (text: string) => void;
-	otherStyles?: string;
-	[key: string]: any;
+  title: string;
+  value: string;
+  placeholder?: string;
+  handleChangeText: (text: string) => void;
+  otherStyles?: string;
+  [key: string]: any;
 }
 
 export default function FormInput({
-	title,
-	value,
-	placeholder,
-	handleChangeText,
-	otherStyles,
-	...props
+  title,
+  value,
+  placeholder,
+  handleChangeText,
+  otherStyles,
+  ...props
 }: Props) {
-	const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
 	return (
 		<View className={`space-y-2 ${otherStyles}`}>
@@ -34,7 +34,7 @@ export default function FormInput({
 					{...props}
 				/>
 
-				{/* {title === "Password" && (
+        {/* {title === "Password" && (
 					<TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
 						<Image
 							// source={!showPassword ? "=" : "-"}
@@ -43,7 +43,7 @@ export default function FormInput({
 						/>
 					</TouchableOpacity>
 				)} */}
-			</View>
-		</View>
-	);
+      </View>
+    </View>
+  );
 }

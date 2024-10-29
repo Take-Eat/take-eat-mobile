@@ -9,17 +9,21 @@ import SearchBar from "./search";
 import Section from "./section";
 import TabLayout from "./tabLayout";
 import TrendingFoods from "./trending";
+import Card from "./card";
+import CardMenu from "./cardMenu";
 
 export {
-	Banner,
-	FormInput,
-	CustomButton,
-	Container,
-	Donors,
-	DonorsList,
-	Header,
-	SearchBar,
-	Section,
-	TabLayout,
-	TrendingFoods,
+  Banner,
+  FormInput,
+  CustomButton,
+  Container,
+  Donors,
+  DonorsList,
+  Header,
+  SearchBar,
+  Section,
+  TabLayout,
+  TrendingFoods,
+  Card,
+  CardMenu
 };

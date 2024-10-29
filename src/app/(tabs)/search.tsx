@@ -30,7 +30,7 @@ export default function Search() {
         <SearchBar handleOpen={handleOpenBottomSheet} />
 
         <Section
-          name="Mais procurados"
+          name="Prioritários"
           size="text-2xl"
           lable="Ver mais"
           action={() => {
