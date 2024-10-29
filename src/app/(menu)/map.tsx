@@ -3,12 +3,16 @@ import {
   Platform,
   StyleSheet,
   Text,
+  Touchable,
+  TouchableOpacity,
   View,
 } from "react-native";
 import MapView, { Region } from "react-native-maps";
 import * as Location from "expo-location";
 import { useState, useRef, useEffect } from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import MapViewDirections from "react-native-maps-directions";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const getMyLocation = async (): Promise<Region | undefined> => {
   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -29,8 +33,9 @@ const getMyLocation = async (): Promise<Region | undefined> => {
 
 export default function Address() {
   const [destination, setDestination] = useState<Region | null>(null);
-  const [errorMsg, setErrorMsg] = useState("");
   const [location, setLocation] = useState<Region | null>(null);
+  const [distance, setDistance] = useState<number | null>(null);
+  const [price, setPrice] = useState<number | null>(null);
 
   const mapRef = useRef<MapView>(null);
 
@@ -52,7 +57,30 @@ export default function Address() {
         ref={mapRef}
         initialRegion={location || undefined}
         showsUserLocation
-      />
+      >
+        {location &&
+          destination &&
+          process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE && (
+            <MapViewDirections
+              origin={location}
+              destination={destination}
+              apikey={process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE}
+              strokeWidth={3}
+              onReady={(result) => {
+                setDistance(result.distance);
+                setPrice(result.distance * 6);
+                mapRef.current?.fitToCoordinates(result.coordinates, {
+                  edgePadding: {
+                    top: 50,
+                    bottom: 50,
+                    left: 50,
+                    right: 50,
+                  },
+                });
+              }}
+            />
+          )}
+      </MapView>
       <KeyboardAvoidingView
         style={styles.searchContainer}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -93,34 +121,33 @@ export default function Address() {
               shadowRadius: 4,
               elevation: 5,
             },
-            textInput: {
-              height: 44,
-              color: "#333",
-              fontSize: 16,
-              paddingLeft: 10,
-            },
             listView: {
               maxHeight: 120,
               width: "100%", // Largura completa
               alignSelf: "center", // Centraliza a lista
               borderRadius: 10,
             },
-            row: {
-              padding: 13,
-              height: 44,
-              flexDirection: "row",
-              backgroundColor: "#f1f1f1",
-              borderBottomWidth: 0.5,
-              borderBottomColor: "#ddd",
-            },
-            description: { color: "#555" },
-            poweredContainer: { display: "none" },
           }}
           textInputProps={{
             placeholderTextColor: "#888",
           }}
           enablePoweredByContainer={false}
         />
+
+        {distance && price && (
+          <View className="flex-1 justify-center items-center bg-tertiary-200 p-3">
+            <Text className="text-white text-lg font-semibold">
+              Distância: {distance.toFixed(2).replace(".", ",")}km
+            </Text>
+
+            <TouchableOpacity className="bg-primary rounded-lg p-7 mt-3 justify-center items-center">
+              <Text className=" text-white text-2xl font-bold">
+                <MaterialIcons name="payment" size={24} />
+                Pagar R${price.toFixed(2)}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </KeyboardAvoidingView>
     </View>
   );
@@ -139,6 +166,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#443936",
     height: "50%",
     justifyContent: "center",
-    paddingHorizontal: 10,
   },
 });
