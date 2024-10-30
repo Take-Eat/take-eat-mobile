@@ -2,12 +2,13 @@ import {
   SearchBar,
   Section,
   TrendingFoods,
-  Donors, TabLayout
+  Donors,
+  TabLayoutWithOutHeader
 } from "@components";
 import { useState } from "react";
 import CustomBottomSheet from "@/src/components/bottomSheet";
 import { Button, Text, View } from "react-native";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CheckBox from "@/src/components/checkBox";
 import { globalStyles } from "@/src/assets/styles/Global";
@@ -18,7 +19,6 @@ export default function Search() {
   // Função para abrir o BottomSheet
   const handleOpenBottomSheet = () => {
     setIsVisible(true); // Define o BottomSheet como visível
-    console.log("TESTE");
   };
 
   // Função para fechar o BottomSheet
@@ -27,7 +27,7 @@ export default function Search() {
   };
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <TabLayout>
+      <TabLayoutWithOutHeader>
         <SearchBar handleOpen={handleOpenBottomSheet} />
 
         <Section
@@ -49,7 +49,7 @@ export default function Search() {
           }}
         />
         <Donors />
-      </TabLayout>
+      </TabLayoutWithOutHeader>
       <CustomBottomSheet isVisible={isVisible} onClose={handleCloseBottomSheet}>
         <View className="flex-1">
           <View className="w-full bottom-4 flex flex-row justify-between">

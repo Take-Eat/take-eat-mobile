@@ -7,15 +7,9 @@ export default function MenuLayout() {
         headerStyle: {
           backgroundColor: "#F58F00",
         },
-        headerTintColor: "#FFF"
+        headerTintColor: "#FFF",
       }}
     >
-      {/* <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      /> */}
       <Stack.Screen
         name="personalData"
         options={{
@@ -38,6 +32,12 @@ export default function MenuLayout() {
         name="termsOfUse"
         options={{
           title: "Termos de uso",
+        }}
+      />
+      <Stack.Screen
+        name="map"
+        options={{
+          title: "Mapa",
         }}
       />
     </Stack>

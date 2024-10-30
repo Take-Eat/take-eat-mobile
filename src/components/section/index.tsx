@@ -1,14 +1,13 @@
-import { colors } from "@/src/assets/styles/Global";
 import { View, Text, Pressable } from "react-native";
 
 
-interface iSize {
+interface iText {
   fontSize: number,
   fontFamily: string,
 }
 interface Props {
   name: string;
-  size: iSize;
+  size: iText;
   lable: string;
   action: () => void;
 }

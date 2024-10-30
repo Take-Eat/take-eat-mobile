@@ -1,7 +1,6 @@
 import { globalStyles } from "@/src/assets/styles/Global";
 import {
   TabLayout, Banner,
-  Container,
   Section,
   TrendingFoods,
   Donors,
@@ -60,5 +59,6 @@ export default function Home() {
       <DonorsList />
 
     </TabLayout>
+
   );
 }
