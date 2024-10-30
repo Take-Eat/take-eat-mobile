@@ -4,14 +4,14 @@ import { colors } from "@/src/assets/styles/Global";
 
 export default function Header() {
   return (
-      <View className="w-full h-24 flex flex-row justify-between items-center">
+    <View className="w-full h-24 flex flex-row justify-between items-center">
       <Pressable>
         <Image
           source={require("../../assets/images/logo_take_eat_black.png")}
         />
       </Pressable>
-      <Pressable onPress={() => {console.log("CLICOU NAS NOTIFICAÇÕES")}}>
-        <Ionicons name="notifications" size={30} color={colors.brand4} />
+      <Pressable onPress={() => { console.log("CLICOU NAS NOTIFICAÇÕES") }}>
+        <Ionicons name="notifications" size={25} color={colors.brand4} />
       </Pressable>
     </View>
   );
