@@ -1,8 +1,7 @@
 import { Image, Pressable, Text, TouchableOpacity, View } from "react-native";
-import { CardMenu, TabLayout } from "@components";
+import { CardMenu, TabLayoutWithOutHeader } from "@components";
 import { useEffect, useState } from "react";
-import { Link, useRouter } from "expo-router";
-import { AntDesign, Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { globalStyles } from "@/src/assets/styles/Global";
 
 export interface UserProps {
@@ -33,7 +32,8 @@ export default function Menu() {
   }, []);
 
   return (
-    <TabLayout>
+    <TabLayoutWithOutHeader>
+
       <View className="gap-5">
         {user ? (
           <>
@@ -81,10 +81,9 @@ export default function Menu() {
                 <CardMenu
                   color="bg-gray-700"
                   iconName="notifications"
-                  iconSize={30}
+                  iconSize={25}
                   title="Notificações"
-                  titleColor="text-black"
-                  titleSize="text-xl"
+                  titleText={globalStyles.textRegular}
                 />
               </TouchableOpacity>
 
@@ -95,10 +94,9 @@ export default function Menu() {
                 <CardMenu
                   color="bg-gray-700"
                   iconName="location-sharp"
-                  iconSize={30}
+                  iconSize={25}
                   title="Localização"
-                  titleColor="text-black"
-                  titleSize="text-xl"
+                  titleText={globalStyles.textRegular}
                 />
               </TouchableOpacity>
 
@@ -109,10 +107,9 @@ export default function Menu() {
                 <CardMenu
                   color="bg-gray-700"
                   iconName="newspaper"
-                  iconSize={30}
+                  iconSize={25}
                   title="Termos de uso"
-                  titleColor="text-black"
-                  titleSize="text-xl"
+                  titleText={globalStyles.textRegular}
                 />
               </TouchableOpacity>
 
@@ -123,10 +120,9 @@ export default function Menu() {
                 <CardMenu
                   color="bg-gray-700"
                   iconName="person-sharp"
-                  iconSize={30}
+                  iconSize={25}
                   title="Meus dados"
-                  titleColor="text-black"
-                  titleSize="text-xl"
+                  titleText={globalStyles.textRegular}
                 />
               </TouchableOpacity>
             </View>
@@ -135,6 +131,6 @@ export default function Menu() {
           <Text>Carregando usuário...</Text>
         )}
       </View>
-    </TabLayout>
+    </TabLayoutWithOutHeader>
   );
 }

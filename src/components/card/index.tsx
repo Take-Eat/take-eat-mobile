@@ -1,5 +1,5 @@
 import { globalStyles } from "@/src/assets/styles/Global";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 interface Props {
   bgColor: string;
@@ -9,7 +9,7 @@ interface Props {
 export default function Card({ bgColor, children }: Props) {
   return (
     <View
-      className={`w-full max-h-max flex flex-row justify-between items-center ${bgColor} p-2`}
+      className={`w-full max-h-[70px] flex flex-row justify-between items-center ${bgColor} p-5`}
       style={globalStyles.roundedRegular}
     >
       {children}

@@ -4,7 +4,8 @@ import { View, Text, Image } from "react-native";
 
 export default function Donate() {
   return (
-    <TabLayout>
+    <TabLayout
+    >
       <View className="w-full flex justify-center items-center">
         <Image
           source={require("../../assets/images/qrcode.png")}

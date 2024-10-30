@@ -32,7 +32,7 @@ export default function Notifications() {
           data={donor}
           contentContainerStyle={{ gap: 10 }}
           renderItem={({ item }) => (
-            <Card bgColor="bg-gray-600">
+            <Card bgColor="bg-gray-700">
               <View className="flex-row items-center gap-3">
                 <Image
                   source={{ uri: item.image }}

@@ -7,11 +7,11 @@ import DonorsList from "./donorsList";
 import Header from "./header";
 import SearchBar from "./search";
 import Section from "./section";
-import TabLayout from "./tabLayout";
 import TrendingFoods from "./trending";
 import Card from "./card";
 import CardMenu from "./cardMenu";
 import InputSearch from "./inputSearch";
+import { TabLayout, TabLayoutWithOutHeader } from "./tabLayout";
 
 export {
   Banner,
@@ -24,6 +24,7 @@ export {
   SearchBar,
   Section,
   TabLayout,
+  TabLayoutWithOutHeader,
   TrendingFoods,
   Card,
   CardMenu,

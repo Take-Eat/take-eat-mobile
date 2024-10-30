@@ -51,7 +51,7 @@ export default function Address() {
       <View style={styles.search}>
         <GooglePlacesAutocomplete
           placeholder="Endereço e número..."
-          
+
           fetchDetails={true}
           onPress={(data, details = null) => {
             if (details) {
@@ -74,7 +74,7 @@ export default function Address() {
           styles={{
             listView: { height: 100 },
           }}
-          
+
         />
       </View>
     </View>

@@ -10,12 +10,6 @@ export default function MenuLayout() {
         headerTintColor: "#FFF",
       }}
     >
-      {/* <Stack.Screen
-        name="index"
-        options={
-          headerShown: false,
-        }}
-      /> */}
       <Stack.Screen
         name="personalData"
         options={{

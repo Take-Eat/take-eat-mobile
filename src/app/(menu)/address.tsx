@@ -47,7 +47,7 @@ export default function Address() {
         </View> */}
         <View className="gap-4">
           <Link href={"/(menu)/map"}>
-            <Card bgColor="bg-gray-700" height="h-20">
+            <Card bgColor="bg-gray-700">
               <View className="flex-row items-center gap-4">
                 <FontAwesome6
                   name="map-location-dot"
@@ -61,7 +61,7 @@ export default function Address() {
             </Card>
           </Link>
 
-          <Card bgColor="bg-gray-700" height="h-24">
+          <Card bgColor="bg-gray-700">
             <View className="flex-row items-center gap-3">
               <MaterialCommunityIcons name="home" size={30} color="#F58F00" />
 
@@ -80,7 +80,7 @@ export default function Address() {
             </Pressable>
           </Card>
         </View>
-      </Container>
+      </Container >
       <CustomBottomSheet isVisible={isVisible} onClose={handleCloseBottomSheet}>
         <View className="flex-1">
           <View className="w-full bottom-4 flex flex-row justify-between">
@@ -117,6 +117,6 @@ export default function Address() {
           </Pressable>
         </View>
       </CustomBottomSheet>
-    </GestureHandlerRootView>
+    </GestureHandlerRootView >
   );
 }
