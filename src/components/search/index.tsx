@@ -1,6 +1,7 @@
 import { globalStyles } from "@/src/assets/styles/Global";
 import { Feather } from "@expo/vector-icons";
 import { Pressable, TextInput, View, Text } from "react-native";
+import InputSearch from "../inputSearch";
 
 interface Props {
   handleOpen: () => void;
@@ -9,7 +10,7 @@ interface Props {
 export default function SearchBar({ handleOpen }: Props) {
   return (
     <>
-      <View className="w-full md:h-60 mt-3 flex flex-row items-center h-14 px-2 gap-4">
+      <View className="w-full md:h-20 mt-3 flex flex-row items-center h-14 px-2 gap-4">
         <Pressable onPress={handleOpen}>
           <Feather
             name="filter"

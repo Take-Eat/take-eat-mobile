@@ -18,7 +18,6 @@ export default function Search() {
   // Função para abrir o BottomSheet
   const handleOpenBottomSheet = () => {
     setIsVisible(true); // Define o BottomSheet como visível
-    console.log("TESTE");
   };
 
   // Função para fechar o BottomSheet

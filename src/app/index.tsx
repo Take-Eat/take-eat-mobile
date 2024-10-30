@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+import "react-native-get-random-values";
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
