@@ -1,7 +1,7 @@
 import MapView, { Region, Marker, MapOverlay } from "react-native-maps";
 import MapDirections from "./MapDirections";
 import MapMarker from "./MapMarker";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRealTimeLocation } from "@/src/hooks/useRealTimeLocation";
 
 interface MapContainerProps {
@@ -17,22 +17,25 @@ export default function MapContainer({
 }: MapContainerProps) {
   const location = useRealTimeLocation(); // Posição atualizada em tempo real
   const mapRef = useRef<MapView>(null);
-  
+  const [initialLoad, setInitialLoad] = useState(false);
 
   useEffect(() => {
-    if (destination && !isRunning) {
+    if (location && !initialLoad) {
+      // Anima a câmera para a localização do usuário ao carregar o mapa
       mapRef.current?.animateCamera({
-        center: destination,
+        center: location,
         zoom: 15,
       });
+      setInitialLoad(true); // Evita re-centralizar após a inicialização
     }
-  }, [destination, isRunning]);
+  }, [location, initialLoad]);
 
   useEffect(() => {
     if (isRunning && location) {
       mapRef.current?.animateCamera({
         center: location,
-        pitch: 30
+        pitch: 30,
+        zoom: 20,
       });
     }
   }, [location, isRunning]);
@@ -47,7 +50,7 @@ export default function MapContainer({
       {location && destination && (
         <>
           <MapDirections
-            origin={location}
+            origin={isRunning ? location : { ...location }}
             destination={destination}
             onReady={onDirectionsReady}
           />

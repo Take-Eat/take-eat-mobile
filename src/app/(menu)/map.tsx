@@ -35,7 +35,9 @@ export default function AddressScreen() {
           className="p-6 bg-primary items-center"
           onPress={() => setIsRunning(true)}
         >
-          <Text className="text-white text-xl font-semibold">Começar Corrida</Text>
+          <Text className="text-white text-xl font-semibold">
+            Começar Corrida
+          </Text>
         </TouchableOpacity>
       )}
 

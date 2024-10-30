@@ -29,7 +29,11 @@ export default function MapMarker({ coordinate }: MapMarkerProps) {
   ).start();
 
   return (
-    <Marker coordinate={coordinate}>
+    <Marker
+      coordinate={coordinate}
+      title="Destino"
+      description="Local de entrega"
+    >
       <Animated.Image
         source={require("@/src/assets/images/logo.png")}
         style={{ width: 50, height: 50, transform: [{ scale: scaleValue }] }}
