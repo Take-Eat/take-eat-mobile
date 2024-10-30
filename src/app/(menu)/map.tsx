@@ -1,4 +1,7 @@
 import {
+  Animated,
+  Easing,
+  Image,
   KeyboardAvoidingView,
   Platform,
   StyleSheet,
@@ -14,6 +17,25 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import MapViewDirections from "react-native-maps-directions";
 import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "@/src/assets/styles/Global";
+
+const scaleValue = new Animated.Value(1);
+
+Animated.loop(
+  Animated.sequence([
+    Animated.timing(scaleValue, {
+      toValue: 1.5,
+      duration: 1000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }),
+    Animated.timing(scaleValue, {
+      toValue: 1,
+      duration: 1000,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }),
+  ])
+).start();
 
 const getMyLocation = async (): Promise<Region | undefined> => {
   let { status } = await Location.requestForegroundPermissionsAsync();
@@ -93,7 +115,18 @@ export default function Address() {
               latitude: destination.latitude,
               longitude: destination.longitude,
             }}
-          />
+            title="Destino"
+            description="Local de entrega"
+          >
+            <Animated.Image
+              source={require("@/src/assets/images/logo.png")}
+              style={{
+                width: 50,
+                height: 50,
+                transform: [{ scale: scaleValue }],
+              }}
+            />
+          </Marker>
         )}
       </MapView>
       <KeyboardAvoidingView
