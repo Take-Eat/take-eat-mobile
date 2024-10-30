@@ -12,6 +12,10 @@ import TrendingFoods from "./trending";
 import Card from "./card";
 import CardMenu from "./cardMenu";
 import InputSearch from "./inputSearch";
+import MapContainer from "./map/MapContainer";
+import MapDirections from "./map/MapDirections";
+import MapMarker from "./map/MapMarker";
+import MapSearchBar from "./map/MapSearchBar";
 
 export {
   Banner,
@@ -28,4 +32,8 @@ export {
   Card,
   CardMenu,
   InputSearch,
+  MapContainer,
+  MapDirections,
+  MapMarker,
+  MapSearchBar
 };
