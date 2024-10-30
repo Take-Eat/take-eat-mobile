@@ -36,7 +36,8 @@ export default function Notifications() {
               <View className="flex-row items-center gap-3">
                 <Image
                   source={{ uri: item.image }}
-                  className="w-16 h-16 full"
+                  className="w-16 h-16"
+                  style={globalStyles.roundedFull}
                 />
 
                 <View>

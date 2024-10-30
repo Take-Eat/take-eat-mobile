@@ -19,7 +19,7 @@ export default function SearchBar({ handleOpen }: Props) {
           />
         </Pressable>
 
-        <View className="flex-1 p-10 py-4 xl bg-gray-700">
+        <View className="flex-1 p-10 py-4 bg-gray-700" style={globalStyles.roundedRegular}>
           <TextInput
             placeholder="Procure alimentos..."
             className="h-full flex-1"
