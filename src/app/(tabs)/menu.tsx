@@ -83,7 +83,6 @@ export default function Menu() {
                   iconName="notifications"
                   iconSize={25}
                   title="Notificações"
-                  titleText={globalStyles.textRegular}
                 />
               </TouchableOpacity>
 
@@ -96,7 +95,7 @@ export default function Menu() {
                   iconName="location-sharp"
                   iconSize={25}
                   title="Localização"
-                  titleText={globalStyles.textRegular}
+
                 />
               </TouchableOpacity>
 
@@ -109,7 +108,7 @@ export default function Menu() {
                   iconName="newspaper"
                   iconSize={25}
                   title="Termos de uso"
-                  titleText={globalStyles.textRegular}
+
                 />
               </TouchableOpacity>
 
@@ -122,7 +121,7 @@ export default function Menu() {
                   iconName="person-sharp"
                   iconSize={25}
                   title="Meus dados"
-                  titleText={globalStyles.textRegular}
+
                 />
               </TouchableOpacity>
             </View>

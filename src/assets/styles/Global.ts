@@ -87,15 +87,6 @@ const globalStyles = StyleSheet.create({
 		color: colors.gray2,
 		// fontWeight: fonts.regular,
 	},
-	button: {
-		backgroundColor: colors.brand3,
-		padding: 12,
-		borderRadius: 5,
-	},
-	buttonText: {
-		color: colors.whiteFixed,
-		fontSize: fonts.body,
-	},
 	roundedRegular: {
 		borderRadius: 10,
 	},

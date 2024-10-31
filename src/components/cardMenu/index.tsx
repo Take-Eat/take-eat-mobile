@@ -2,16 +2,12 @@ import { globalStyles } from "@/src/assets/styles/Global";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { Text, View } from "react-native";
 
-interface iText {
-  fontSize: number,
-  fontFamily: string,
-}
+
 interface Props {
   color: string;
   iconName?: string;
-  iconSize: number;
+  iconSize?: number;
   title: string;
-  titleText?: iText;
 }
 
 export default function CardMenu({
@@ -19,7 +15,6 @@ export default function CardMenu({
   iconName,
   iconSize,
   title,
-  titleText,
 }: Props) {
   return (
     <View
@@ -27,11 +22,11 @@ export default function CardMenu({
       style={globalStyles.roundedRegular}
     >
       <View className="flex-row items-center gap-3">
-        <Ionicons name={iconName} size={iconSize} color={"#F58F00"} />
+        <Ionicons name={iconName} size={iconSize || 25} color={"#F58F00"} />
 
         <Text
           className="font-semibold"
-          style={titleText}
+          style={globalStyles.textRegular}
           numberOfLines={2}
         >
           {title}
