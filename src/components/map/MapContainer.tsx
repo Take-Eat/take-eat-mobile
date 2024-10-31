@@ -15,28 +15,36 @@ export default function MapContainer({
   isRunning,
   onDirectionsReady,
 }: MapContainerProps) {
-  const location = useRealTimeLocation(); // Posição atualizada em tempo real
+  const { location, heading } = useRealTimeLocation(); // Posição atualizada em tempo real
   const mapRef = useRef<MapView>(null);
   const [initialLoad, setInitialLoad] = useState(false);
 
   useEffect(() => {
     if (location && !initialLoad) {
-      // Anima a câmera para a localização do usuário ao carregar o mapa
-      mapRef.current?.animateCamera({
-        center: location,
-        zoom: 15,
-      });
+      mapRef.current?.animateToRegion(location, 1000);
+
       setInitialLoad(true); // Evita re-centralizar após a inicialização
     }
   }, [location, initialLoad]);
 
   useEffect(() => {
-    if (isRunning && location) {
-      mapRef.current?.animateCamera({
-        center: location,
-        pitch: 30,
-        zoom: 20,
-      });
+    if (destination) {
+      mapRef.current?.animateToRegion(destination, 1000); // Centraliza o mapa no destino
+    }
+  }, [destination]);
+
+  useEffect(() => {
+    if (isRunning && location && heading) {
+      mapRef.current?.animateCamera(
+        {
+          center: location,
+          pitch: 60, // ângulo inclinado para simular 3D
+          zoom: 20, // alto nível de zoom para se aproximar do usuário
+          altitude: 100, // ajusta a altitude para manter a visão aproximada
+          heading: heading,
+        },
+        { duration: 1000 }
+      );
     }
   }, [location, isRunning]);
 
