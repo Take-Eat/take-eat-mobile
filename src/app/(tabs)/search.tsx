@@ -3,15 +3,17 @@ import {
   Section,
   TrendingFoods,
   Donors,
-  TabLayoutWithOutHeader
+  TabLayoutWithOutHeader,
+  CustomButton
 } from "@components";
 import { useState } from "react";
 import CustomBottomSheet from "@/src/components/bottomSheet";
-import { Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CheckBox from "@/src/components/checkBox";
 import { globalStyles } from "@/src/assets/styles/Global";
+import BottomSheetContainer from "@/src/components/bottomSheetContainer";
 
 export default function Search() {
   const [isVisible, setIsVisible] = useState(false); // Controla a visibilidade do BottomSheet
@@ -25,6 +27,15 @@ export default function Search() {
   const handleCloseBottomSheet = () => {
     setIsVisible(false); // Fecha o BottomSheet
   };
+
+  // Funções de gerenciamento de filtros
+  const [checkBox, setCheckBox] = useState<number[]>([]);
+
+  const clearAllSelections = () => {
+    setCheckBox([]); // Reseta o estado checkBox para um array vazio
+  };
+
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <TabLayoutWithOutHeader>
@@ -51,26 +62,27 @@ export default function Search() {
         <Donors />
       </TabLayoutWithOutHeader>
       <CustomBottomSheet isVisible={isVisible} onClose={handleCloseBottomSheet}>
-        <View className="flex-1">
-          <View className="w-full bottom-4 flex flex-row justify-between">
-            <FontAwesome name="sort-amount-desc" size={25} />
+        <BottomSheetContainer
+          customHeader={
+            <View className="w-full flex flex-row justify-between">
+              <FontAwesome name="sort-amount-desc" size={25} />
 
-            <Text style={globalStyles.heading1}>Filtros</Text>
+              <Text style={globalStyles.heading1}>Filtros</Text>
 
-            <FontAwesome name="trash" size={25} />
-          </View>
+              <FontAwesome onPress={clearAllSelections} name="trash" size={25} />
+            </View>
+          }>
 
           <View className="py-5">
-            <CheckBox />
+            <CheckBox checkBox={checkBox} setCheckBox={setCheckBox} />
+            <CustomButton
+              title="Aplicar"
+              handlePress={handleCloseBottomSheet}
+            />
           </View>
-
-          <Button
-            title="Aplicar"
-            onPress={handleCloseBottomSheet}
-            color={"#FF9F1C"}
-          />
-        </View>
+        </BottomSheetContainer>
       </CustomBottomSheet>
     </GestureHandlerRootView>
   );
 }
+
