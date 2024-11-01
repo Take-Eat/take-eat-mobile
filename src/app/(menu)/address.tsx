@@ -1,19 +1,16 @@
-import { Card, Container, InputSearch } from "@/src/components";
+import { globalStyles } from "@/src/assets/styles/Global";
+import { Card, Container, CustomButton } from "@/src/components";
 import CustomBottomSheet from "@/src/components/bottomSheet";
-import CheckBox from "@/src/components/checkBox";
+import BottomSheetContainer from "@/src/components/bottomSheetContainer";
 import {
   Entypo,
-  Feather,
-  FontAwesome,
   FontAwesome6,
   MaterialCommunityIcons,
-  SimpleLineIcons,
 } from "@expo/vector-icons";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import { useState } from "react";
-import { Button, Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import MapView from "react-native-maps";
 
 export default function Address() {
   const [isVisible, setIsVisible] = useState(false); // Controla a visibilidade do BottomSheet
@@ -46,8 +43,11 @@ export default function Address() {
           </Pressable>
         </View> */}
         <View className="gap-4">
-          <Link href={"/(menu)/map"}>
-            <Card bgColor="bg-gray-700" height="h-20">
+          <TouchableOpacity
+            className="w-full"
+            onPress={() => router.push('/(menu)/map')}
+          >
+            <Card bgColor="bg-gray-700">
               <View className="flex-row items-center gap-4">
                 <FontAwesome6
                   name="map-location-dot"
@@ -59,9 +59,9 @@ export default function Address() {
                 </Text>
               </View>
             </Card>
-          </Link>
+          </TouchableOpacity>
 
-          <Card bgColor="bg-gray-700" height="h-24">
+          <Card bgColor="bg-gray-700">
             <View className="flex-row items-center gap-3">
               <MaterialCommunityIcons name="home" size={30} color="#F58F00" />
 
@@ -80,43 +80,22 @@ export default function Address() {
             </Pressable>
           </Card>
         </View>
-      </Container>
+      </Container >
       <CustomBottomSheet isVisible={isVisible} onClose={handleCloseBottomSheet}>
-        <View className="flex-1">
-          <View className="w-full bottom-4 flex flex-row justify-between">
-            <Text className="text-black text-2xl font-semibold">
-              Rua Domingos Olímpio, 123 - Centro, Sobral - CE
-            </Text>
-          </View>
-
-          <View className="h-36 py-5 w-full flex-row gap-10 justify-center items-center">
-            <Pressable
-              className="bg-alert w-36 h-16 flex-row gap-3 justify-center items-center"
-              onPress={() => {
-                console.log("CLICOU NO EXCLUIR");
-              }}
+        <BottomSheetContainer title="Endereço">
+          <View className="py-5">
+            <Card
+              bgColor="bg-gray-700"
             >
-              <Feather name="trash" size={20} color={"#FFF"} />
-
-              <Text className="text-white text-lg">Excluir</Text>
-            </Pressable>
-
-            <Pressable className="bg-primary w-36 h-16 flex-row gap-3 justify-center items-center">
-              <SimpleLineIcons name="pencil" size={20} color={"#FFF"} />
-
-              <Link href={"/(menu)/map"} className="text-white text-lg">
-                Editar
-              </Link>
-            </Pressable>
+              <Text style={globalStyles.textRegular}>Rua Domingos Olímpio, 123 - Centro, Sobral - CE</Text>
+            </Card>
+            <View className="flex-row justify-between gap-5 py-5">
+              <CustomButton title="Editar" containerStyles="flex-1" handlePress={() => router.push('/(menu)/editAddress')} />
+              <CustomButton title="Excluir" containerStyles="flex-1 border border-secondary bg-white" textStyles="text-secondary" handlePress={() => console.log("CLICASTES EM EXCLUIR")} />
+            </View>
           </View>
-
-          <Pressable onPress={handleCloseBottomSheet}>
-            <Text className="text-primary w-full text-center text-lg">
-              Sair
-            </Text>
-          </Pressable>
-        </View>
+        </BottomSheetContainer>
       </CustomBottomSheet>
-    </GestureHandlerRootView>
+    </GestureHandlerRootView >
   );
 }

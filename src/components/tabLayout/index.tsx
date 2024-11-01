@@ -6,7 +6,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export default function TabLayout({ children }: Props) {
+export function TabLayout({ children }: Props) {
   return (
     <ScrollView
       style={{ flex: 1 }}
@@ -15,6 +15,20 @@ export default function TabLayout({ children }: Props) {
     >
       <Container>
         <Header />
+        <View>{children}</View>
+      </Container>
+    </ScrollView>
+  );
+}
+
+export function TabLayoutWithOutHeader({ children }: Props) {
+  return (
+    <ScrollView
+      style={{ flex: 1 }}
+      className="bg-slate-20"
+      showsVerticalScrollIndicator={false}
+    >
+      <Container>
         <View>{children}</View>
       </Container>
     </ScrollView>

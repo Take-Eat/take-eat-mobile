@@ -1,14 +1,15 @@
+import { globalStyles } from "@/src/assets/styles/Global";
 import { Fontisto } from "@expo/vector-icons";
 import { TouchableOpacity } from "@gorhom/bottom-sheet";
-import { useState } from "react";
 import { Text, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 interface Props {
-  
+  checkBox: number[];
+  setCheckBox: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-export default function CheckBox() {
+export default function CheckBox({ checkBox, setCheckBox }: Props) {
   const Data = [
     {
       id: 1,
@@ -32,11 +33,6 @@ export default function CheckBox() {
     },
   ];
 
-  const [checkBox, setCheckBox] = useState<number[]>([]);
-
-  const clearAllSelections = () => {
-    setCheckBox([]); // Reseta o estado checkBox para um array vazio
-  };
 
   const handlePress = (id: number) => {
     setCheckBox((prev) => {
@@ -49,13 +45,13 @@ export default function CheckBox() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center">
+    <View className="flex justify-center p-5">
       <FlatList
         data={Data}
         contentContainerStyle={{ gap: 6 }}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View className="flex flex-row gap-3 items-center">
+          <View className="flex flex-row gap-2 items-center">
             <TouchableOpacity onPress={() => handlePress(item.id)}>
               <Fontisto
                 name={
@@ -63,11 +59,11 @@ export default function CheckBox() {
                     ? "checkbox-active"
                     : "checkbox-passive"
                 }
-                size={24}
+                size={20}
                 color="#FF9F1C"
               />
             </TouchableOpacity>
-            <Text className="text-black text-xl">{item.title}</Text>
+            <Text style={globalStyles.textRegular}>{item.title}</Text>
           </View>
         )}
       />

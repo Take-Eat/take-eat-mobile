@@ -1,21 +1,16 @@
-import { Text, View } from "react-native";
+import { globalStyles } from "@/src/assets/styles/Global";
+import { View } from "react-native";
 
 interface Props {
-  height: "h-20" | "h-24" | "h-30" | "h-36";
-  bgColor:
-    | "bg-gray-800"
-    | "bg-gray-700"
-    | "bg-gray-600"
-    | "bg-gray-500"
-    | "bg-gray-400"
-    | "bg-gray-300";
+  bgColor: string;
   children?: React.ReactNode;
 }
 
-export default function Card({ height, bgColor, children }: Props) {
+export default function Card({ bgColor, children }: Props) {
   return (
     <View
-      className={`w-full ${height} flex flex-row justify-between items-center ${bgColor} rounded-2xl p-2`}
+      className={`w-full max-h-[70px] flex flex-row justify-between items-center ${bgColor} p-5`}
+      style={globalStyles.roundedRegular}
     >
       {children}
     </View>

@@ -2,7 +2,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { useState } from "react";
 import { Link } from "expo-router";
-import { CustomButton, FormInput } from "@components"
+import { Container, CustomButton, FormInput } from "@components"
+import { globalStyles } from "@/src/assets/styles/Global";
 
 
 export default function SignIn() {
@@ -16,8 +17,9 @@ export default function SignIn() {
     }
 
     return (
-        <SafeAreaView className="h-full">
-            <ScrollView>
+        <ScrollView>
+            <Container>
+
                 <View
                     className="w-ful flex justify-around items-center px-7"
                     style={{
@@ -45,16 +47,15 @@ export default function SignIn() {
 
                         <CustomButton
                             title="Login"
-                            textStyles={"text-white font-black"}
                             handlePress={submit}
                         />
                     </View>
                     <View className="flex flex-row gap-x-1">
-                        <Text>Não possui uma conta?</Text>
-                        <Link className="text-primary font-black" href="/menu">Cadastro</Link>
+                        <Text style={globalStyles.textRegular}>Não possui uma conta?</Text>
+                        <Link className="text-primary" style={globalStyles.heading3} href="/menu">Cadastro</Link>
                     </View>
                 </View>
-            </ScrollView>
-        </SafeAreaView>
+            </Container>
+        </ScrollView>
     );
 };
