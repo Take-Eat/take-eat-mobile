@@ -52,7 +52,7 @@ export default function CheckBox({ checkBox, setCheckBox }: Props) {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <View className="flex flex-row gap-2 items-center">
-            <TouchableOpacity onPress={() => handlePress(item.id)}>
+            <TouchableOpacity className="w-[20px]" onPress={() => handlePress(item.id)}>
               <Fontisto
                 name={
                   checkBox.includes(item.id)
