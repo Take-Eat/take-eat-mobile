@@ -1,98 +1,60 @@
-import { StyleSheet, Text, View } from "react-native";
-import MapView, { Region } from "react-native-maps";
-import * as Location from "expo-location";
-import { useState, useRef, useEffect } from "react";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { MapContainer, MapSearchBar } from "@/src/components";
+import { calculatePrice } from "@/src/utils/calculatePrice";
+import { useState } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { Region } from "react-native-maps";
 
-
-const getMyLocation = async (): Promise<Region | undefined> => {
-  let { status } = await Location.requestForegroundPermissionsAsync();
-  if (status !== "granted") {
-    alert("Permissão de localização negada!");
-    return;
-  }
-
-  const { latitude, longitude } = (await Location.getCurrentPositionAsync({}))
-    .coords;
-  return {
-    latitude,
-    longitude,
-    latitudeDelta: 0.00922,
-    longitudeDelta: 0.00421,
-  };
-};
-
-export default function Address() {
+export default function AddressScreen() {
   const [destination, setDestination] = useState<Region | null>(null);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [location, setLocation] = useState<Region | null>(null);
+  const [distance, setDistance] = useState<number | null>(null);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [price, setPrice] = useState<number | null>(null);
+  const [isRunning, setIsRunning] = useState(false);
 
-  const mapRef = useRef<MapView>(null);
+  const handlePlaceSelected = (region: any) => setDestination(region);
 
-  useEffect(() => {
-    const initializeLocation = async () => {
-      const region = await getMyLocation();
-      if (region) {
-        setLocation(region);
-        mapRef.current?.animateToRegion(region, 1000);
-      }
-    };
-    initializeLocation();
-  }, []);
+  const handleDirectionsReady = (dist: number, dur: number) => {
+    setDistance(dist);
+    setPrice(calculatePrice(dist));
+    setDuration(dur);
+  };
 
   return (
-    <View style={styles.contentContainer}>
-      <MapView
-        style={styles.map}
-        ref={mapRef}
-        initialRegion={location || undefined}
-        showsUserLocation
+    <View style={{ flex: 1 }}>
+      <MapContainer
+        destination={destination}
+        isRunning={isRunning}
+        onDirectionsReady={handleDirectionsReady}
       />
-      <View style={styles.search}>
-        <GooglePlacesAutocomplete
-          placeholder="Endereço e número..."
 
-          fetchDetails={true}
-          onPress={(data, details = null) => {
-            if (details) {
-              const { lat, lng } = details.geometry.location;
-              const region = {
-                latitude: lat,
-                longitude: lng,
-                latitudeDelta: 0.00922,
-                longitudeDelta: 0.00421,
-              };
-              setDestination(region);
-              mapRef.current?.animateToRegion(region, 1000);
-            }
-          }}
-          query={{
-            key: process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE,
-            language: "pt-br",
-            types: "(cities)",
-          }}
-          styles={{
-            listView: { height: 100 },
-          }}
-
-        />
+      <View className="absolute top-10 w-full">
+        <MapSearchBar onPlaceSelected={handlePlaceSelected} />
       </View>
+      {destination && !isRunning && (
+        <TouchableOpacity
+          className="p-6 bg-primary items-center"
+          onPress={() => setIsRunning(true)}
+        >
+          <Text className="text-white text-xl font-semibold">
+            Começar Corrida
+          </Text>
+        </TouchableOpacity>
+      )}
+
+      {distance && price && duration && (
+        <View className="w-full bg-tertiary p-20 flex justify-center items-center">
+          <Text className="text-white text-lg font-medium">
+            Distância: {distance.toFixed(2)} km
+          </Text>
+          <Text className="text-white text-lg font-medium">
+            Tempo: {duration.toFixed(2)} min
+          </Text>
+
+          <Text className="p-3 bg-primary rounded-lg text-white text-xl font-semibold top-3">
+            Preço: R${price.toFixed(2)}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-  },
-  map: {
-    height: "60%",
-    backgroundColor: "black",
-  },
-  search: {
-    height: "40%",
-    backgroundColor: "gray",
-  },
-});
