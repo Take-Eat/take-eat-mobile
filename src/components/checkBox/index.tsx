@@ -51,7 +51,7 @@ export default function CheckBox({ checkBox, setCheckBox }: Props) {
         contentContainerStyle={{ gap: 6 }}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View className="flex flex-row gap-3 items-center">
+          <View className="flex flex-row gap-2 items-center">
             <TouchableOpacity onPress={() => handlePress(item.id)}>
               <Fontisto
                 name={
