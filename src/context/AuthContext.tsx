@@ -1,6 +1,5 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
 import { User, UserType } from "../types/UserTypes";
-import db from "@/db.json";
 
 interface AuthContextType {
   user: User | null;
@@ -9,7 +8,7 @@ interface AuthContextType {
   userType: UserType;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
@@ -19,7 +18,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await fetch(
         `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${email}&password=${password}`
       );
-      
+
+      console.log(response.json())
+
     } catch (error) {
       console.error("Erro no login:", error);
     }
