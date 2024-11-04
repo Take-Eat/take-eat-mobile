@@ -13,6 +13,9 @@ export default function Exp() {
       <Link className="text-black text-2xl" href="/(tabs)">
         Home
       </Link>
+      <Link className="text-black text-2xl" href="/(apoiador)/homeApoiador">
+        Home Apoiador
+      </Link>
     </View>
   );
 }

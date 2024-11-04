@@ -1,13 +1,14 @@
 import React from "react";
-import { Stack } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 
 export default function ApoiadorStack() {
   return (
-    <Stack>
+    <Stack initialRouteName="homeApoiador">
       <Stack.Screen
         name="homeApoiador"
         options={{
           title: "Home",
+          headerShown: false,
         }}
       />
       <Stack.Screen
