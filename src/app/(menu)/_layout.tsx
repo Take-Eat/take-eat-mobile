@@ -10,12 +10,6 @@ export default function MenuLayout() {
         headerTintColor: "#FFF",
       }}
     >
-      {/* <Stack.Screen
-        name="index"
-        options={
-          headerShown: false,
-        }}
-      /> */}
       <Stack.Screen
         name="personalData"
         options={{
@@ -25,7 +19,7 @@ export default function MenuLayout() {
       <Stack.Screen
         name="address"
         options={{
-          title: "Endereço",
+          title: "Endereços",
         }}
       />{" "}
       <Stack.Screen
@@ -44,6 +38,12 @@ export default function MenuLayout() {
         name="map"
         options={{
           title: "Mapa",
+        }}
+      />
+      <Stack.Screen
+        name="editAddress"
+        options={{
+          title: "Editar Endereço",
         }}
       />
     </Stack>

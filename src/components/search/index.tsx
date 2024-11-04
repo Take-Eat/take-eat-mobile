@@ -1,3 +1,4 @@
+import { globalStyles } from "@/src/assets/styles/Global";
 import { Feather } from "@expo/vector-icons";
 import { Pressable, TextInput, View, Text } from "react-native";
 import InputSearch from "../inputSearch";
@@ -13,25 +14,26 @@ export default function SearchBar({ handleOpen }: Props) {
         <Pressable onPress={handleOpen}>
           <Feather
             name="filter"
-            size={30}
+            size={25}
             color="#F58F00"
             className="flex-none"
           />
         </Pressable>
 
-        <InputSearch
-          bgColor="bg-gray-600"
-          textColor="text-white"
-          title="Procure alimentos..."
-          placeholderColor="#888"
-        />
+        <View className="flex-1 p-10 py-4 bg-gray-700" style={globalStyles.roundedRegular}>
+          <TextInput
+            placeholder="Procure alimentos..."
+            className="h-full flex-1"
+            style={globalStyles.textRegular}
+          />
+        </View>
 
         <Pressable
           onPress={() => {
             console.log("CLICOU NO PESQUISAR");
           }}
         >
-          <Feather name="search" size={30} color="#F58F00" />
+          <Feather name="search" size={25} color="#F58F00" />
         </Pressable>
       </View>
     </>

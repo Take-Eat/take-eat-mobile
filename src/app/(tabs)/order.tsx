@@ -1,8 +1,10 @@
 import { FlatList, Image, Text, View } from "react-native";
-import { TabLayout } from "@components";
+import { Container, TabLayout, TabLayoutWithOutHeader } from "@components";
 import { Card } from "@components";
 import { useEffect, useState } from "react";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
+import { globalStyles } from "@/src/assets/styles/Global";
+import { SafeAreaView } from "react-native";
 
 export interface OrderProps {
   id: number;
@@ -32,67 +34,74 @@ export default function Order() {
   }, []);
 
   return (
-    <TabLayout>
-      <Text className="text-primary text-2xl font-semibold text-center py-6">
-        Histórico
-      </Text>
-      <FlatList
-        data={orders}
-        renderItem={({ item }) => (
-          <Card height="h-36" bgColor="bg-gray-700">
-            <View className="flex-row items-center h-full gap-3">
-              {/* Foto do pedido */}
-              <Image
-                source={{ uri: item.image }}
-                className="w-20 h-20 rounded-full"
-              />
-
-              {/* Informações do pedido */}
-              <View className="h-full w-48 justify-center">
-                <Text className="text-xl text-black" numberOfLines={1}>
-                  {item.name}
-                </Text>
-
-                <Text numberOfLines={1}>Prazo de consumo - {item.time}</Text>
-
-                <Text numberOfLines={1}>Tipo de alimento - {item.type}</Text>
-              </View>
-            </View>
-
-            <View className="flex justify-center">
-              {/* Status do pedido */}
-              <View className="flex-row gap-2">
-                <Text>Status</Text>
-
-                <FontAwesome5
-                  name={
-                    item.status === "andamento"
-                      ? "motorcycle"
-                      : item.status === "concluido"
-                      ? "check"
-                      : ""
-                  }
-                  size={20}
-                  color="#FF9F1C"
+    <SafeAreaView>
+      <Container>
+        <Text className="text-primary text-center py-6" style={globalStyles.heading1}>
+          Histórico
+        </Text>
+        <FlatList
+          nestedScrollEnabled // solução de contorno para o erro de scroll dentro de scroll
+          data={orders}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <Card bgColor="bg-gray-700">
+              <View className="flex-row items-center gap-2">
+                {/* Foto do pedido */}
+                <Image
+                  source={{ uri: item.image }}
+                  className="w-16 h-16"
+                  style={globalStyles.roundedFull}
                 />
+
+                {/* Informações do pedido */}
+                <View className="max-w-48 justify-center">
+                  <Text style={globalStyles.heading3} numberOfLines={1}>
+                    {item.name}
+                  </Text>
+
+                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>Prazo de consumo - {item.time}</Text>
+
+                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>Tipo de alimento - {item.type}</Text>
+                </View>
               </View>
 
-              {/* Quantidade de alimento do pedido */}
-              <Text className="font-semibold text-black">x {item.amount}</Text>
+              <View className="flex justify-center">
+                {/* Status do pedido */}
+                <View className="flex-row items-center gap-2">
+                  <Text style={globalStyles.textRegular}>Status</Text>
 
-              <View className="flex-row gap-2">
-                <Text>Embalado</Text>
-                <Feather
-                  name={item.isPacked ? "check-circle" : "x-circle"}
-                  size={20}
-                  color={item.isPacked ? "#18794E" : "#CD2B31"}
-                />
+                  <FontAwesome5
+                    name={
+                      item.status === "andamento"
+                        ? "motorcycle"
+                        : item.status === "concluido"
+                          ? "check"
+                          : ""
+                    }
+                    size={15}
+                    color="#FF9F1C"
+                  />
+                </View>
+
+                {/* Quantidade de alimento do pedido */}
+                <Text style={globalStyles.textSmallGray}>x {item.amount}</Text>
+
+                <View className="flex-row items-center gap-1">
+                  <Text style={globalStyles.textSmallGray}>Embalado</Text>
+                  <Feather
+                    name={item.isPacked ? "check-circle" : "x-circle"}
+                    size={15}
+                    color={item.isPacked ? "#18794E" : "#CD2B31"}
+                  />
+                </View>
               </View>
-            </View>
-          </Card>
-        )}
-        contentContainerStyle={{ gap: 10 }}
-      />
-    </TabLayout>
+            </Card>
+          )}
+          contentContainerStyle={{ gap: 10 }}
+          initialNumToRender={10}
+          showsVerticalScrollIndicator={false}
+        />
+      </Container>
+    </SafeAreaView>
   );
 }

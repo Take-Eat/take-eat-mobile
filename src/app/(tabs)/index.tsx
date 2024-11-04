@@ -1,6 +1,6 @@
+import { globalStyles } from "@/src/assets/styles/Global";
 import {
   TabLayout, Banner,
-  Container,
   Section,
   TrendingFoods,
   Donors,
@@ -14,7 +14,7 @@ export default function Home() {
 
       <Section
         name="Recomendados"
-        size="text-2xl"
+        size={globalStyles.heading2}
         lable="Ver mais"
         action={() => {
           console.log("CLICOU NO VER TODOS");
@@ -25,7 +25,7 @@ export default function Home() {
 
       <Section
         name="Melhores avaliados"
-        size="text-2xl"
+        size={globalStyles.heading2}
         lable="Ver mais"
         action={() => {
           console.log("CLICOU NO VER TODOS");
@@ -36,7 +36,7 @@ export default function Home() {
 
       <Section
         name="Top Doadores"
-        size="text-2xl"
+        size={globalStyles.heading2}
         lable="Ver todos"
         action={() => {
           console.log("CLICOU NO VER TODOS");
@@ -44,12 +44,12 @@ export default function Home() {
       />
 
       <Donors />
-      
+
       <Banner />
 
       <Section
         name="Doadores"
-        size="text-2xl"
+        size={globalStyles.heading2}
         lable="Ver todos"
         action={() => {
           console.log("CLICOU NO VER TODOS");
@@ -59,5 +59,6 @@ export default function Home() {
       <DonorsList />
 
     </TabLayout>
+
   );
 }
