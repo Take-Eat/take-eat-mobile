@@ -16,7 +16,7 @@ export default function SignIn() {
     const { login } = useAuth();
 
     const submit = () => {
-        console.log(form)
+        // console.log(form)
         login(form.email, form.password)
     }
 

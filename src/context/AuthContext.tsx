@@ -19,7 +19,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${email}&password=${password}`
       );
 
-      console.log(response.json())
+      const data = await response.json()
+
+      setUser(data)
 
     } catch (error) {
       console.error("Erro no login:", error);
