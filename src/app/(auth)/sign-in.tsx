@@ -1,7 +1,8 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "expo-router";
+import { AuthContext, useAuth } from "@/src/context/AuthContext";
 import { Container, CustomButton, FormInput } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
@@ -12,8 +13,11 @@ export default function SignIn() {
         password: "",
     });
 
+    const { login } = useAuth();
+
     const submit = () => {
-        console.log(form)
+        // console.log(form)
+        login(form.email, form.password)
     }
 
     return (

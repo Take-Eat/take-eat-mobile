@@ -1,3 +1,4 @@
+import { AuthProvider } from "../context/AuthContext";
 import { SplashScreen, Stack } from "expo-router"
 import { useFonts } from "expo-font"
 import { useEffect } from "react"
@@ -20,26 +21,28 @@ export default function RootLayout() {
   if (!fontsLoaded && !error) return null;
 
   return (
-    <Stack>
-      <Stack.Screen name="(admin)" options={{ headerShown: false }} />
+    <AuthProvider>
+      <Stack>
+        <Stack.Screen name="(admin)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(apoiador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(apoiador)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(distribuidor)" options={{ headerShown: false }} />
+        <Stack.Screen name="(distribuidor)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(doador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(doador)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(entregador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(entregador)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(guest)" options={{ headerShown: false }} />
+        <Stack.Screen name="(guest)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(menu)" options={{ headerShown: false }} />
+        <Stack.Screen name="(menu)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-    </Stack>
-  )
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+      </Stack >
+    </AuthProvider >
+  );
 }

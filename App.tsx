@@ -33,10 +33,8 @@ function RootNavigator() {
 
 export default function App() {
   return (
-    <AuthProvider>
       <NavigationContainer>
         <RootNavigator />
       </NavigationContainer>
-    </AuthProvider>
   );
 }
