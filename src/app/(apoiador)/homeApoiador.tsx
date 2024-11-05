@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { globalStyles } from "@/src/assets/styles/Global";
 import { useRef } from "react";
+import { Card } from "@components";
 
 const H_MAX_HEIGHT = 160;
 const H_MIN_HEIGHT = 1;
@@ -60,7 +61,14 @@ export default function HomeApoiador() {
           { useNativeDriver: false }
         )}
         scrollEventThrottle={16}
+        showsVerticalScrollIndicator={false}
       />
+      <Card bgColor="">
+        <View>
+          <Text>Saldo</Text>
+          
+        </View>
+      </Card>
     </SafeAreaView>
   );
 }
