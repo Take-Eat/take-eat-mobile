@@ -8,9 +8,6 @@ export default function Header() {
   return (
     <View className="w-full h-24 flex flex-row justify-between items-center">
       <Pressable>
-        {/* <Image
-          source={require("../../assets/images/logo_take_eat_black.png")}
-        /> */}
         <LogoSvg className="w-2 h-2" />
       </Pressable>
 

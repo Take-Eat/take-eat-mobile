@@ -1,28 +1,14 @@
-import {
-  StatusBar,
-  Text,
-  View,
-  SafeAreaView,
-  FlatList,
-  Animated,
-} from "react-native";
+import { StatusBar, Text, View, SafeAreaView, Animated } from "react-native";
 import { globalStyles } from "@/src/assets/styles/Global";
 import { useRef } from "react";
-import { Card } from "@components";
+import EatCoinSvg from "@/src/assets/images/EatCoin.svg";
+import { AntDesign, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 
 const H_MAX_HEIGHT = 160;
 const H_MIN_HEIGHT = 1;
 const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
 
 export default function HomeApoiador() {
-  const data = [
-    { id: 1, title: "Item 1" },
-    { id: 2, title: "Item 2" },
-    { id: 3, title: "Item 3" },
-    { id: 4, title: "Item 4" },
-    { id: 5, title: "Item 5" },
-  ];
-
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
 
   const headerScrollHeight = scrollOffsetY.interpolate({
@@ -48,36 +34,49 @@ export default function HomeApoiador() {
         </Text>
       </Animated.View>
 
-      <FlatList
-        style={{ paddingTop: H_MAX_HEIGHT }}
-        data={data}
-        renderItem={({ item }) => (
-          <View className="h-80 p-5 border-b border-secondary-100">
-            <Text>{item.title}</Text>
-          </View>
-        )}
+      <Animated.ScrollView
+        style={{ paddingTop: H_MAX_HEIGHT, paddingHorizontal: 40 }}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }],
           { useNativeDriver: false }
         )}
         scrollEventThrottle={16}
-        showsVerticalScrollIndicator={false}
-      />
-      <Card bgColor="">
-        <View>
-          <Text>Saldo</Text>
-          
+      >
+        <View className="h-20 flex-row items-center justify-between">
+          <View>
+            <Text style={globalStyles.heading1}>Saldo</Text>
+
+            <View className="flex-row items-center gap-1">
+              <EatCoinSvg width={30} height={30} />
+              <Text style={globalStyles.heading2}>5000</Text>
+            </View>
+          </View>
+
+          <AntDesign name="right" size={25} />
         </View>
-      </Card>
+
+        <View className="flex-1 gap-3 py-5">
+          <View className="w-full h-24 flex-row items-center gap-3">
+            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
+              <FontAwesome5
+                name="hand-holding-heart"
+                size={30}
+                color={"white"}
+              />
+            </View>
+
+            <Text style={globalStyles.textLarger}>Doar</Text>
+          </View>
+
+          <View className="w-full h-24 flex-row items-center gap-3">
+            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
+              <FontAwesome6 name="ranking-star" size={30} color={"white"} />
+            </View>
+
+            <Text style={globalStyles.textLarger}>Ranking de doações</Text>
+          </View>
+        </View>
+      </Animated.ScrollView>
     </SafeAreaView>
   );
 }
-
-/**
- * w-full
- * flex-row
- * justify-between
- * items-center
- *
- *
- */
