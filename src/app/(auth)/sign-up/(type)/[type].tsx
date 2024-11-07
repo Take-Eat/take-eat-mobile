@@ -1,11 +1,11 @@
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, CustomButton, FormInput } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
 
-export default function SignUp() {
+export default function SignUpType() {
     const [form, setForm] = useState<{ username: string, email: string, phone: string, password: string, confirm_password: string }>({
         username: "",
         email: "",
@@ -17,6 +17,11 @@ export default function SignUp() {
     const submit = () => {
         console.log(form)
     }
+
+    // const router = useRouter()
+
+    const { type } = useLocalSearchParams()
+    console.log(type)
 
     return (
         <ScrollView>
@@ -71,7 +76,7 @@ export default function SignUp() {
                     </View>
                     <View className="flex flex-row gap-x-1">
                         <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
-                        <Link className="text-primary" style={globalStyles.heading3} href="/(auth)/sign-in">Login</Link>
+                        <Link className="text-primary" style={globalStyles.heading3} href="/sign-up">Login</Link>
                     </View>
                 </View>
             </Container>

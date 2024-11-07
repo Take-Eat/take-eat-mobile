@@ -3,7 +3,7 @@ import { Link, useRouter } from "expo-router";
 import { Container } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
-export default function SignUp() {
+export default function SignUpDefault() {
     const router = useRouter()
 
     return (
@@ -23,16 +23,28 @@ export default function SignUp() {
                     <View className="flex gap-3 justify-center items-center">
                         <Text className="text-center mb-6" style={globalStyles.heading1}>Como você deseja contribuir com o Take Eat?</Text>
                         <View className="flex w-full gap-5">
-                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push('/sign-up/sign-up')}>
+                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
+                                pathname: "/sign-up/(type)/[type]",
+                                params: { type: "apoiador" }
+                            })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Apoiadores</Text></Pressable>
-                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push('/sign-up/sign-up')}>
+                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
+                                pathname: "/sign-up/(type)/[type]",
+                                params: { type: "doador" }
+                            })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Doadores</Text></Pressable>
-                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push('/sign-up/sign-up')}>
+                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
+                                pathname: "/sign-up/(type)/[type]",
+                                params: { type: "distribuidor" }
+                            })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Distribuidores</Text></Pressable>
-                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push('/sign-up/sign-up')}>
+                            <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
+                                pathname: "/sign-up/(type)/[type]",
+                                params: { type: "entregador" }
+                            })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Entregadores</Text></Pressable>
                         </View>
