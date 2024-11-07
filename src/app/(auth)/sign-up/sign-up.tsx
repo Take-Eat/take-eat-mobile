@@ -1,4 +1,3 @@
-import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { useState } from "react";
 import { Link } from "expo-router";
@@ -6,10 +5,13 @@ import { Container, CustomButton, FormInput } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
 
-export default function SignIn() {
-    const [form, setForm] = useState<{ email: string, password: string }>({
+export default function SignUp() {
+    const [form, setForm] = useState<{ username: string, email: string, phone: string, password: string, confirm_password: string }>({
+        username: "",
         email: "",
+        phone: "",
         password: "",
+        confirm_password: ""
     });
 
     const submit = () => {
@@ -33,10 +35,21 @@ export default function SignIn() {
                     />
                     <View className="flex w-full gap-2">
                         <FormInput
+                            title="Username"
+                            value={form.username}
+                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                        />
+                        <FormInput
                             title="E-mail"
                             value={form.email}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                            handleChangeText={(e) => setForm({ ...form, password: e })}
                             keyboardType="email-address"
+                        />
+                        <FormInput
+                            title="Phone"
+                            value={form.phone}
+                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                            keyboardType="numeric"
                         />
                         <FormInput
                             title="Password"
@@ -44,15 +57,21 @@ export default function SignIn() {
                             handleChangeText={(e) => setForm({ ...form, password: e })}
                             keyboardType="password"
                         />
+                        <FormInput
+                            title="Confirm Password"
+                            value={form.confirm_password}
+                            handleChangeText={(e) => setForm({ ...form, password: e })}
+                            keyboardType="password"
+                        />
 
                         <CustomButton
-                            title="Login"
+                            title="Continuar"
                             handlePress={submit}
                         />
                     </View>
-                    <View className="flex flex-row">
-                        <Text style={globalStyles.textRegular}>Não possui uma conta?</Text>
-                        <Link className="text-primary" style={globalStyles.heading3} href="/(auth)/sign-up">Cadastro</Link>
+                    <View className="flex flex-row gap-x-1">
+                        <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
+                        <Link className="text-primary" style={globalStyles.heading3} href="/(auth)/sign-in">Login</Link>
                     </View>
                 </View>
             </Container>
