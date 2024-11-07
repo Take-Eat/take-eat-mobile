@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 
 export default function AuthLayout() {
   return (
-    <Stack>sss
+    <Stack>
       <Stack.Screen
         name="index"
         options={{
