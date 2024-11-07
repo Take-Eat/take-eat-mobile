@@ -6,12 +6,14 @@ interface AuthContextType {
   login: (email: string, password: string) => void;
   logout: () => void;
   userType: UserType;
+  loading: boolean
 }
 
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const login = async (email: string, password: string) => {
     try {
@@ -19,10 +21,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${email}&password=${password}`
       );
 
-      const data = await response.json()
+      const data = await response.json();
 
-      setUser(data[0])
-
+      setUser(data[0]);
+      setLoading(false);
     } catch (error) {
       console.error("Erro no login:", error);
     }
@@ -33,10 +35,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const userType: UserType = user ? user.type : "guest";
-  console.log(userType)
+  // console.log(userType)
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, userType }}>
+    <AuthContext.Provider value={{ user, login, logout, userType, loading }}>
       {children}
     </AuthContext.Provider>
   );
