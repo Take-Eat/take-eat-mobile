@@ -15,6 +15,7 @@ import MapContainer from "./map/MapContainer";
 import MapDirections from "./map/MapDirections";
 import MapMarker from "./map/MapMarker";
 import MapSearchBar from "./map/MapSearchBar";
+import FormSection from "./formSection";
 import { TabLayout, TabLayoutWithOutHeader } from "./tabLayout";
 
 export {
@@ -27,6 +28,7 @@ export {
   Header,
   SearchBar,
   Section,
+  FormSection,
   TabLayout,
   TabLayoutWithOutHeader,
   TrendingFoods,

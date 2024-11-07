@@ -1,20 +1,32 @@
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { useState } from "react";
 import { Link, useLocalSearchParams, useRouter } from "expo-router";
-import { Container, CustomButton, FormInput } from "@components"
+import { Container, FormSection } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
 
 export default function SignUpType() {
     const router = useRouter()
 
-    const [form, setForm] = useState<{ username: string, email: string, phone: string, password: string, confirm_password: string }>({
+    const [form, setForm] = useState({
         username: "",
         email: "",
         phone: "",
         password: "",
         confirm_password: ""
     });
+
+    const fields = [
+        { label: "Username", key: "username" },
+        { label: "E-mail", key: "email" },
+        { label: "Telefone", key: "phone" },
+        { label: "Senha", key: "password" },
+        { label: "Confirmar Senha", key: "confirm_password" }
+    ];
+
+    const handleChange = (key: string, value: string) => {
+        setForm((prev) => ({ ...prev, [key]: value }));
+    };
 
     const { type } = useLocalSearchParams()
 
@@ -42,9 +54,8 @@ export default function SignUpType() {
     return (
         <ScrollView>
             <Container>
-
                 <View
-                    className="w-ful flex justify-around items-center px-7"
+                    className="w-full flex justify-around items-center px-7"
                     style={{
                         minHeight: Dimensions.get("window").height,
                     }}
@@ -54,42 +65,7 @@ export default function SignUpType() {
                         resizeMode="contain"
                         className="w-[135px]"
                     />
-                    <View className="flex w-full gap-2">
-                        <FormInput
-                            title="Username"
-                            value={form.username}
-                            handleChangeText={(e) => setForm({ ...form, username: e })}
-                        />
-                        <FormInput
-                            title="E-mail"
-                            value={form.email}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
-                            keyboardType="email-address"
-                        />
-                        <FormInput
-                            title="Phone"
-                            value={form.phone}
-                            handleChangeText={(e) => setForm({ ...form, phone: e })}
-                            keyboardType="numeric"
-                        />
-                        <FormInput
-                            title="Password"
-                            value={form.password}
-                            handleChangeText={(e) => setForm({ ...form, password: e })}
-                            keyboardType="password"
-                        />
-                        <FormInput
-                            title="Confirm Password"
-                            value={form.confirm_password}
-                            handleChangeText={(e) => setForm({ ...form, confirm_password: e })}
-                            keyboardType="password"
-                        />
-
-                        <CustomButton
-                            title="Continuar"
-                            handlePress={submit}
-                        />
-                    </View>
+                    <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
                     <View className="flex flex-row gap-x-1">
                         <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
                         <Link className="text-primary" style={globalStyles.heading3} href="/sign-up">Login</Link>

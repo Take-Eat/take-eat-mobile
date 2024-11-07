@@ -21,7 +21,7 @@ export default function SignIn() {
             <Container>
 
                 <View
-                    className="w-ful flex justify-around items-center px-7"
+                    className="w-full flex justify-around items-center px-7"
                     style={{
                         minHeight: Dimensions.get("window").height,
                     }}

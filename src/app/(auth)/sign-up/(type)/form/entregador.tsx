@@ -1,38 +1,49 @@
 import { View, Text, ScrollView, Dimensions, Image } from "react-native";
 import { useState } from "react";
 import { Link, useLocalSearchParams, useRouter } from "expo-router";
-import { Container, CustomButton, FormInput } from "@components"
+import { Container, FormSection } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
 
 export default function Entregador() {
-
     const params = useLocalSearchParams()
 
     const router = useRouter()
 
-    const [form, setForm] = useState<{ name: string, cpf: string, cnh: string, address: string }>({
+    const [form, setForm] = useState({
+        ...params,
         name: "",
-        cpf: "",
-        cnh: "",
+        cnpj: "",
         address: "",
+        ramoAlimenticio: "",
+        horarioRetirada: ""
     });
 
+    const fields = [
+        { label: "Nome", key: "name" },
+        { label: "CPF", key: "cpf" },
+        { label: "CNH", key: "cnh" },
+        { label: "Endereço", key: "address" },
+    ];
+
+    const handleChange = (key: string, value: string) => {
+        setForm((prev) => ({ ...prev, [key]: value }));
+    };
+
     const submit = () => {
-        console.log(form)
-        console.log(params)
+        console.log(form);
         router.push({
             pathname: "/(auth)/sign-up/(type)/form/veiculo",
             params: { ...form, ...params }
         })
-    }
+    };
+
 
     return (
         <ScrollView>
             <Container>
-
                 <View
-                    className="w-ful flex justify-around items-center px-7"
+                    className="w-full flex justify-around items-center px-7"
                     style={{
                         minHeight: Dimensions.get("window").height,
                     }}
@@ -42,33 +53,7 @@ export default function Entregador() {
                         resizeMode="contain"
                         className="w-[135px]"
                     />
-                    <View className="flex w-full gap-2">
-                        <FormInput
-                            title="Nome"
-                            value={form.name}
-                            handleChangeText={(e) => setForm({ ...form, name: e })}
-                        />
-                        <FormInput
-                            title="CPF"
-                            value={form.cpf}
-                            handleChangeText={(e) => setForm({ ...form, cpf: e })}
-                        />
-                        <FormInput
-                            title="CNH"
-                            value={form.cnh}
-                            handleChangeText={(e) => setForm({ ...form, cnh: e })}
-                        />
-                        <FormInput
-                            title="Endereço"
-                            value={form.address}
-                            handleChangeText={(e) => setForm({ ...form, address: e })}
-                        />
-
-                        <CustomButton
-                            title="Continuar"
-                            handlePress={submit}
-                        />
-                    </View>
+                    <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
                     <View className="flex flex-row gap-x-1">
                         <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
                         <Link className="text-primary" style={globalStyles.heading3} href="/sign-up">Login</Link>
