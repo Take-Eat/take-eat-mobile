@@ -1,59 +1,35 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { View, Text, ScrollView, Dimensions, Image } from "react-native";
+import { View, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
-import { Link } from "expo-router";
-import { Container, CustomButton, FormInput } from "@components"
-import { globalStyles } from "@/src/assets/styles/Global";
+import { Container, FormCommon, FormSection } from "@components"
 
 
 export default function SignIn() {
-    const [form, setForm] = useState<{ email: string, password: string }>({
+    const [form, setForm] = useState({
         email: "",
-        password: "",
+        password: ""
     });
+
+    const fields = [
+        { label: "E-mail", key: "email" },
+        { label: "Senha", key: "password" }
+    ];
+
+    const handleChange = (key: string, value: string) => {
+        setForm((prev) => ({ ...prev, [key]: value }));
+    };
 
     const submit = () => {
         console.log(form)
     }
 
+
     return (
         <ScrollView>
             <Container>
-
-                <View
-                    className="w-ful flex justify-around items-center px-7"
-                    style={{
-                        minHeight: Dimensions.get("window").height,
-                    }}
-                >
-                    <Image
-                        source={require("@/src/assets/images/logo_take_eat_plate.png")}
-                        resizeMode="contain"
-                        className="w-[135px]"
-                    />
-                    <View className="flex w-full gap-3">
-                        <FormInput
-                            title="E-mail"
-                            value={form.email}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
-                            keyboardType="email-address"
-                        />
-                        <FormInput
-                            title="Password"
-                            value={form.password}
-                            handleChangeText={(e) => setForm({ ...form, password: e })}
-                            keyboardType="password"
-                        />
-
-                        <CustomButton
-                            title="Login"
-                            handlePress={submit}
-                        />
-                    </View>
-                    <View className="flex flex-row gap-x-1">
-                        <Text style={globalStyles.textRegular}>Não possui uma conta?</Text>
-                        <Link className="text-primary" style={globalStyles.heading3} href="/menu">Cadastro</Link>
-                    </View>
+                <View style={{ minHeight: Dimensions.get("window").height }}>
+                    <FormCommon footerLogin>
+                        <FormSection buttonText="Login" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                    </FormCommon>
                 </View>
             </Container>
         </ScrollView>
