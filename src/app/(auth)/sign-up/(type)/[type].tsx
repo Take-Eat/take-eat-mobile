@@ -6,6 +6,8 @@ import { globalStyles } from "@/src/assets/styles/Global";
 
 
 export default function SignUpType() {
+    const router = useRouter()
+
     const [form, setForm] = useState<{ username: string, email: string, phone: string, password: string, confirm_password: string }>({
         username: "",
         email: "",
@@ -14,14 +16,28 @@ export default function SignUpType() {
         confirm_password: ""
     });
 
-    const submit = () => {
-        console.log(form)
-    }
-
-    // const router = useRouter()
-
     const { type } = useLocalSearchParams()
-    console.log(type)
+
+    const submit = () => {
+        if (type == "apoiador" || type == "distribuidor") {
+            router.push({
+                pathname: "/(auth)/sign-up/(type)/form/apoiador_distribuidor",
+                params: form
+            })
+        }
+        else if (type == "doador") {
+            router.push({
+                pathname: "/(auth)/sign-up/(type)/form/doador",
+                params: form
+            })
+        }
+        else if (type == "entregador") {
+            router.push({
+                pathname: "/(auth)/sign-up/(type)/form/entregador",
+                params: form
+            })
+        }
+    }
 
     return (
         <ScrollView>
@@ -42,18 +58,18 @@ export default function SignUpType() {
                         <FormInput
                             title="Username"
                             value={form.username}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                            handleChangeText={(e) => setForm({ ...form, username: e })}
                         />
                         <FormInput
                             title="E-mail"
                             value={form.email}
-                            handleChangeText={(e) => setForm({ ...form, password: e })}
+                            handleChangeText={(e) => setForm({ ...form, email: e })}
                             keyboardType="email-address"
                         />
                         <FormInput
                             title="Phone"
                             value={form.phone}
-                            handleChangeText={(e) => setForm({ ...form, email: e })}
+                            handleChangeText={(e) => setForm({ ...form, phone: e })}
                             keyboardType="numeric"
                         />
                         <FormInput
@@ -65,7 +81,7 @@ export default function SignUpType() {
                         <FormInput
                             title="Confirm Password"
                             value={form.confirm_password}
-                            handleChangeText={(e) => setForm({ ...form, password: e })}
+                            handleChangeText={(e) => setForm({ ...form, confirm_password: e })}
                             keyboardType="password"
                         />
 
