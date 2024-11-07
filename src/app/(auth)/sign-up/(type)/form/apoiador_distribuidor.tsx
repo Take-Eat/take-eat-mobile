@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, View, Dimensions, Image, Text } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
-import { Container, FormSection } from "@components";
+import { Container, FormCommon, FormSection } from "@components";
 import { globalStyles } from "@/src/assets/styles/Global";
 
 export default function ApoiadorDistribuidor() {
@@ -26,20 +26,10 @@ export default function ApoiadorDistribuidor() {
     return (
         <ScrollView>
             <Container>
-                <View
-                    className="w-full flex justify-around items-center px-7"
-                    style={{ minHeight: Dimensions.get("window").height }}
-                >
-                    <Image
-                        source={require("@/src/assets/images/logo_take_eat_plate.png")}
-                        resizeMode="contain"
-                        className="w-[135px]"
-                    />
-                    <FormSection formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
-                    <View className="flex flex-row gap-x-1">
-                        <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
-                        <Link className="text-primary" style={globalStyles.heading3} href="/sign-up">Login</Link>
-                    </View>
+                <View style={{ minHeight: Dimensions.get("window").height }}>
+                    <FormCommon>
+                        <FormSection formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                    </FormCommon>
                 </View>
             </Container>
         </ScrollView>

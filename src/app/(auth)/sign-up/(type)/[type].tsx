@@ -1,8 +1,7 @@
-import { View, Text, ScrollView, Dimensions, Image } from "react-native";
+import { View, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
-import { Container, FormSection } from "@components"
-import { globalStyles } from "@/src/assets/styles/Global";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { Container, FormCommon, FormSection } from "@components"
 
 
 export default function SignUpType() {
@@ -31,45 +30,24 @@ export default function SignUpType() {
     const { type } = useLocalSearchParams()
 
     const submit = () => {
+        let nextPath = "";
         if (type == "apoiador" || type == "distribuidor") {
-            router.push({
-                pathname: "/(auth)/sign-up/(type)/form/apoiador_distribuidor",
-                params: form
-            })
+            nextPath = "/(auth)/sign-up/(type)/form/apoiador_distribuidor";
+        } else if (type == "doador") {
+            nextPath = "/(auth)/sign-up/(type)/form/doador";
+        } else if (type == "entregador") {
+            nextPath = "/(auth)/sign-up/(type)/form/entregador";
         }
-        else if (type == "doador") {
-            router.push({
-                pathname: "/(auth)/sign-up/(type)/form/doador",
-                params: form
-            })
-        }
-        else if (type == "entregador") {
-            router.push({
-                pathname: "/(auth)/sign-up/(type)/form/entregador",
-                params: form
-            })
-        }
-    }
+        router.push({ pathname: nextPath, params: form });
+    };
 
     return (
         <ScrollView>
             <Container>
-                <View
-                    className="w-full flex justify-around items-center px-7"
-                    style={{
-                        minHeight: Dimensions.get("window").height,
-                    }}
-                >
-                    <Image
-                        source={require("@/src/assets/images/logo_take_eat_plate.png")}
-                        resizeMode="contain"
-                        className="w-[135px]"
-                    />
-                    <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
-                    <View className="flex flex-row gap-x-1">
-                        <Text style={globalStyles.textRegular}>Já possui uma conta?</Text>
-                        <Link className="text-primary" style={globalStyles.heading3} href="/sign-up">Login</Link>
-                    </View>
+                <View style={{ minHeight: Dimensions.get("window").height }}>
+                    <FormCommon>
+                        <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                    </FormCommon>
                 </View>
             </Container>
         </ScrollView>

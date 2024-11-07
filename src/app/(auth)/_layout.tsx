@@ -15,12 +15,6 @@ export default function AuthLayout() {
                     headerShown: false,
                 }}
             />
-            <Stack.Screen
-                name="index"
-                options={{
-                    headerShown: false,
-                }}
-            />
         </Stack>
     );
 };
