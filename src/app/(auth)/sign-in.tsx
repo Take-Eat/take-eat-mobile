@@ -16,14 +16,12 @@ export default function SignIn() {
     const { login } = useAuth();
 
     const submit = () => {
-        // console.log(form)
         login(form.email, form.password)
     }
 
     return (
         <ScrollView>
             <Container>
-
                 <View
                     className="w-ful flex justify-around items-center px-7"
                     style={{

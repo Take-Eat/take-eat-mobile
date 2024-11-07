@@ -21,20 +21,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       const data = await response.json()
 
-      setUser(data)
+      setUser(data[0])
 
     } catch (error) {
       console.error("Erro no login:", error);
     }
-
-    // const foundUser = db.users.find(
-    //   (u) => u.email === email && u.password === password
-    // );
-    // if (foundUser) {
-    //   setUser(foundUser);
-    // } else {
-    //   alert("Invalid credentials");
-    // }
   };
 
   const logout = () => {
@@ -42,6 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const userType: UserType = user ? user.type : "guest";
+  console.log(userType)
 
   return (
     <AuthContext.Provider value={{ user, login, logout, userType }}>
