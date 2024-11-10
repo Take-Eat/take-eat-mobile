@@ -7,6 +7,7 @@ import { Container, CustomButton, FormInput } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
 
 
+
 export default function Index() {
     const [form, setForm] = useState<{ email: string, password: string }>({
         email: "",

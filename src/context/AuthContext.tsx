@@ -6,7 +6,7 @@ interface AuthContextType {
   login: (email: string, password: string) => void;
   logout: () => void;
   userType: UserType;
-  loading: boolean
+  loading: boolean;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -16,12 +16,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   const login = async (email: string, password: string) => {
+    console.log("Tentando fazer login com:", email, password);
     try {
       const response = await fetch(
         `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${email}&password=${password}`
       );
 
       const data = await response.json();
+
+      console.log("Dados de login recebidos:", data);
 
       setUser(data[0]);
       setLoading(false);
