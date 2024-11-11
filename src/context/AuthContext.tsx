@@ -23,8 +23,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [userType, setUserType] = useState<UserType>("guest");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {}, []);
-
   const login = async (email: string, password: string) => {
     console.log("Tentando fazer login com:", email, password);
     try {

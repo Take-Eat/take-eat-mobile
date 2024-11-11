@@ -5,7 +5,7 @@ export default function DoadorStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="homeDoador"
+        name="index"
         options={{
           title: "Home",
         }}

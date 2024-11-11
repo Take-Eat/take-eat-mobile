@@ -5,7 +5,7 @@ export default function AdminStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="dashboardAdmin"
+        name="index"
         options={{
           title: "Dashboard",
         }}

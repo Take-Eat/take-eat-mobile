@@ -5,7 +5,7 @@ export default function ApoiadorStack() {
   return (
     <Stack initialRouteName="homeApoiador">
       <Stack.Screen
-        name="homeApoiador"
+        name="index"
         options={{
           title: "Home",
           headerShown: false,

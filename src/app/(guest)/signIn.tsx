@@ -6,17 +6,17 @@ import { AuthContext, useAuth } from "@/src/context/AuthContext";
 import { Container, CustomButton, FormInput } from "@components";
 import { globalStyles } from "@/src/assets/styles/Global";
 
-export default function Index() {
+export default function SignIn() {
   const [form, setForm] = useState<{ email: string; password: string }>({
     email: "",
     password: "",
   });
 
-  const { login, setUserType } = useAuth();
+  // const { login, setUserType } = useAuth();
 
 
   const submit = () => {
-    login(form.email, form.password)
+    // login(form.email, form.password)
     console.log("aaaa")
 
   };

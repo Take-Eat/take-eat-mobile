@@ -4,7 +4,7 @@ export default function GuestStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="guestHomeScreen"
+        name="index"
         options={{
           headerShown: false,
         }}

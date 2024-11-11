@@ -15,6 +15,7 @@ export default function GuestHomeScreen() {
       >
         Login
       </Link>
+      <View className="bg-red-400 w-[400px] h-[200px]"></View>
     </View>
   );
 }
