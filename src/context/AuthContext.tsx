@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { User, UserType } from "../types/UserTypes";
 
 interface AuthContextType {
@@ -7,13 +13,17 @@ interface AuthContextType {
   logout: () => void;
   userType: UserType;
   loading: boolean;
+  setUserType: React.Dispatch<React.SetStateAction<UserType>>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [userType, setUserType] = useState<UserType>("guest");
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {}, []);
 
   const login = async (email: string, password: string) => {
     console.log("Tentando fazer login com:", email, password);
@@ -27,6 +37,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       console.log("Dados de login recebidos:", data);
 
       setUser(data[0]);
+      if (data[0].type) {
+        setUserType(data[0].type);
+      }
+
       setLoading(false);
     } catch (error) {
       console.error("Erro no login:", error);
@@ -37,11 +51,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
   };
 
-  const userType: UserType = user ? user.type : "guest";
-  // console.log(userType)
-
   return (
-    <AuthContext.Provider value={{ user, login, logout, userType, loading }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, userType, loading, setUserType }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -49,6 +62,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
+  console.log(context);
   if (!context) throw new Error("useAuth must be used within an AuthProvider");
   return context;
 };

@@ -3,7 +3,6 @@
     "name": "Take Eat",
     "slug": "take eat",
     "version": "1.0.0",
-    "entryPoint": "./App.tsx",
     "orientation": "portrait",
     "icon": "./assets/images/logo_take_eat_black.png",
     "scheme": "take eat",

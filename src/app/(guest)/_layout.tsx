@@ -1,19 +1,18 @@
-import React from "react";
 import { Stack } from "expo-router";
 
-export default function AdminStack() {
+export default function GuestStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="dashboardAdmin"
+        name="guestHomeScreen"
         options={{
-          title: "Dashboard",
+          headerShown: false,
         }}
       />
       <Stack.Screen
-        name="settingsAdmin"
+        name="signIn"
         options={{
-          title: "Settings",
+          headerShown: false,
         }}
       />
     </Stack>
