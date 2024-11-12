@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen } from "expo-router";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -9,10 +9,10 @@ import ApoiadorStack from "./(apoiador)/_layout";
 import DistribuidorStack from "./(distribuidor)/_layout";
 import DoadorStack from "./(doador)/_layout";
 import EntregadorStack from "./(entregador)/_layout";
-import MenuLayout from "./(menu)/_layout";
-import TabLayout from "./(tabs)/_layout";
+// import MenuLayout from "./(menu)/_layout";
+// import TabLayout from "./(tabs)/_layout";
 
-// const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
@@ -21,8 +21,6 @@ export default function RootLayout() {
     "Oregano-Italic": require("@/src/assets/fonts/Oregano-Italic.ttf"),
     Oregano: require("@/src/assets/fonts/Oregano-Regular.ttf"),
   });
-
-  const { userType, user } = useAuth();
 
   useEffect(() => {
     if (error) throw error;
@@ -33,53 +31,41 @@ export default function RootLayout() {
     SplashScreen.preventAutoHideAsync();
   }, []);
 
-  useEffect(() => {
-    console.log("userType:", userType);
-  }, [userType]);
-
   // Carregar SplashScreen enquanto as fontes não estão carregadas ou há um erro
   if (!fontsLoaded) return null;
 
-
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      {userType === "guest" && (
-        // Retornar a tela de autenticação caso o usuário não esteja logado
-        <Stack.Screen
-          name="(guest)"
-          options={{ headerShown: false }}
-        />
-      )}
-      {userType === "admin" && (
-        <Stack.Screen
-          name="(admin)"
-          options={{ headerShown: false }}
-        />
-      )}
-      {userType === "apoiador" && (
-        <Stack.Screen
-          name="(apoiador)"
-          options={{ headerShown: false }}
-        />
-      )}
-      {userType === "distribuidor" && (
-        <Stack.Screen
-          name="(distribuidor)"
-          options={{ headerShown: false }}
-        />
-      )}
-      {userType === "doador" && (
-        <Stack.Screen
-          name="(doador)"
-          options={{ headerShown: false }}
-        />
-      )}
-      {userType === "entregador" && (
-        <Stack.Screen
-          name="(entregador)"
-          options={{ headerShown: false }}
-        />
-      )}
-    </Stack>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="(guest)"
+        component={GuestStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(admin)"
+        component={AdminStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(apoiador)"
+        component={ApoiadorStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(distribuidor)"
+        component={DistribuidorStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(doador)"
+        component={DoadorStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="(entregador)"
+        component={EntregadorStack}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
   );
 }
