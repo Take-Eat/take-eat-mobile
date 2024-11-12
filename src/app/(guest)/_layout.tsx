@@ -15,6 +15,12 @@ export default function GuestStack() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="signUp"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }
