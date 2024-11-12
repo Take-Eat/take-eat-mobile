@@ -32,11 +32,11 @@ export default function SignUpType() {
     const submit = () => {
         let nextPath = "";
         if (type == "apoiador" || type == "distribuidor") {
-            nextPath = "/(auth)/sign-up/(type)/form/apoiador_distribuidor";
+            nextPath = "/(guest)/signUp/(type)/form/apoiador_distribuidor";
         } else if (type == "doador") {
-            nextPath = "/(auth)/sign-up/(type)/form/doador";
+            nextPath = "/(guest)/signUp/(type)/form/doador";
         } else if (type == "entregador") {
-            nextPath = "/(auth)/sign-up/(type)/form/entregador";
+            nextPath = "/(guest)/signUp/(type)/form/entregador";
         }
         router.push({ pathname: nextPath, params: form });
     };

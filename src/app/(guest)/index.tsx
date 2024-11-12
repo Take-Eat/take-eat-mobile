@@ -8,13 +8,13 @@ export default function GuestHomeScreen() {
       <Text style={globalStyles.heading1} className="text-center">
         Seja Bem-Vindo!
       </Text>
-      <Link
+      {/* <Link
         href={"/(guest)/signIn"}
         style={globalStyles.heading2}
         className="text-center"
       >
         Login
-      </Link>
+      </Link> */}
       <View className="bg-red-400 w-[400px] h-[200px]"></View>
     </View>
   );

@@ -24,25 +24,25 @@ export default function SignUpDefault() {
                         <Text className="text-center mb-6" style={globalStyles.heading1}>Como você deseja contribuir com o Take Eat?</Text>
                         <View className="flex w-full gap-5">
                             <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
-                                pathname: "/sign-up/(type)/[type]",
+                                pathname: "/signUp/(type)/[type]",
                                 params: { type: "apoiador" }
                             })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Apoiadores</Text></Pressable>
                             <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
-                                pathname: "/sign-up/(type)/[type]",
+                                pathname: "/signUp/(type)/[type]",
                                 params: { type: "doador" }
                             })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Doadores</Text></Pressable>
                             <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
-                                pathname: "/sign-up/(type)/[type]",
+                                pathname: "/signUp/(type)/[type]",
                                 params: { type: "distribuidor" }
                             })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>
                                 <Text style={globalStyles.textLarger}>Take Distribuidores</Text></Pressable>
                             <Pressable className="flex-row gap-x-2 items-center" onPress={() => router.push({
-                                pathname: "/sign-up/(type)/[type]",
+                                pathname: "/signUp/(type)/[type]",
                                 params: { type: "entregador" }
                             })}>
                                 <View className="w-[20px] h-[20px] rounded-full bg-gray-400"></View>

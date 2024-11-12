@@ -1,18 +1,9 @@
-import { useAuth } from "../context/AuthContext";
-import { SplashScreen } from "expo-router";
+import { AuthProvider, useAuth } from "../context/AuthContext";
+import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import GuestStack from "./(guest)/_layout";
-import AdminStack from "./(admin)/_layout";
-import ApoiadorStack from "./(apoiador)/_layout";
-import DistribuidorStack from "./(distribuidor)/_layout";
-import DoadorStack from "./(doador)/_layout";
-import EntregadorStack from "./(entregador)/_layout";
 // import MenuLayout from "./(menu)/_layout";
 // import TabLayout from "./(tabs)/_layout";
-
-const Stack = createNativeStackNavigator();
 
 export default function RootLayout() {
   const [fontsLoaded, error] = useFonts({
@@ -35,37 +26,33 @@ export default function RootLayout() {
   if (!fontsLoaded) return null;
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="(guest)"
-        component={GuestStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="(admin)"
-        component={AdminStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="(apoiador)"
-        component={ApoiadorStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="(distribuidor)"
-        component={DistribuidorStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="(doador)"
-        component={DoadorStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="(entregador)"
-        component={EntregadorStack}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
+    <AuthProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="(guest)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(admin)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(apoiador)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(distribuidor)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(doador)"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="(entregador)"
+          options={{ headerShown: false }}
+        />
+      </Stack>
+    </AuthProvider>
   );
 }

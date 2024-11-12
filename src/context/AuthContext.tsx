@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { User, UserType } from "../types/UserTypes";
 
+import * as SecureStore from 'expo-secure-store';
+
 interface AuthContextType {
   user: User | null;
   login: (email: string, password: string) => void;
@@ -32,12 +34,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
       const data = await response.json();
 
-      console.log("Dados de login recebidos:", data);
-
+      // if (data[0]) {
       setUser(data[0]);
-      if (data[0].type) {
-        setUserType(data[0].type);
-      }
+      setUserType(data[0].type);
+      await SecureStore.setItemAsync("userType", "distribuidor")
+      // }
 
       setLoading(false);
     } catch (error) {
