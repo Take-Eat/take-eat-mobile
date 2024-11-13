@@ -21,8 +21,8 @@ export default function SignIn() {
         setForm((prev) => ({ ...prev, [key]: value }));
     };
 
-    const submit = () => {
-        login(form.email, form.password)
+    const submit = async () => {
+        login(form)
     }
 
 
