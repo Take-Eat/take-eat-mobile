@@ -1,38 +1,47 @@
 {
-  "expo": {
-    "name": "Take Eat",
-    "slug": "take eat",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/logo_take_eat_black.png",
-    "scheme": "take eat",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/logo_take_eat_black.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo_take_eat_black.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/logo_take_eat_black.png"
-    },
-    "plugins": ["expo-router"],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "packagerOpts": {
-      "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
-    }
-  }
+	"expo": {
+		"name": "Take Eat",
+		"slug": "take eat",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/logo_take_eat_black.png",
+		"scheme": "take eat",
+		"userInterfaceStyle": "automatic",
+		"splash": {
+			"image": "./assets/images/logo_take_eat_black.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/logo_take_eat_black.png",
+				"backgroundColor": "#ffffff"
+			}
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/logo_take_eat_black.png"
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-secure-store",
+				{
+					"configureAndroidBackup": true,
+					"faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+				}
+			]
+		],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"packagerOpts": {
+			"config": "metro.config.js",
+			"sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
+		}
+	}
 }

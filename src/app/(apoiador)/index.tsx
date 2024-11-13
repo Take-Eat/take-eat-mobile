@@ -1,8 +1,16 @@
-import { StatusBar, Text, View, SafeAreaView, Animated } from "react-native";
+import {
+  StatusBar,
+  Text,
+  View,
+  SafeAreaView,
+  Animated,
+  Pressable,
+} from "react-native";
 import { globalStyles } from "@/src/assets/styles/Global";
 import { useRef } from "react";
 import EatCoinSvg from "@/src/assets/images/EatCoin.svg";
 import { AntDesign, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
+import { Link, router } from "expo-router";
 
 const H_MAX_HEIGHT = 160;
 const H_MIN_HEIGHT = 1;
@@ -55,8 +63,13 @@ export default function HomeApoiador() {
           <AntDesign name="right" size={25} />
         </View>
 
-        <View className="flex-1 gap-3 py-5">
-          <View className="w-full h-24 flex-row items-center gap-3">
+        {/* <View className="flex-1 gap-3 py-5">
+          <Pressable
+            onPress={() => {
+              router.push("/(apoiador)/donateApoiador");
+            }}
+            className="w-full h-24 flex-row items-center gap-3"
+          >
             <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
               <FontAwesome5
                 name="hand-holding-heart"
@@ -66,16 +79,21 @@ export default function HomeApoiador() {
             </View>
 
             <Text style={globalStyles.textLarger}>Doar</Text>
-          </View>
+          </Pressable>
 
-          <View className="w-full h-24 flex-row items-center gap-3">
+          <Pressable
+            onPress={() => {
+              router.push("/(apoiador)/rankingEatCoin");
+            }}
+            className="h-24 flex-row items-center gap-3"
+          >
             <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
               <FontAwesome6 name="ranking-star" size={30} color={"white"} />
             </View>
 
             <Text style={globalStyles.textLarger}>Ranking de doações</Text>
-          </View>
-        </View>
+          </Pressable>
+        </View> */}
       </Animated.ScrollView>
     </SafeAreaView>
   );

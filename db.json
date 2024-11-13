@@ -263,11 +263,11 @@
       "createdAt": "2024-01-15"
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "John Doe",
-      "type": "user",
+      "type": "apoiador",
       "email": "john@example.com",
-      "password": "password123",
+      "password": "1234",
       "image": "",
       "isActive": true,
       "createdAt": "2024-01-15"
@@ -277,7 +277,7 @@
       "name": "Jane Admin",
       "type": "admin",
       "email": "jane@example.com",
-      "password": "adminpass",
+      "password": "1234",
       "image": "",
       "isActive": true,
       "createdAt": "2024-01-15"

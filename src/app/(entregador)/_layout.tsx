@@ -5,7 +5,7 @@ export default function EntregadorStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="homeEntregador"
+        name="index"
         options={{
           title: "Home",
         }}
