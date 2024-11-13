@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { User, UserType } from "../types/UserTypes";
 
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 
 interface AuthContextType {
   user: User | null;
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       // if (data[0]) {
       setUser(data[0]);
       setUserType(data[0].type);
-      await SecureStore.setItemAsync("userType", "distribuidor")
+      await SecureStore.setItemAsync("userType", data[0].type);
       // }
 
       setLoading(false);
