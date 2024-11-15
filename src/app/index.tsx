@@ -1,37 +1,44 @@
+import "react-native-get-random-values"; // Não retira esse import!!!!!!
+import { v4 as uuidv4 } from "uuid"; // Não retira esse import!!!!!!!
+import "../styles/global.css";
+
 import { Redirect } from "expo-router";
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { globalStyles } from "../assets/styles/Global";
 
 export default function App() {
-
-  const [token, setToken] = useState<any>(null)
+  const [token, setToken] = useState<any>(null);
 
   useEffect(() => {
     const getToken = async () => {
-      const retrivedToken = await SecureStore.getItemAsync("userType")
-      console.log("valor do token", retrivedToken)
+      const retrivedToken = await SecureStore.getItemAsync("userType");
+      console.log("valor do token", retrivedToken);
       if (!retrivedToken) {
-        setToken("guest")
+        setToken("guest");
       } else {
-        setToken(retrivedToken)
+        setToken(retrivedToken);
       }
-    }
+    };
 
-    getToken()
-
-  }, [token])
+    getToken();
+  }, [token]);
 
   // por um loading aqui
-  if (!token) return <View className="h-[600px] w-full flex items-center justify-center bg-red-500"><Text style={globalStyles.heading1}>Cargando....</Text></View>;
+  if (!token)
+    return (
+      <View className="h-[600px] w-full flex items-center justify-center bg-red-500">
+        <Text style={globalStyles.heading1}>Cargando....</Text>
+      </View>
+    );
 
   return (
     <>
       {token === "admin" && <Redirect href={"/(admin)"} />}
       {token === "apoiador" && <Redirect href={"/(apoiador)"} />}
-      {token === "distribuidor" && <Redirect href={"/(distribuidor)"} />}
+      {token === "distribuidor" && <Redirect href={"/(tabs)"} />}
       {token === "guest" && <Redirect href={"/(guest)/signIn"} />}
     </>
-  )
+  );
 }
