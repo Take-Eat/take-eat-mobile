@@ -21,6 +21,8 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  // SecureStore.setItemAsync("userType", "guest");
+
   const [user, setUser] = useState<User | null>(null);
   const [userType, setUserType] = useState<UserType>("guest");
   const [loading, setLoading] = useState(true);

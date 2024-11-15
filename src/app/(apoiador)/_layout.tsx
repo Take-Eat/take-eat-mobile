@@ -10,7 +10,6 @@ import {
 export default function ApoiadorStack() {
   return (
     <Tabs
-      initialRouteName="homeApoiador"
       screenOptions={{
         tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
         tabBarInactiveTintColor: colors.gray1, // Cor inativa
