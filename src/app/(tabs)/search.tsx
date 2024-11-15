@@ -4,7 +4,7 @@ import {
   TrendingFoods,
   Donors,
   TabLayoutWithOutHeader,
-  CustomButton
+  CustomButton,
 } from "@components";
 import { useState } from "react";
 import CustomBottomSheet from "@/src/components/bottomSheet";
@@ -35,11 +35,10 @@ export default function Search() {
     setCheckBox([]); // Reseta o estado checkBox para um array vazio
   };
 
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <TabLayoutWithOutHeader>
-        <SearchBar handleOpen={handleOpenBottomSheet} />
+        <SearchBar handleOpen={handleOpenBottomSheet} filter={true} />
 
         <Section
           name="Prioritários"
@@ -69,10 +68,14 @@ export default function Search() {
 
               <Text style={globalStyles.heading1}>Filtros</Text>
 
-              <FontAwesome onPress={clearAllSelections} name="trash" size={25} />
+              <FontAwesome
+                onPress={clearAllSelections}
+                name="trash"
+                size={25}
+              />
             </View>
-          }>
-
+          }
+        >
           <View className="py-5">
             <CheckBox checkBox={checkBox} setCheckBox={setCheckBox} />
             <CustomButton
@@ -85,4 +88,3 @@ export default function Search() {
     </GestureHandlerRootView>
   );
 }
-

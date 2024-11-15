@@ -1,10 +1,17 @@
 import { globalStyles } from "@/src/assets/styles/Global";
+import { SearchBar, TabLayoutWithOutHeader } from "@components";
 import { Text, View } from "react-native";
 
 export default function RankingEatCoin() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text style={globalStyles.heading1}>Ranking Eat Coin</Text>
-    </View>
+    <>
+      <TabLayoutWithOutHeader>
+        <View className="flex-1 items-center">
+          <Text style={globalStyles.heading1}>Ranking de Doações</Text>
+
+          <SearchBar />
+        </View>
+      </TabLayoutWithOutHeader>
+    </>
   );
 }
