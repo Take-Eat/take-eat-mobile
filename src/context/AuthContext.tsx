@@ -60,7 +60,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(data[0]);
         setUserType(data[0].type);
         await SecureStore.setItemAsync("userType", data[0].type)
-        router.push("/")
+        const url = `/(${data[0].type})`
+        // Resolver essa tipagem
+        // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
+        // Mas ai fica feio então tem que procurar outro jeito👍
+        router.push(url)
       } else {
         console.log("Credenciais inválidas");
       }
