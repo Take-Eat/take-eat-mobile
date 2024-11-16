@@ -1,6 +1,6 @@
 import "@/src/styles/global.css";
 
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { colors } from "../../assets/styles/Global";
 
@@ -18,7 +18,7 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="home" size={28} color={color} /> // Ícone da tab
+            <MaterialCommunityIcons name="home" size={28} color={color} /> // Ícone da tab
           ),
         }}
       />

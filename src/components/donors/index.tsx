@@ -13,7 +13,9 @@ export default function Donors() {
 
   useEffect(() => {
     async function getDonor() {
-      const response = await fetch("http://192.168.3.27:3000/restaurants");
+      const response = await fetch(
+        "http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/restaurants"
+      );
       const data = await response.json();
       setDonor(data);
     }

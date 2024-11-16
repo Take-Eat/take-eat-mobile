@@ -33,7 +33,7 @@ export default function Entregador() {
     const submit = () => {
         console.log(form);
         router.push({
-            pathname: "/(auth)/sign-up/(type)/form/veiculo",
+            pathname: "/(guest)/signUp/(type)/form/veiculo",
             params: { ...form, ...params }
         })
     };

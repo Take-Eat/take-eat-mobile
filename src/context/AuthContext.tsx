@@ -1,44 +1,90 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { User, UserType } from "../types/UserTypes";
+
+import * as SecureStore from 'expo-secure-store';
+import { router } from "expo-router";
+
+interface iLogin {
+  email: string;
+  password: string
+}
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => void;
+  login: ({ email, password }: iLogin) => void;
   logout: () => void;
   userType: UserType;
-  loading: boolean
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setUserType: React.Dispatch<React.SetStateAction<UserType>>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  // SecureStore.setItemAsync("userType", "apoiador");
+
   const [user, setUser] = useState<User | null>(null);
+  const [userType, setUserType] = useState<UserType>("guest");
   const [loading, setLoading] = useState(true);
 
-  const login = async (email: string, password: string) => {
+  useEffect(() => {
+    const getUserType = async () => {
+      // await SecureStore.setItemAsync("userType", "guest")
+
+      const token = await SecureStore.getItemAsync("userType") as UserType
+      console.log("get user type, effect auth", token, token || "guest")
+      setUserType(token || "guest")
+      setLoading(false)
+    }
+
+    getUserType()
+
+  }, [])
+
+  const login = async (form: iLogin) => {
     try {
       const response = await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${email}&password=${password}`
+        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${form.email}&password=${form.password}`
       );
 
       const data = await response.json();
 
-      setUser(data[0]);
-      setLoading(false);
+      if (data[0]) {
+        setUser(data[0]);
+        setUserType(data[0].type);
+        await SecureStore.setItemAsync("userType", data[0].type)
+        const url = `/(${data[0].type})`
+        // Resolver essa tipagem
+        // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
+        // Mas ai fica feio então tem que procurar outro jeito👍
+        router.push(url)
+      } else {
+        console.log("Credenciais inválidas");
+      }
+
     } catch (error) {
       console.error("Erro no login:", error);
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await SecureStore.deleteItemAsync("userType");
     setUser(null);
+    setUserType("guest");
+    console.log("Usuário deslogado");
   };
 
-  const userType: UserType = user ? user.type : "guest";
-  // console.log(userType)
-
   return (
-    <AuthContext.Provider value={{ user, login, logout, userType, loading }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, userType, loading, setLoading, setUserType }}
+    >
       {children}
     </AuthContext.Provider>
   );

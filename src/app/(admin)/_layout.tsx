@@ -5,13 +5,13 @@ export default function AdminStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="DashboardAdmin"
+        name="index"
         options={{
           title: "Dashboard",
         }}
       />
       <Stack.Screen
-        name="SettingsAdmin"
+        name="settingsAdmin"
         options={{
           title: "Settings",
         }}

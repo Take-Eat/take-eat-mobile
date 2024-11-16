@@ -21,7 +21,7 @@ export default function FormCommon({ children, footerLogin }: FormCommonProps) {
 
             <View className="flex flex-row gap-x-1">
                 <Text style={globalStyles.textRegular}>{footerLogin ? "Não" : "Já"} possui uma conta?</Text>
-                <Link className="text-primary" style={globalStyles.heading3} href={`/${footerLogin ? "sign-up" : "sign-in"}`}>{footerLogin ? "Cadastro" : "Login"}</Link>
+                <Link className="text-primary" style={globalStyles.heading3} href={`/${footerLogin ? "signUp" : "signIn"}`}>{footerLogin ? "Cadastro" : "Login"}</Link>
             </View>
         </View>
     );

@@ -5,7 +5,7 @@ export default function DistribuidorStack() {
   return (
     <Stack>
       <Stack.Screen
-        name="homeDistribuidor"
+        name="index"
         options={{
           title: "Home",
         }}

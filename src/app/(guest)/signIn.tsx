@@ -1,9 +1,12 @@
 import { View, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
 import { Container, FormCommon, FormSection } from "@components"
+import { useAuth } from "@/src/context/AuthContext";
 
 
 export default function SignIn() {
+    const { login } = useAuth()
+
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -18,8 +21,8 @@ export default function SignIn() {
         setForm((prev) => ({ ...prev, [key]: value }));
     };
 
-    const submit = () => {
-        console.log(form)
+    const submit = async () => {
+        login(form)
     }
 
 

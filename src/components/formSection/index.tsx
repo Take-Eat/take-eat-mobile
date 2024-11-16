@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
-import { FormInput, CustomButton } from "@components";
+import FormInput from "../formInput";
+import CustomButton from "../customButton";
 
 interface FormSectionProps {
     formData: { [key: string]: string };

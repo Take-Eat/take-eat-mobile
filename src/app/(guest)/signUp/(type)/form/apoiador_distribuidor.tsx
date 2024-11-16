@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { ScrollView, View, Dimensions, Image, Text } from "react-native";
-import { Link, useLocalSearchParams } from "expo-router";
+import { ScrollView, View, Dimensions } from "react-native";
+import { useLocalSearchParams } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components";
-import { globalStyles } from "@/src/assets/styles/Global";
 
 export default function ApoiadorDistribuidor() {
     const params = useLocalSearchParams()
