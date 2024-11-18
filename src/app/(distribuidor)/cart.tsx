@@ -41,6 +41,13 @@ const initialCart: CartItem[] = [
     price: 1.0,
     quantity: 1,
   },
+  {
+    id: "4",
+    name: "Cuscuz Pressão",
+    image: "https://via.placeholder.com/100",
+    price: 2.0,
+    quantity: 1,
+  },
 ];
 
 export default function CartScreen() {
@@ -113,7 +120,7 @@ export default function CartScreen() {
             <View className="flex-1">
               <Text style={globalStyles.textLarger}>{item.name}</Text>
               <Text style={globalStyles.textRegular}>
-                R$ {item.price.toFixed(2)}
+                Entrega: R$ {item.price.toFixed(2)}
               </Text>
 
               {/* Controle de quantidade */}
