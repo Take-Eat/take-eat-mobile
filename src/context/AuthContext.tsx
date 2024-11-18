@@ -28,7 +28,7 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  // SecureStore.setItemAsync("userType", "apoiador");
+  SecureStore.setItemAsync("userType", "distribuidor");
 
   const [user, setUser] = useState<User | null>(null);
   const [userType, setUserType] = useState<UserType>("guest");
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
-      // await SecureStore.setItemAsync("userType", "guest")
+      await SecureStore.setItemAsync("userType", "apoiador")
 
       const token = await SecureStore.getItemAsync("userType") as UserType
       console.log("get user type, effect auth", token, token || "guest")

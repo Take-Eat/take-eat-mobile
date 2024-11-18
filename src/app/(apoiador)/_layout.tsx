@@ -45,6 +45,17 @@ export default function ApoiadorStack() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="spendCoin"
+        options={{
+          title: "Usar Eat Coin",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account-cash" size={23} color={color} /> // Ícone da tab
+          ),
+        }}
+      />
     </Tabs>
   );
 }
+// spendCoin;
