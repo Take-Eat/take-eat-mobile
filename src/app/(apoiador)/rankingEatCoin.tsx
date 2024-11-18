@@ -50,6 +50,7 @@ export default function RankingEatCoin() {
           data={donor.sort((a, b) => b.coins - a.coins)} // Ordenar pela quantidade de coins
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingBottom: 20, paddingTop: 20 }}
+          nestedScrollEnabled={true}
           renderItem={({ item, index }) => (
             <View
               className="flex-row items-center justify-between p-7 gap-5 mb-5 rounded-2xl bg-white shadow-black"
