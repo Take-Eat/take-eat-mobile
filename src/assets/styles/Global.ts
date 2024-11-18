@@ -36,9 +36,6 @@ const fonts = {
 	headline: 16,
 	body: 14,
 	caption: 12,
-	bold: 800, // Largura da fonte pode ser definida com números ou palavras como 'bold'
-	semiBold: 600,
-	regular: 400,
 };
 
 const globalStyles = StyleSheet.create({
@@ -65,10 +62,20 @@ const globalStyles = StyleSheet.create({
 		fontFamily: "Inter",
 		// fontWeight: fonts.regular,
 	},
+	textLargerBold: {
+		fontSize: fonts.headline,
+		fontFamily: "Inter",
+		fontWeight: "bold",
+	},
 	textRegular: {
 		fontSize: fonts.body,
 		fontFamily: "Inter",
 		// fontWeight: fonts.regular,
+	},
+	textRegularBold: {
+		fontSize: fonts.body,
+		fontFamily: "Inter",
+		fontWeight: "bold",
 	},
 	textRegularGray: {
 		fontSize: fonts.body,

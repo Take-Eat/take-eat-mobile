@@ -1,6 +1,6 @@
 import { View, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
 
 
@@ -38,7 +38,7 @@ export default function SignUpType() {
         } else if (type == "entregador") {
             nextPath = "/(guest)/signUp/(type)/form/entregador";
         }
-        router.push({ pathname: nextPath, params: form });
+        router.push({ pathname: nextPath as RelativePathString, params: form });
     };
 
     return (
