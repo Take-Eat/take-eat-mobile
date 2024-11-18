@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
-      // await SecureStore.setItemAsync("userType", "guest")
+      await SecureStore.setItemAsync("userType", "apoiador")
 
       const token = await SecureStore.getItemAsync("userType") as UserType
       console.log("get user type, effect auth", token, token || "guest")
