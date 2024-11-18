@@ -9,6 +9,7 @@ import {
   Pressable,
   Alert,
 } from "react-native";
+import EatCoinSvg from "@/src/assets/images/EatCoin.svg";
 
 interface Reward {
   id: string;
@@ -70,6 +71,7 @@ export default function spendCoin() {
           {" "}
           {coins} Coins
         </Text>
+        <EatCoinSvg style={{ marginLeft: 3 }} width={20} height={20} />
       </View>
 
       {/* Lista de Recompensas */}
