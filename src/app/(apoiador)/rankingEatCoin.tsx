@@ -86,7 +86,7 @@ export default function RankingEatCoin() {
 
               {/* Quantidade de Eat Coins */}
               <View className="flex-row items-center">
-                <EatCoinSvg width={20} height={20} style={{ marginRight: 6 }} />
+                <EatCoinSvg width={25} height={50} style={{ marginRight: 6 }} />
                 <Text
                   style={[
                     globalStyles.textRegular,

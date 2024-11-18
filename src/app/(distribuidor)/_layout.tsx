@@ -31,6 +31,15 @@ export default function DistribuidorStack() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="cart"
+        options={{
+          title: "Carrinho",
+          tabBarIcon: ({ color }) => (
+            <Feather name="shopping-cart" size={28} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
