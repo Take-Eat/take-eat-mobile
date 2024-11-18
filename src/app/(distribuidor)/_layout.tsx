@@ -1,15 +1,36 @@
 import React from "react";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { colors } from "../../assets/styles/Global";
 
 export default function DistribuidorStack() {
   return (
-    <Stack>
-      <Stack.Screen
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
+        tabBarInactiveTintColor: colors.gray1, // Cor inativa
+        tabBarShowLabel: false,
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen
         name="index"
         options={{
           title: "Home",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" size={28} color={color} /> // Ícone da tab
+          ),
         }}
       />
-    </Stack>
+      <Tabs.Screen
+        name="orderTracking"
+        options={{
+          title: "Pedidos",
+          tabBarIcon: ({ color }) => (
+            <Feather name="box" size={28} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
