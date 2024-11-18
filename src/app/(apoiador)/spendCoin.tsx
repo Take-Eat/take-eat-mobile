@@ -1,4 +1,4 @@
-import { globalStyles } from "@/src/assets/styles/Global";
+import { colors, globalStyles } from "@/src/assets/styles/Global";
 import React, { useState } from "react";
 import {
   View,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   redeemButton: {
-    backgroundColor: "#F58F00",
+    backgroundColor: colors.brand4,
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 8,
