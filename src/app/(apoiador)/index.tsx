@@ -9,6 +9,9 @@ import {
 import { globalStyles } from "@/src/assets/styles/Global";
 import { useRef } from "react";
 import EatCoinSvg from "@/src/assets/images/EatCoin.svg";
+import Grafico1Svg from "@/src/assets/images/grafico1.svg";
+import Grafico2Svg from "@/src/assets/images/grafico2.svg";
+import Grafico3Svg from "@/src/assets/images/grafico3.svg";
 import { AntDesign, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
 import { Link, router } from "expo-router";
 
@@ -50,7 +53,7 @@ export default function HomeApoiador() {
         )}
         scrollEventThrottle={16}
       >
-        <View className="h-20 flex-row items-center justify-between">
+        {/* <View className="h-20 flex-row items-center justify-between">
           <View>
             <Text style={globalStyles.heading1}>Saldo</Text>
 
@@ -61,39 +64,40 @@ export default function HomeApoiador() {
           </View>
 
           <AntDesign name="right" size={25} />
-        </View>
+        </View> */}
 
-        {/* <View className="flex-1 gap-3 py-5">
+        <View className="h-80 bg-red-100 py-5 justify-center items-center">
           <Pressable
             onPress={() => {
               router.push("/(apoiador)/donateApoiador");
             }}
             className="w-full h-24 flex-row items-center gap-3"
           >
-            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
-              <FontAwesome5
-                name="hand-holding-heart"
-                size={30}
-                color={"white"}
-              />
-            </View>
-
-            <Text style={globalStyles.textLarger}>Doar</Text>
+            <Grafico1Svg width={300} height={300} />
           </Pressable>
+        </View>
 
+        <View className="h-80 bg-red-100 py-5 justify-center items-center">
           <Pressable
             onPress={() => {
-              router.push("/(apoiador)/rankingEatCoin");
+              router.push("/(apoiador)/donateApoiador");
             }}
-            className="h-24 flex-row items-center gap-3"
+            className="w-full h-24 flex-row items-center gap-3"
           >
-            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
-              <FontAwesome6 name="ranking-star" size={30} color={"white"} />
-            </View>
-
-            <Text style={globalStyles.textLarger}>Ranking de doações</Text>
+            <Grafico2Svg width={300} height={300} />
           </Pressable>
-        </View> */}
+        </View>
+
+        <View className="h-80 bg-red-100 py-5 justify-center items-center">
+          <Pressable
+            onPress={() => {
+              router.push("/(apoiador)/donateApoiador");
+            }}
+            className="w-full h-24 flex-row items-center gap-3"
+          >
+            <Grafico3Svg width={300} height={300} />
+          </Pressable>
+        </View>
       </Animated.ScrollView>
     </SafeAreaView>
   );
