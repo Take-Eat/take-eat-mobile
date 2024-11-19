@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import FormInput from "../formInput";
 import CustomButton from "../customButton";
 
@@ -30,18 +30,23 @@ export default function FormSection<T extends ZodType<any>>({ schema, buttonText
             {fields.map((formField) => {
                 const { field } = useController({
                     control,
-                    defaultValue: "",
+                    // defaultValue: "",
                     name: formField.key
                 })
+
+                const fieldError = errors[formField.key]?.message as string;
                 return (
-                    <FormInput
-                        key={formField.key}
-                        name={formField.key}
-                        title={formField.label}
-                        value={field.value}
-                        handleChangeText={field.onChange}
-                        keyboardType={formField.keyboardType}
-                    />
+                    <>
+                        <FormInput
+                            key={formField.key}
+                            name={formField.key}
+                            title={formField.label}
+                            value={field.value}
+                            handleChangeText={field.onChange}
+                            keyboardType={formField.keyboardType}
+                        />
+                        {fieldError && <Text className="text-red-600">{fieldError}</Text>}
+                    </>
                 )
             })}
             <CustomButton title={buttonText ? buttonText : "Registrar"} handlePress={handleSubmit(onSubmit)} />
