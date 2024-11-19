@@ -9,7 +9,6 @@ import { Text, View } from "react-native";
 import { globalStyles } from "../assets/styles/Global";
 import { useAuth } from "../context/AuthContext";
 
-
 export default function App() {
   const [token, setToken] = useState<any>(null);
 
@@ -52,6 +51,7 @@ export default function App() {
       {userType === "apoiador" && <Redirect href={"/(apoiador)"} />}
       {userType === "distribuidor" && <Redirect href={"/(distribuidor)"} />}
       {userType === "guest" && <Redirect href={"/(guest)/signIn"} />}
+      {userType === "doador" && <Redirect href={"/(doador)"} />}
     </>
   );
 }
