@@ -3,21 +3,19 @@ import { useState } from "react";
 import { Link, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
+import { z } from "zod";
 
+
+const formSchema = z.object({
+    name: z.string(),
+    cpf: z.string(),
+    cnh: z.string(),
+    address: z.string(),
+})
 
 export default function Entregador() {
     const params = useLocalSearchParams()
 
-    const router = useRouter()
-
-    const [form, setForm] = useState({
-        ...params,
-        name: "",
-        cnpj: "",
-        address: "",
-        ramoAlimenticio: "",
-        horarioRetirada: ""
-    });
 
     const fields = [
         { label: "Nome", key: "name" },
@@ -26,16 +24,9 @@ export default function Entregador() {
         { label: "Endereço", key: "address" },
     ];
 
-    const handleChange = (key: string, value: string) => {
-        setForm((prev) => ({ ...prev, [key]: value }));
-    };
 
-    const submit = () => {
-        console.log(form);
-        router.push({
-            pathname: "/(guest)/signUp/(type)/form/veiculo",
-            params: { ...form, ...params }
-        })
+    const submit = (data: any) => {
+        console.log(data)
     };
 
 
@@ -44,7 +35,7 @@ export default function Entregador() {
             <Container>
                 <View style={{ minHeight: Dimensions.get("window").height }}>
                     <FormCommon>
-                        <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                        <FormSection buttonText="Continuar" fields={fields} schema={formSchema} onSubmit={submit} />
                     </FormCommon>
                 </View>
             </Container>

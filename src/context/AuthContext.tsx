@@ -7,8 +7,8 @@ import React, {
 } from "react";
 import { User, UserType } from "../types/UserTypes";
 
-import * as SecureStore from "expo-secure-store";
-import { router } from "expo-router";
+import * as SecureStore from 'expo-secure-store';
+import { RelativePathString, router } from "expo-router";
 
 interface iLogin {
   email: string;
@@ -52,12 +52,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       );
 
       const data = await response.json();
+      console.log(data[0]);
 
       if (data[0]) {
         setUser(data[0]);
         setUserType(data[0].type);
-        await SecureStore.setItemAsync("userType", data[0].type);
-        const url = `/(${data[0].type})`;
+        await SecureStore.setItemAsync("userType", data[0].type)
+        const url = `/(${data[0].type})` as RelativePathString
         // Resolver essa tipagem
         // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
         // Mas ai fica feio então tem que procurar outro jeito👍
