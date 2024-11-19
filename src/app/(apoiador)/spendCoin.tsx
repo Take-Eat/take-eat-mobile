@@ -21,26 +21,26 @@ interface Reward {
 const rewardsMock: Reward[] = [
   {
     id: "1",
-    name: "5 publicações no instagram",
+    name: "1 publicações nas redes socias",
     image: "https://via.placeholder.com/100",
-    cost: 100,
+    cost: 5,
   },
   {
     id: "2",
-    name: "10 publicações no instagram",
+    name: "5 publicações nas redes socias",
     image: "https://via.placeholder.com/100",
-    cost: 200,
+    cost: 10,
   },
   {
     id: "3",
-    name: "15 publicações no instagram",
+    name: "3 publicações nas redes socias",
     image: "https://via.placeholder.com/100",
-    cost: 300,
+    cost: 15,
   },
 ];
 
 export default function spendCoin() {
-  const [coins, setCoins] = useState(500); // Saldo de moedas
+  const [coins, setCoins] = useState(50); // Saldo de moedas
   const [rewards, setRewards] = useState<Reward[]>(rewardsMock);
 
   const handleRedeem = (cost: number, name: string) => {

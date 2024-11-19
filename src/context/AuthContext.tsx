@@ -7,12 +7,12 @@ import React, {
 } from "react";
 import { User, UserType } from "../types/UserTypes";
 
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { router } from "expo-router";
 
 interface iLogin {
   email: string;
-  password: string
+  password: string;
 }
 
 interface AuthContextType {
@@ -28,7 +28,7 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  SecureStore.setItemAsync("userType", "distribuidor");
+  SecureStore.setItemAsync("userType", "apoiador");
 
   const [user, setUser] = useState<User | null>(null);
   const [userType, setUserType] = useState<UserType>("guest");
@@ -36,17 +36,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
-      await SecureStore.setItemAsync("userType", "apoiador")
+      const token = (await SecureStore.getItemAsync("userType")) as UserType;
+      console.log("get user type, effect auth", token, token || "guest");
+      setUserType(token || "guest");
+      setLoading(false);
+    };
 
-      const token = await SecureStore.getItemAsync("userType") as UserType
-      console.log("get user type, effect auth", token, token || "guest")
-      setUserType(token || "guest")
-      setLoading(false)
-    }
-
-    getUserType()
-
-  }, [])
+    getUserType();
+  }, []);
 
   const login = async (form: iLogin) => {
     try {
@@ -59,16 +56,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (data[0]) {
         setUser(data[0]);
         setUserType(data[0].type);
-        await SecureStore.setItemAsync("userType", data[0].type)
-        const url = `/(${data[0].type})`
+        await SecureStore.setItemAsync("userType", data[0].type);
+        const url = `/(${data[0].type})`;
         // Resolver essa tipagem
         // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
         // Mas ai fica feio então tem que procurar outro jeito👍
-        router.push(url)
+        router.push(url);
       } else {
         console.log("Credenciais inválidas");
       }
-
     } catch (error) {
       console.error("Erro no login:", error);
     }
@@ -83,7 +79,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, userType, loading, setLoading, setUserType }}
+      value={{
+        user,
+        login,
+        logout,
+        userType,
+        loading,
+        setLoading,
+        setUserType,
+      }}
     >
       {children}
     </AuthContext.Provider>
