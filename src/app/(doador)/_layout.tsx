@@ -1,16 +1,62 @@
 import React from "react";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
+import { colors } from "@/src/assets/styles/Global";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome,
+  FontAwesome6,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 export default function DoadorStack() {
   return (
-    <Stack>
-      <Stack.Screen
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
+        tabBarInactiveTintColor: colors.gray1, // Cor inativa
+        tabBarShowLabel: false,
+      }}
+    >
+      <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" size={28} color={color} /> // Ícone da tab
+          ),
         }}
       />
-    
-    </Stack>
+
+      <Tabs.Screen
+        name="donate"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="money" size={28} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="addProduct"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome6 name="hand-holding-heart" size={28} color={color} /> // Ícone da tab
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="menu"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Feather name="menu" size={28} color={color} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

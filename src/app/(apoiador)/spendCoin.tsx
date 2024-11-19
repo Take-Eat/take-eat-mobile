@@ -81,13 +81,14 @@ export default function spendCoin() {
         contentContainerStyle={{ paddingBottom: 20 }}
         renderItem={({ item }) => (
           <View
-            className="flex-row items-center bg-white p-3 rounded-xl mb-3 shadow-black"
-            style={styles.rewardCard}
+            className="flex-row items-center bg-white p-3 mb-3 shadow-black"
+            style={[styles.rewardCard, globalStyles.roundedRegular]}
           >
             {/* Imagem e Nome */}
             <Image
               source={{ uri: item.image }}
-              className="w-16 h-16 rounded-xl mr-3"
+              className="w-16 h-16 mr-3"
+              style={globalStyles.roundedRegular}
             />
             <View className="flex-1">
               <Text className="font-bold" style={globalStyles.textLarger}>

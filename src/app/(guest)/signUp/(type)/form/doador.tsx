@@ -3,18 +3,20 @@ import { ScrollView, View, Dimensions, Image, Text } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components";
 import { globalStyles } from "@/src/assets/styles/Global";
+import { z } from "zod";
+
+
+const formSchema = z.object({
+    name: z.string(),
+    cnpj: z.string(),
+    address: z.string(),
+    ramoAlimenticio: z.string(),
+    horarioRetirada: z.string(),
+})
 
 export default function Doador() {
     const params = useLocalSearchParams()
 
-    const [form, setForm] = useState({
-        ...params,
-        name: "",
-        cnpj: "",
-        address: "",
-        ramoAlimenticio: "",
-        horarioRetirada: ""
-    });
 
     const fields = [
         { label: "Nome ou Razão Social", key: "name" },
@@ -24,12 +26,9 @@ export default function Doador() {
         { label: "Horário para Retirada", key: "horarioRetirada" }
     ];
 
-    const handleChange = (key: string, value: string) => {
-        setForm((prev) => ({ ...prev, [key]: value }));
-    };
 
-    const submit = () => {
-        console.log(form);
+    const submit = (data: any) => {
+        console.log(data);
     };
 
     return (
@@ -37,7 +36,7 @@ export default function Doador() {
             <Container>
                 <View style={{ minHeight: Dimensions.get("window").height }}>
                     <FormCommon>
-                        <FormSection formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                        <FormSection fields={fields} schema={formSchema} onSubmit={submit} />
                     </FormCommon>
                 </View>
             </Container>

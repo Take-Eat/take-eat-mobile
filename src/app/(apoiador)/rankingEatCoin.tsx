@@ -27,7 +27,7 @@ export default function RankingEatCoin() {
       const response = await fetch("http://192.168.3.27:3000/restaurants");
       const data = await response.json();
       setDonor(
-        data.map((d: any, index: number) => ({
+        data.map((d: DonorProps, index: number) => ({
           ...d,
           coins: Math.floor(Math.random() * 500), // Simulação de Eat Coins
         }))
@@ -53,13 +53,16 @@ export default function RankingEatCoin() {
           nestedScrollEnabled={true}
           renderItem={({ item, index }) => (
             <View
-              className="flex-row items-center justify-between p-7 gap-5 mb-5 rounded-2xl bg-white shadow-black"
-              style={{
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.1,
-                shadowRadius: 4,
-                elevation: 3,
-              }}
+              className="flex-row items-center justify-between p-7 gap-5 mb-5 bg-white shadow-black"
+              style={[
+                {
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.1,
+                  shadowRadius: 4,
+                  elevation: 3,
+                },
+                globalStyles.roundedRegular,
+              ]}
             >
               {/* Posição e Avatar */}
               <View className="flex-row items-center">
@@ -77,7 +80,8 @@ export default function RankingEatCoin() {
                 </Text>
                 <Image
                   source={{ uri: item.image }}
-                  className="w-16 h-16 rounded-full mr-3"
+                  className="w-16 h-16 mr-3"
+                  style={globalStyles.roundedFull}
                 />
                 <Text style={[globalStyles.heading2, { color: "#333" }]}>
                   {item.name}

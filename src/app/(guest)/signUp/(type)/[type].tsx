@@ -1,7 +1,17 @@
 import { View, ScrollView, Dimensions } from "react-native";
 import { useState } from "react";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
+import { z } from "zod";
+
+
+const formSchema = z.object({
+    username: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    password: z.string(),
+    confirm_password: z.string()
+})
 
 
 export default function SignUpType() {
@@ -29,7 +39,9 @@ export default function SignUpType() {
 
     const { type } = useLocalSearchParams()
 
-    const submit = () => {
+    const submit = () => (data: any) => {
+        console.log(data)
+
         let nextPath = "";
         if (type == "apoiador" || type == "distribuidor") {
             nextPath = "/(guest)/signUp/(type)/form/apoiador_distribuidor";
@@ -38,7 +50,7 @@ export default function SignUpType() {
         } else if (type == "entregador") {
             nextPath = "/(guest)/signUp/(type)/form/entregador";
         }
-        router.push({ pathname: nextPath, params: form });
+        router.push({ pathname: nextPath as RelativePathString, params: form });
     };
 
     return (
@@ -46,7 +58,11 @@ export default function SignUpType() {
             <Container>
                 <View style={{ minHeight: Dimensions.get("window").height }}>
                     <FormCommon>
-                        <FormSection buttonText="Continuar" formData={form} handleChange={handleChange} fields={fields} onSubmit={submit} />
+                        <FormSection
+                            buttonText="Continuar"
+                            schema={formSchema}
+                            fields={fields}
+                            onSubmit={submit} />
                     </FormCommon>
                 </View>
             </Container>

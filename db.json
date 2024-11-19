@@ -256,19 +256,9 @@
       "id": 1,
       "name": "She-Ha",
       "type": "admin",
-      "email": "she-ha.silva@example.com",
+      "email": "sheha@mail.com",
       "password": "password123",
       "image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353",
-      "isActive": true,
-      "createdAt": "2024-01-15"
-    },
-    {
-      "id": 3,
-      "name": "John Doe",
-      "type": "apoiador",
-      "email": "john@example.com",
-      "password": "1234",
-      "image": "",
       "isActive": true,
       "createdAt": "2024-01-15"
     },
@@ -276,9 +266,29 @@
       "id": 2,
       "name": "Jane Admin",
       "type": "admin",
-      "email": "jane@example.com",
+      "email": "jane@mail.com",
       "password": "1234",
-      "image": "",
+      "image": "https://via.placeholder.com/100",
+      "isActive": true,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 3,
+      "name": "John Doe",
+      "type": "apoiador",
+      "email": "john@mail.com",
+      "password": "1234",
+      "image": "https://via.placeholder.com/100",
+      "isActive": true,
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": 4,
+      "name": "José",
+      "type": "doador",
+      "email": "jose@mail.com",
+      "password": "1234",
+      "image": "https://via.placeholder.com/100",
       "isActive": true,
       "createdAt": "2024-01-15"
     }
