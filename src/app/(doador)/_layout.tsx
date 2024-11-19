@@ -1,7 +1,13 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import { colors } from "@/src/assets/styles/Global";
-import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  AntDesign,
+  Feather,
+  FontAwesome,
+  FontAwesome6,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 export default function DoadorStack() {
   return (
@@ -23,11 +29,31 @@ export default function DoadorStack() {
       />
 
       <Tabs.Screen
+        name="donate"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="money" size={28} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="addProduct"
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <AntDesign name="upload" size={28} color={color} /> // Ícone da tab
+            <FontAwesome6 name="hand-holding-heart" size={28} color={color} /> // Ícone da tab
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="menu"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Feather name="menu" size={28} color={color} />
           ),
         }}
       />
