@@ -51,13 +51,10 @@
     "tailwindcss": "^3.4.14",
     "take_eat": "file:",
     "uuid": "^11.0.2",
-<<<<<<< HEAD
     "victory-native": "^37.0.3-next.0",
-    "yup": "^1.4.0"
-=======
+    "yup": "^1.4.0",
     "zod": "^3.23.8",
     "zod-validation-error": "^3.4.0"
->>>>>>> 6cc334dd9a127d9f6f95ca91f7c947489169b3aa
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
