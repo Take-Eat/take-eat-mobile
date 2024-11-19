@@ -1,100 +1,99 @@
-import {
-  StatusBar,
-  Text,
-  View,
-  SafeAreaView,
-  Animated,
-  Pressable,
-} from "react-native";
+import React from "react";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { globalStyles } from "@/src/assets/styles/Global";
-import { useRef } from "react";
-import EatCoinSvg from "@/src/assets/images/EatCoin.svg";
-import { AntDesign, FontAwesome5, FontAwesome6 } from "@expo/vector-icons";
-import { Link, router } from "expo-router";
+import { VictoryBar, VictoryPie } from "victory-native";
 
-const H_MAX_HEIGHT = 160;
-const H_MIN_HEIGHT = 1;
-const H_SCROLL_DISTANCE = H_MAX_HEIGHT - H_MIN_HEIGHT;
+const mockData = [
+  { id: 1, title: "Postagem 1", views: 1200, likes: 300, shares: 50 },
+  { id: 2, title: "Postagem 2", views: 800, likes: 200, shares: 30 },
+  { id: 3, title: "Postagem 3", views: 1500, likes: 500, shares: 80 },
+];
 
-export default function HomeApoiador() {
-  const scrollOffsetY = useRef(new Animated.Value(0)).current;
+export default function Dashboard() {
+  const totalViews = mockData.reduce((sum, post) => sum + post.views, 0);
+  const totalLikes = mockData.reduce((sum, post) => sum + post.likes, 0);
+  const totalShares = mockData.reduce((sum, post) => sum + post.shares, 0);
 
-  const headerScrollHeight = scrollOffsetY.interpolate({
-    inputRange: [0, H_SCROLL_DISTANCE],
-    outputRange: [H_MAX_HEIGHT, H_MIN_HEIGHT],
-    extrapolate: "clamp",
-  });
+  const pieData = mockData.map((post) => ({
+    x: post.title,
+    y: post.views,
+  }));
+
+  const barData = mockData.map((post, index) => ({
+    x: `Post ${index + 1}`,
+    y: post.likes,
+  }));
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar
-        className="bg-primary"
-        barStyle="light-content"
-        translucent={false}
+    <ScrollView className="flex-1 bg-slate-50 px-4 py-5">
+      <Text className="mb-5 text-center" style={globalStyles.heading1}>
+        Seu de Alcance nas redes
+      </Text>
+
+      {/* Estatísticas Resumidas */}
+      <View className="flex-row justify-between mb-8">
+        <View style={[styles.statBox, globalStyles.roundedRegular]}>
+          <Text style={styles.statValue}>{totalViews}</Text>
+          <Text style={styles.statLabel}>Visualizações</Text>
+        </View>
+        <View style={[styles.statBox, globalStyles.roundedRegular]}>
+          <Text style={styles.statValue}>{totalLikes}</Text>
+          <Text style={styles.statLabel}>Curtidas</Text>
+        </View>
+        <View style={[styles.statBox, globalStyles.roundedRegular]}>
+          <Text style={styles.statValue}>{totalShares}</Text>
+          <Text style={styles.statLabel}>Compartilhamentos</Text>
+        </View>
+      </View>
+
+      {/* Gráfico de Pizza */}
+      <Text style={styles.chartTitle}>Distribuição de Visualizações</Text>
+      <VictoryPie
+        data={pieData}
+        colorScale={["#FFD700", "#F58F00", "#FF4500"]}
+        innerRadius={50}
+        labelRadius={75}
+        style={{
+          labels: { fill: "white", fontSize: 14, fontWeight: "bold" },
+        }}
       />
 
-      <Animated.View
-        style={{ height: headerScrollHeight }}
-        className="w-full p-3 bg-primary items-center justify-center absolute top-0 left-0 right-0 z-50 overflow-hidden"
-      >
-        <Text style={globalStyles.heading1} className="color-white">
-          Olá, Outback
-        </Text>
-      </Animated.View>
-
-      <Animated.ScrollView
-        style={{ paddingTop: H_MAX_HEIGHT, paddingHorizontal: 40 }}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }],
-          { useNativeDriver: false }
-        )}
-        scrollEventThrottle={16}
-      >
-        <View className="h-20 flex-row items-center justify-between">
-          <View>
-            <Text style={globalStyles.heading1}>Saldo</Text>
-
-            <View className="flex-row items-center gap-1">
-              <EatCoinSvg width={30} height={30} />
-              <Text style={globalStyles.heading2}>5000</Text>
-            </View>
-          </View>
-
-          <AntDesign name="right" size={25} />
-        </View>
-
-        {/* <View className="flex-1 gap-3 py-5">
-          <Pressable
-            onPress={() => {
-              router.push("/(apoiador)/donateApoiador");
-            }}
-            className="w-full h-24 flex-row items-center gap-3"
-          >
-            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
-              <FontAwesome5
-                name="hand-holding-heart"
-                size={30}
-                color={"white"}
-              />
-            </View>
-
-            <Text style={globalStyles.textLarger}>Doar</Text>
-          </Pressable>
-
-          <Pressable
-            onPress={() => {
-              router.push("/(apoiador)/rankingEatCoin");
-            }}
-            className="h-24 flex-row items-center gap-3"
-          >
-            <View className="bg-primary w-20 h-20 rounded-full justify-center items-center">
-              <FontAwesome6 name="ranking-star" size={30} color={"white"} />
-            </View>
-
-            <Text style={globalStyles.textLarger}>Ranking de doações</Text>
-          </Pressable>
-        </View> */}
-      </Animated.ScrollView>
-    </SafeAreaView>
+      {/* Gráfico de Barras */}
+      <Text style={styles.chartTitle}>Curtidas por Postagem</Text>
+      <VictoryBar
+        data={barData}
+        style={{
+          data: { fill: "#4682B4", width: 20 },
+        }}
+      />
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  statBox: {
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    padding: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  statValue: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  statLabel: {
+    fontSize: 14,
+    color: "#666",
+  },
+  chartTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#333",
+    marginVertical: 10,
+  },
+});
