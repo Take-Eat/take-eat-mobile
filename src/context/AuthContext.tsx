@@ -72,9 +72,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = async () => {
-    await SecureStore.deleteItemAsync("userType");
+    await SecureStore.setItemAsync("userType", "guest");
+    // await SecureStore.deleteItemAsync("userType");
     setUser(null);
-    setUserType("guest");
+    // setUserType("guest");
     console.log("Usuário deslogado");
   };
 
