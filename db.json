@@ -1,296 +1,297 @@
 {
-  "restaurants": [
-    {
-      "id": 1,
-      "name": "KFC",
-      "image": "https://i.imgur.com/sZ1Jye3.png"
-    },
-    {
-      "id": "2",
-      "name": "McDonald's",
-      "image": "https://i.imgur.com/su4iB3p.png"
-    },
-    {
-      "id": "3",
-      "name": "Outback",
-      "image": "https://i.imgur.com/jg3GJVN.png"
-    },
-    {
-      "id": "4",
-      "name": "Sushi Dev",
-      "image": "https://i.imgur.com/ffYWFBX.png"
-    },
-    {
-      "id": "5",
-      "name": "Burguer Grill",
-      "image": "https://i.imgur.com/kmQvG2T.png"
-    },
-    {
-      "id": "6",
-      "name": "Marmitas express",
-      "image": "https://i.imgur.com/uXRuDFD.png"
-    }
-  ],
-  "foods": [
-    {
-      "id": "1",
-      "name": "Frango assado",
-      "price": 39.9,
-      "time": "50-60 min",
-      "delivery": 5.99,
-      "rating": 4.8,
-      "image": "https://i.imgur.com/CEVUdju.png",
-      "restaurantId": "1"
-    },
-    {
-      "id": "2",
-      "name": "Marmita fit",
-      "price": 29,
-      "time": "30-40 min",
-      "delivery": 2.99,
-      "rating": 4.9,
-      "image": "https://i.imgur.com/uXRuDFD.png",
-      "restaurantId": "6"
-    },
-    {
-      "id": "3",
-      "name": "Burguer Dev",
-      "price": 40,
-      "time": "50-60 min",
-      "delivery": 5.99,
-      "rating": 4.5,
-      "image": "https://i.imgur.com/O5c3lyU.png",
-      "restaurantId": "5"
-    },
-    {
-      "id": "4",
-      "name": "Picanha Grill",
-      "price": 36,
-      "time": "50-60 min",
-      "delivery": 5.99,
-      "rating": 4.4,
-      "image": "https://i.imgur.com/0UjG3wk.png",
-      "restaurantId": "3"
-    },
-    {
-      "id": "5",
-      "name": "Açai 300ml",
-      "price": 20,
-      "time": "20-30 min",
-      "delivery": 2.99,
-      "rating": 4.4,
-      "image": "https://i.imgur.com/BaUUCkc.png",
-      "restaurantId": "3"
-    }
-  ],
-
-  "orders": [
-    {
-      "id": 1,
-      "category": "Não perecível",
-      "image": "https://images.pexels.com/photos/106972/pexels-photo-106972.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Grão de bico",
-      "time": "24h",
-      "type": "Grão",
-      "isPacked": true,
-      "amount": 4,
-      "status": "andamento"
-    },
-    {
-      "id": 2,
-      "category": "Prontos",
-      "image": "https://media.istockphoto.com/id/1018583636/pt/foto/packed-lunch-beef-broccoli-and-carrot-baked-with-sesame-white-rice-and-black-beans.jpg?b=1&s=612x612&w=0&k=20&c=ZdROzoJcbnsfF_UcB3ABF0ZEvscQ2kTb138XXbJFaT4=",
-      "name": "Marmita",
-      "time": "2h",
-      "type": "Não sei",
-      "isPacked": true,
-      "amount": 2,
-      "status": "andamento"
-    },
-    {
-      "id": 3,
-      "category": "Perecível",
-      "image": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "name": "Tomate",
-      "time": "1h",
-      "type": "Fruta",
-      "isPacked": false,
-      "amount": 18,
-      "status": "concluido"
-    },
-    {
-      "id": 4,
-      "category": "Congelados",
-      "image": "https://images.pexels.com/photos/9016811/pexels-photo-9016811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "name": "Frango congelado",
-      "time": "24h",
-      "type": "Carne",
-      "isPacked": true,
-      "amount": 5,
-      "status": "concluido"
-    },
-    {
-      "id": 5,
-      "category": "Bebidas",
-      "image": "https://media.istockphoto.com/id/1407684263/pt/foto/glass-of-grape-juice-with-rural-background.jpg?b=1&s=612x612&w=0&k=20&c=hqrtuMhRMN8BI2sbNmftUhRAnSaaHk-rHLIgKoxbksI=",
-      "name": "Suco de uva",
-      "time": "24h",
-      "type": "Bebida",
-      "isPacked": true,
-      "amount": 2,
-      "status": "cancelado"
-    },
-    {
-      "id": 6,
-      "category": "Laticínios",
-      "image": "https://media.istockphoto.com/id/535489242/pt/foto/verter-o-leite-no-vidro-no-fundo-de-natureza.jpg?b=1&s=612x612&w=0&k=20&c=Ed8iMUmaLECDvyd14RzvftA8WplWAJr6-fg5phGJQow=",
-      "name": "Leite",
-      "time": "12h",
-      "type": "Bebida",
-      "isPacked": true,
-      "amount": 12,
-      "status": "concluido"
-    },
-    {
-      "id": 7,
-      "category": "Congelados",
-      "image": "https://images.pexels.com/photos/3650159/pexels-photo-3650159.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Peixe congelado",
-      "time": "48h",
-      "type": "Carne",
-      "isPacked": true,
-      "amount": 1,
-      "status": "concluido"
-    },
-    {
-      "id": 8,
-      "category": "Frutas",
-      "image": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Maçã",
-      "time": "5h",
-      "type": "Fruta",
-      "isPacked": false,
-      "amount": 10,
-      "status": "concluido"
-    },
-    {
-      "id": 9,
-      "category": "Prontos",
-      "image": "https://images.pexels.com/photos/2821743/pexels-photo-2821743.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Salada mista",
-      "time": "1h",
-      "type": "Vegetais",
-      "isPacked": false,
-      "amount": 1,
-      "status": "cancelado"
-    },
-    {
-      "id": 10,
-      "category": "Panificação",
-      "image": "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Pão integral",
-      "time": "12h",
-      "type": "Grão",
-      "isPacked": false,
-      "amount": 4,
-      "status": "concluido"
-    },
-    {
-      "id": 11,
-      "category": "Bebidas",
-      "image": "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Água mineral",
-      "time": "72h",
-      "type": "Bebida",
-      "isPacked": true,
-      "amount": 15,
-      "status": "concluido"
-    },
-    {
-      "id": 12,
-      "category": "Perecível",
-      "image": "https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Queijo",
-      "time": "8h",
-      "type": "Laticínios",
-      "isPacked": true,
-      "amount": 1,
-      "status": "concluido"
-    },
-    {
-      "id": 13,
-      "category": "Vegetais",
-      "image": "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Cenoura",
-      "time": "10h",
-      "type": "Raiz",
-      "isPacked": false,
-      "amount": 2,
-      "status": "cancelado"
-    },
-    {
-      "id": 14,
-      "category": "Grãos",
-      "image": "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Arroz",
-      "time": "48h",
-      "type": "Grão",
-      "isPacked": true,
-      "amount": 7,
-      "status": "cancelado"
-    },
-    {
-      "id": 15,
-      "category": "Bebidas",
-      "image": "https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=600",
-      "name": "Refrigerante",
-      "time": "36h",
-      "type": "Bebida",
-      "isPacked": true,
-      "amount": 4,
-      "status": "concluido"
-    }
-  ],
-  "users": [
-    {
-      "id": 1,
-      "name": "She-Ha",
-      "type": "entregador",
-      "email": "sheha@mail.com",
-      "password": "123456",
-      "image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353",
-      "isActive": true,
-      "createdAt": "2024-01-15"
-    },
-    {
-      "id": 2,
-      "name": "Jane Admin",
-      "type": "distribuidor",
-      "email": "jane@mail.com",
-      "password": "123456",
-      "image": "https://via.placeholder.com/100",
-      "isActive": true,
-      "createdAt": "2024-01-15"
-    },
-    {
-      "id": 3,
-      "name": "John Doe",
-      "type": "apoiador",
-      "email": "john@mail.com",
-      "password": "123456",
-      "image": "https://via.placeholder.com/100",
-      "isActive": true,
-      "createdAt": "2024-01-15"
-    },
-    {
-      "id": 4,
-      "name": "José",
-      "type": "doador",
-      "email": "jose@mail.com",
-      "password": "123456",
-      "image": "https://via.placeholder.com/100",
-      "isActive": true,
-      "createdAt": "2024-01-15"
-    }
-  ]
+	"restaurants": [
+		{
+			"id": 1,
+			"name": "KFC",
+			"image": "https://i.imgur.com/sZ1Jye3.png"
+		},
+		{
+			"id": "2",
+			"name": "McDonald's",
+			"image": "https://i.imgur.com/su4iB3p.png"
+		},
+		{
+			"id": "3",
+			"name": "Outback",
+			"image": "https://i.imgur.com/jg3GJVN.png"
+		},
+		{
+			"id": "4",
+			"name": "Sushi Dev",
+			"image": "https://i.imgur.com/ffYWFBX.png"
+		},
+		{
+			"id": "5",
+			"name": "Burguer Grill",
+			"image": "https://i.imgur.com/kmQvG2T.png"
+		},
+		{
+			"id": "6",
+			"name": "Marmitas express",
+			"image": "https://i.imgur.com/uXRuDFD.png"
+		}
+	],
+	"foods": [
+		{
+			"id": "1",
+			"name": "Frango assado",
+			"price": 39.9,
+			"time": "50-60 min",
+			"delivery": 5.99,
+			"rating": 4.8,
+			"image": "https://i.imgur.com/CEVUdju.png",
+			"restaurantId": "1"
+		},
+		{
+			"id": "2",
+			"name": "Marmita fit",
+			"price": 29,
+			"time": "30-40 min",
+			"delivery": 2.99,
+			"rating": 4.9,
+			"image": "https://i.imgur.com/uXRuDFD.png",
+			"restaurantId": "6"
+		},
+		{
+			"id": "3",
+			"name": "Burguer Dev",
+			"price": 40,
+			"time": "50-60 min",
+			"delivery": 5.99,
+			"rating": 4.5,
+			"image": "https://i.imgur.com/O5c3lyU.png",
+			"restaurantId": "5"
+		},
+		{
+			"id": "4",
+			"name": "Picanha Grill",
+			"price": 36,
+			"time": "50-60 min",
+			"delivery": 5.99,
+			"rating": 4.4,
+			"image": "https://i.imgur.com/0UjG3wk.png",
+			"restaurantId": "3"
+		},
+		{
+			"id": "5",
+			"name": "Açai 300ml",
+			"price": 20,
+			"time": "20-30 min",
+			"delivery": 2.99,
+			"rating": 4.4,
+			"image": "https://i.imgur.com/BaUUCkc.png",
+			"restaurantId": "3"
+		}
+	],
+	"orders": [
+		{
+			"id": 1,
+			"category": "Não perecível",
+			"image": "https://images.pexels.com/photos/106972/pexels-photo-106972.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Grão de bico",
+			"time": "24h",
+			"type": "Grão",
+			"isPacked": true,
+			"amount": 4,
+			"status": "andamento"
+		},
+		{
+			"id": 2,
+			"category": "Prontos",
+			"image": "https://media.istockphoto.com/id/1018583636/pt/foto/packed-lunch-beef-broccoli-and-carrot-baked-with-sesame-white-rice-and-black-beans.jpg?b=1&s=612x612&w=0&k=20&c=ZdROzoJcbnsfF_UcB3ABF0ZEvscQ2kTb138XXbJFaT4=",
+			"name": "Marmita",
+			"time": "2h",
+			"type": "Não sei",
+			"isPacked": true,
+			"amount": 2,
+			"status": "andamento"
+		},
+		{
+			"id": 3,
+			"category": "Perecível",
+			"image": "https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+			"name": "Tomate",
+			"time": "1h",
+			"type": "Fruta",
+			"isPacked": false,
+			"amount": 18,
+			"status": "concluido"
+		},
+		{
+			"id": 4,
+			"category": "Congelados",
+			"image": "https://images.pexels.com/photos/9016811/pexels-photo-9016811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+			"name": "Frango congelado",
+			"time": "24h",
+			"type": "Carne",
+			"isPacked": true,
+			"amount": 5,
+			"status": "concluido"
+		},
+		{
+			"id": 5,
+			"category": "Bebidas",
+			"image": "https://media.istockphoto.com/id/1407684263/pt/foto/glass-of-grape-juice-with-rural-background.jpg?b=1&s=612x612&w=0&k=20&c=hqrtuMhRMN8BI2sbNmftUhRAnSaaHk-rHLIgKoxbksI=",
+			"name": "Suco de uva",
+			"time": "24h",
+			"type": "Bebida",
+			"isPacked": true,
+			"amount": 2,
+			"status": "cancelado"
+		},
+		{
+			"id": 6,
+			"category": "Laticínios",
+			"image": "https://media.istockphoto.com/id/535489242/pt/foto/verter-o-leite-no-vidro-no-fundo-de-natureza.jpg?b=1&s=612x612&w=0&k=20&c=Ed8iMUmaLECDvyd14RzvftA8WplWAJr6-fg5phGJQow=",
+			"name": "Leite",
+			"time": "12h",
+			"type": "Bebida",
+			"isPacked": true,
+			"amount": 12,
+			"status": "concluido"
+		},
+		{
+			"id": 7,
+			"category": "Congelados",
+			"image": "https://images.pexels.com/photos/3650159/pexels-photo-3650159.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Peixe congelado",
+			"time": "48h",
+			"type": "Carne",
+			"isPacked": true,
+			"amount": 1,
+			"status": "concluido"
+		},
+		{
+			"id": 8,
+			"category": "Frutas",
+			"image": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Maçã",
+			"time": "5h",
+			"type": "Fruta",
+			"isPacked": false,
+			"amount": 10,
+			"status": "concluido"
+		},
+		{
+			"id": 9,
+			"category": "Prontos",
+			"image": "https://images.pexels.com/photos/2821743/pexels-photo-2821743.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Salada mista",
+			"time": "1h",
+			"type": "Vegetais",
+			"isPacked": false,
+			"amount": 1,
+			"status": "cancelado"
+		},
+		{
+			"id": 10,
+			"category": "Panificação",
+			"image": "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Pão integral",
+			"time": "12h",
+			"type": "Grão",
+			"isPacked": false,
+			"amount": 4,
+			"status": "concluido"
+		},
+		{
+			"id": 11,
+			"category": "Bebidas",
+			"image": "https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Água mineral",
+			"time": "72h",
+			"type": "Bebida",
+			"isPacked": true,
+			"amount": 15,
+			"status": "concluido"
+		},
+		{
+			"id": 12,
+			"category": "Perecível",
+			"image": "https://images.pexels.com/photos/821365/pexels-photo-821365.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Queijo",
+			"time": "8h",
+			"type": "Laticínios",
+			"isPacked": true,
+			"amount": 1,
+			"status": "concluido"
+		},
+		{
+			"id": 13,
+			"category": "Vegetais",
+			"image": "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Cenoura",
+			"time": "10h",
+			"type": "Raiz",
+			"isPacked": false,
+			"amount": 2,
+			"status": "cancelado"
+		},
+		{
+			"id": 14,
+			"category": "Grãos",
+			"image": "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Arroz",
+			"time": "48h",
+			"type": "Grão",
+			"isPacked": true,
+			"amount": 7,
+			"status": "cancelado"
+		},
+		{
+			"id": 15,
+			"category": "Bebidas",
+			"image": "https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"name": "Refrigerante",
+			"time": "36h",
+			"type": "Bebida",
+			"isPacked": true,
+			"amount": 4,
+			"status": "concluido"
+		}
+	],
+	"users": [
+		{
+			"id": 1,
+			"name": "She-Ha",
+			"type": "admin",
+			"email": "she-ha.silva@example.com",
+			"password": "password123",
+			"image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353",
+			"isActive": true,
+			"createdAt": "2024-01-15"
+		},
+		{
+			"id": 3,
+			"name": "John Doe",
+			"type": "apoiador",
+			"email": "john@example.com",
+			"password": "123456",
+			"image": "",
+			"isActive": true,
+			"createdAt": "2024-01-15"
+		},
+		{
+			"id": 2,
+			"name": "Jane Admin",
+			"type": "admin",
+			"email": "jane@example.com",
+			"password": "123456",
+			"image": "",
+			"isActive": true,
+			"createdAt": "2024-01-15"
+		},
+		{
+			"id": "5813",
+			"name": "Mayson's Corp",
+			"cnpj": "12345678910112",
+			"type": "distribuidor",
+			"address": "Itacity",
+			"username": "elmayson",
+			"email": "reis@mail.com",
+			"phone": "12345678910",
+			"password": "123456",
+			"confirmPassword": "123456"
+		}
+	]
 }

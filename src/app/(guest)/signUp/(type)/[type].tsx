@@ -1,8 +1,8 @@
 import { View, ScrollView, Dimensions } from "react-native";
-import { useState } from "react";
 import { RelativePathString, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
 import { z } from "zod";
+import { useFormContext } from "@/src/context/FormContext";
 
 
 const formSchema = z.object({
@@ -16,8 +16,11 @@ const formSchema = z.object({
     path: ["confirmPassword"], // O erro será associado ao campo `confirmPassword`
 });
 
+type iFormSchema = z.infer<typeof formSchema>
 
 export default function SignUpType() {
+    const { updateFormData } = useFormContext()
+
     const router = useRouter()
 
     const fields = [
@@ -30,8 +33,9 @@ export default function SignUpType() {
 
     const { type } = useLocalSearchParams()
 
-    const submit = () => (data: any) => {
-        console.log(data)
+    const submit = (data: iFormSchema) => {
+        // Adiciona o tipo de usuário a ser criado no objeto geral de criação de usuário
+        updateFormData({ ...data, type })
 
         let nextPath = "";
         if (type == "apoiador" || type == "distribuidor") {

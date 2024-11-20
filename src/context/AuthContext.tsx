@@ -19,6 +19,7 @@ interface AuthContextType {
   user: User | null;
   login: ({ email, password }: iLogin) => void;
   logout: () => void;
+  register: (formData: any) => void;
   userType: UserType;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,14 +37,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
-      const token = (await SecureStore.getItemAsync("userType")) as UserType;
-      console.log("get user type, effect auth", token, token || "guest");
-      setUserType(token || "guest");
-      setLoading(false);
-    };
+      const token = await SecureStore.getItemAsync("userType") as UserType
+      console.log("get user type, effect auth", token, token || "guest")
+      setUserType(token || "guest")
+      setLoading(false)
+    }
 
-    getUserType();
-  }, []);
+    getUserType()
+
+  }, [])
 
   const login = async (form: iLogin) => {
     try {
@@ -79,17 +81,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     console.log("Usuário deslogado");
   };
 
+  const register = async (formData: any) => {
+    try {
+      await fetch(
+        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users`,
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      router.push("/(guest)/signIn")
+
+    } catch (error) {
+      console.error("Erro no registro:", error);
+    }
+  }
+
   return (
     <AuthContext.Provider
-      value={{
-        user,
-        login,
-        logout,
-        userType,
-        loading,
-        setLoading,
-        setUserType,
-      }}
+      value={{ user, login, logout, register, userType, loading, setLoading, setUserType }}
     >
       {children}
     </AuthContext.Provider>

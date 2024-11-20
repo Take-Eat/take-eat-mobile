@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import FormInput from "../formInput";
 import CustomButton from "../customButton";
 
-import { useController, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z, ZodType } from "zod";
+import { useController, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { ZodType } from "zod";
 
 type GenericSchemaProps<T> = {
   schema: T;

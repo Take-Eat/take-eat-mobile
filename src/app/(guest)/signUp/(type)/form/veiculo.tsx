@@ -1,27 +1,30 @@
-import { View, Text, ScrollView, Dimensions, Image } from "react-native";
-import { useState } from "react";
-import { Link, useLocalSearchParams } from "expo-router";
+import { View, ScrollView, Dimensions } from "react-native";
 import { Container, FormCommon, FormSection } from "@components"
-import { globalStyles } from "@/src/assets/styles/Global";
 import { isValidCarPlate } from "@/src/utils/validations";
 import { z } from "zod";
+import { useAuth } from "@/src/context/AuthContext";
+import { useFormContext } from "@/src/context/FormContext";
 
 const formSchema = z.object({
     type: z.string({ message: "Campo obrigatório" }),
     placa: z.string({ message: "Campo obrigatório" }).refine(isValidCarPlate, "Placa inválida")
 })
 
+type iFormSchema = z.infer<typeof formSchema>
+
 export default function Veiculo() {
-    const params = useLocalSearchParams()
+    const { register } = useAuth()
+
+    const { formData, updateFormData } = useFormContext()
 
     const fields = [
         { label: "Tipo de Veículo", key: "type" },
         { label: "Placa", key: "placa" },
     ];
 
-
-    const submit = (data: any) => {
-        console.log(data);
+    const submit = (data: iFormSchema) => {
+        updateFormData(data);
+        register({ ...data, ...formData })
     };
 
     return (

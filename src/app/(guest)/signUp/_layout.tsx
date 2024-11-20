@@ -1,6 +1,8 @@
 import { Stack } from "expo-router";
+import { FormProvider, useForm } from "react-hook-form";
 
 export default function SignUpLayout() {
+
     return (
         <Stack>
             <Stack.Screen
