@@ -50,6 +50,7 @@
     "tailwindcss": "^3.4.14",
     "take_eat": "file:",
     "uuid": "^11.0.2",
+    "victory-native": "^37.0.3-next.0",
     "zod": "^3.23.8",
     "zod-validation-error": "^3.4.0"
   },

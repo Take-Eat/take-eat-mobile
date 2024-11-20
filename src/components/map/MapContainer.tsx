@@ -15,17 +15,20 @@ export default function MapContainer({
   isRunning,
   onDirectionsReady,
 }: MapContainerProps) {
-  const { location, heading } = useRealTimeLocation(); // Posição atualizada em tempo real
+  const {
+    location,
+    //  heading
+  } = useRealTimeLocation(); // Posição atualizada em tempo real
   const mapRef = useRef<MapView>(null);
-  const [initialLoad, setInitialLoad] = useState(false);
+  // const [initialLoad, setInitialLoad] = useState(false);
 
-  useEffect(() => {
-    if (location && !initialLoad) {
-      mapRef.current?.animateToRegion(location, 1000);
+  // useEffect(() => {
+  //   if (location && !initialLoad) {
+  //     mapRef.current?.animateToRegion(location, 1000);
 
-      setInitialLoad(true); // Evita re-centralizar após a inicialização
-    }
-  }, [location, initialLoad]);
+  //     setInitialLoad(true); // Evita re-centralizar após a inicialização
+  //   }
+  // }, [location, initialLoad]);
 
   useEffect(() => {
     if (destination) {
@@ -34,14 +37,13 @@ export default function MapContainer({
   }, [destination]);
 
   useEffect(() => {
-    if (isRunning && location && heading) {
+    if (isRunning && location) {
       mapRef.current?.animateCamera(
         {
           center: location,
-          pitch: 60, // ângulo inclinado para simular 3D
-          zoom: 20, // alto nível de zoom para se aproximar do usuário
+          pitch: 40, // ângulo inclinado para simular 3D
+          zoom: 19, // alto nível de zoom para se aproximar do usuário
           altitude: 100, // ajusta a altitude para manter a visão aproximada
-          heading: heading,
         },
         { duration: 1000 }
       );
@@ -49,23 +51,28 @@ export default function MapContainer({
   }, [location, isRunning]);
 
   return (
-    <MapView
-      style={{ flex: 1 }}
-      ref={mapRef}
-      initialRegion={location || undefined}
-      showsUserLocation
-    >
-      {location && destination && (
-        <>
-          <MapDirections
-            origin={isRunning ? location : { ...location }}
-            destination={destination}
-            onReady={onDirectionsReady}
-          />
+    <>
+      {location && (
+        <MapView
+          style={{ flex: 1 }}
+          ref={mapRef}
+          initialRegion={location}
+          showsUserLocation
+          followsUserLocation
+        >
+          {destination && (
+            <>
+              <MapDirections
+                origin={isRunning ? location : { ...location }}
+                destination={destination}
+                onReady={onDirectionsReady}
+              />
 
-          <MapMarker coordinate={destination} />
-        </>
+              <MapMarker coordinate={destination} />
+            </>
+          )}
+        </MapView>
       )}
-    </MapView>
+    </>
   );
 }
