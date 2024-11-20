@@ -40,6 +40,16 @@ export default function DistribuidorStack() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="menu"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Feather name="menu" size={28} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

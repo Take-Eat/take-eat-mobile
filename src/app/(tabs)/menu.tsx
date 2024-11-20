@@ -1,39 +1,35 @@
-import { Image, Pressable, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { CardMenu, TabLayoutWithOutHeader } from "@components";
-import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
 import { globalStyles } from "@/src/assets/styles/Global";
-
-export interface UserProps {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-  image: string;
-  isActive: boolean;
-  createdAt: string;
-}
+import { useAuth } from "@/src/context/AuthContext";
 
 export default function Menu() {
-  const [user, setUser] = useState<UserProps | null>(null); // Inicializando com null
+  const { user, logout } = useAuth();
+  const router = useRouter();
 
-  const router = useRouter()
-
-  useEffect(() => {
-    async function getUser() {
-      const response = await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users`
-      );
-      const data = await response.json();
-      setUser(data);
-    }
-
-    getUser();
-  }, []);
+  const handleLogout = () => {
+    Alert.alert("Sair da Conta", "Deseja realmente sair da conta?", [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Sim",
+        style: "destructive",
+        onPress: () => {
+          logout();
+        },
+      },
+    ]);
+  };
 
   return (
     <TabLayoutWithOutHeader>
-
       <View className="gap-5">
         {user ? (
           <>
@@ -66,7 +62,7 @@ export default function Menu() {
 
               <Pressable
                 onPress={() => {
-                  console.log("CLICOU EM SAIR");
+                  handleLogout();
                 }}
               >
                 <Text style={globalStyles.textRegular}>Sair</Text>
@@ -76,7 +72,7 @@ export default function Menu() {
             <View className="w-full flex gap-3">
               <TouchableOpacity
                 className="w-full"
-                onPress={() => router.push('/(menu)/notifications')}
+                onPress={() => router.push("/(menu)/notifications")}
               >
                 <CardMenu
                   color="bg-gray-700"
@@ -88,40 +84,37 @@ export default function Menu() {
 
               <TouchableOpacity
                 className="w-full"
-                onPress={() => router.push('/(menu)/address')}
+                onPress={() => router.push("/(menu)/address")}
               >
                 <CardMenu
                   color="bg-gray-700"
                   iconName="location-sharp"
                   iconSize={25}
                   title="Localização"
-
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
                 className="w-full"
-                onPress={() => router.push('/(menu)/termsOfUse')}
+                onPress={() => router.push("/(menu)/termsOfUse")}
               >
                 <CardMenu
                   color="bg-gray-700"
                   iconName="newspaper"
                   iconSize={25}
                   title="Termos de uso"
-
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
                 className="w-full"
-                onPress={() => router.push('/(menu)/personalData')}
+                onPress={() => router.push("/(menu)/personalData")}
               >
                 <CardMenu
                   color="bg-gray-700"
                   iconName="person-sharp"
                   iconSize={25}
                   title="Meus dados"
-
                 />
               </TouchableOpacity>
             </View>
