@@ -28,30 +28,12 @@ export default function RootLayout() {
   return (
     <AuthProvider>
       <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen
-          name="(guest)"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="(admin)"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="(apoiador)"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="(distribuidor)"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="(doador)"
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="(entregador)"
-          options={{ headerShown: false }}
-        />
+        <Stack.Screen name="(guest)" options={{ headerShown: false }} />
+        <Stack.Screen name="(admin)" options={{ headerShown: false }} />
+        <Stack.Screen name="(apoiador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(distribuidor)" options={{ headerShown: false }} />
+        <Stack.Screen name="(doador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(entregador)" options={{ headerShown: false }} />
       </Stack>
     </AuthProvider>
   );
