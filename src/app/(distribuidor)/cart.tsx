@@ -66,12 +66,12 @@ export default function CartScreen() {
       prevCart.map((item) =>
         item.id === id
           ? {
-            ...item,
-            quantity:
-              action === "increment"
-                ? item.quantity + 1
-                : Math.max(1, item.quantity - 1),
-          }
+              ...item,
+              quantity:
+                action === "increment"
+                  ? item.quantity + 1
+                  : Math.max(1, item.quantity - 1),
+            }
           : item
       )
     );
@@ -110,7 +110,7 @@ export default function CartScreen() {
           renderItem={({ item }) => (
             <View
               className="flex-row items-center bg-white p-3 rounded-xl mb-3 shadow-black"
-              style={styles.cartItem}
+              style={styles.shadowCard}
             >
               {/* Imagem */}
               <Image
@@ -158,7 +158,7 @@ export default function CartScreen() {
         {/* Resumo do carrinho */}
         <View
           className="mt-4 p-3 bg-white rounded-lg shadow-black absolute bottom-12 left-0 right-0"
-          style={styles.summaryContainer}
+          style={styles.shadowCard}
         >
           <Text
             className="font-bold text-center mb-3"
@@ -187,13 +187,7 @@ export default function CartScreen() {
 }
 
 const styles = StyleSheet.create({
-  cartItem: {
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  summaryContainer: {
+  shadowCard: {
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
