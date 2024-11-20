@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { globalStyles } from "@/src/assets/styles/Global";
 import { VictoryBar, VictoryPie } from "victory-native";
+import { TabLayout } from "@/src/components";
 
 const mockData = [
   { id: 1, title: "Postagem 1", views: 1200, likes: 300, shares: 50 },
@@ -25,48 +26,50 @@ export default function Dashboard() {
   }));
 
   return (
-    <ScrollView className="flex-1 bg-slate-50 px-4 py-5">
-      <Text className="mb-5 text-center" style={globalStyles.heading1}>
-        Seu de Alcance nas redes
-      </Text>
+    <TabLayout>
+      <View className="flex-1">
+        <Text className="m-5 text-center" style={globalStyles.heading1}>
+          Seu de Alcance nas redes
+        </Text>
 
-      {/* Estatísticas Resumidas */}
-      <View className="flex-row justify-between mb-8">
-        <View style={[styles.statBox, globalStyles.roundedRegular]}>
-          <Text style={styles.statValue}>{totalViews}</Text>
-          <Text style={styles.statLabel}>Visualizações</Text>
+        {/* Estatísticas Resumidas */}
+        <View className="flex-row justify-between mb-8">
+          <View style={[styles.statBox, globalStyles.roundedRegular]}>
+            <Text style={styles.statValue}>{totalViews}</Text>
+            <Text style={styles.statLabel}>Visualizações</Text>
+          </View>
+          <View style={[styles.statBox, globalStyles.roundedRegular]}>
+            <Text style={styles.statValue}>{totalLikes}</Text>
+            <Text style={styles.statLabel}>Curtidas</Text>
+          </View>
+          <View style={[styles.statBox, globalStyles.roundedRegular]}>
+            <Text style={styles.statValue}>{totalShares}</Text>
+            <Text style={styles.statLabel}>Compartilhamentos</Text>
+          </View>
         </View>
-        <View style={[styles.statBox, globalStyles.roundedRegular]}>
-          <Text style={styles.statValue}>{totalLikes}</Text>
-          <Text style={styles.statLabel}>Curtidas</Text>
-        </View>
-        <View style={[styles.statBox, globalStyles.roundedRegular]}>
-          <Text style={styles.statValue}>{totalShares}</Text>
-          <Text style={styles.statLabel}>Compartilhamentos</Text>
-        </View>
+
+        {/* Gráfico de Pizza */}
+        <Text style={globalStyles.heading2}>Distribuição de Visualizações</Text>
+        <VictoryPie
+          data={pieData}
+          colorScale={["#FFD700", "#F58F00", "#FF4500"]}
+          innerRadius={50}
+          labelRadius={75}
+          style={{
+            labels: { fill: "white", fontSize: 14, fontWeight: "bold" },
+          }}
+        />
+
+        {/* Gráfico de Barras */}
+        <Text style={globalStyles.heading2}>Curtidas por Postagem</Text>
+        <VictoryBar
+          data={barData}
+          style={{
+            data: { fill: "#4682B4", width: 20 },
+          }}
+        />
       </View>
-
-      {/* Gráfico de Pizza */}
-      <Text style={styles.chartTitle}>Distribuição de Visualizações</Text>
-      <VictoryPie
-        data={pieData}
-        colorScale={["#FFD700", "#F58F00", "#FF4500"]}
-        innerRadius={50}
-        labelRadius={75}
-        style={{
-          labels: { fill: "white", fontSize: 14, fontWeight: "bold" },
-        }}
-      />
-
-      {/* Gráfico de Barras */}
-      <Text style={styles.chartTitle}>Curtidas por Postagem</Text>
-      <VictoryBar
-        data={barData}
-        style={{
-          data: { fill: "#4682B4", width: 20 },
-        }}
-      />
-    </ScrollView>
+    </TabLayout>
   );
 }
 

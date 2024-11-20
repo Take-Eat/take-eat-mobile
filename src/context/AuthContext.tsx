@@ -29,7 +29,6 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  // SecureStore.setItemAsync("userType", "guest");
 
   const [user, setUser] = useState<User | null>(null);
   const [userType, setUserType] = useState<UserType>("guest");
@@ -37,6 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
+      SecureStore.setItemAsync("userType", "entregador");
       const token = await SecureStore.getItemAsync("userType") as UserType
       console.log("get user type, effect auth", token, token || "guest")
       setUserType(token || "guest")
@@ -61,9 +61,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUserType(data[0].type);
         await SecureStore.setItemAsync("userType", data[0].type);
         const url = `/(${data[0].type})` as RelativePathString;
-        // Resolver essa tipagem
-        // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
-        // Mas ai fica feio então tem que procurar outro jeito👍
         router.push(url);
       } else {
         console.log("Credenciais inválidas");
@@ -75,9 +72,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     await SecureStore.setItemAsync("userType", "guest");
-    // await SecureStore.deleteItemAsync("userType");
     setUser(null);
-    // setUserType("guest");
     console.log("Usuário deslogado");
   };
 

@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet, Image } from "react-native";
 import { Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { globalStyles } from "@/src/assets/styles/Global";
+import { TabLayoutWithOutHeader } from "@/src/components";
 
 interface Order {
   id: string;
@@ -62,47 +63,49 @@ export default function OrderTracking() {
   };
 
   return (
-    <View className="flex-1 bg-slate-50 px-4 py-5">
-      <Text className="text-center mb-4" style={globalStyles.heading1}>
-        Acompanhamento de Pedidos
-      </Text>
+    <TabLayoutWithOutHeader>
+      <View className="flex-">
+        <Text className="text-center mb-4" style={globalStyles.heading1}>
+          Acompanhamento de Pedidos
+        </Text>
 
-      <FlatList
-        data={orders}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.listContainer}
-        renderItem={({ item }) => (
-          <View
-            className="flex-row items-center bg-white p-3 rounded-xl mb-3 shadow-black"
-            style={styles.orderCard}
-          >
-            {/* Imagem do item */}
-            <Image
-              source={{ uri: item.image }}
-              className="w-16 h-16 rounded-full mr-3"
-            />
+        <FlatList
+          data={orders}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.listContainer}
+          renderItem={({ item }) => (
+            <View
+              className="flex-row items-center bg-white p-3 rounded-xl mb-3 shadow-black"
+              style={styles.orderCard}
+            >
+              {/* Imagem do item */}
+              <Image
+                source={{ uri: item.image }}
+                className="w-16 h-16 rounded-full mr-3"
+              />
 
-            {/* Informações do pedido */}
-            <View className="flex-1">
-              <Text style={globalStyles.textLarger}>{item.itemName}</Text>
-              <Text
-                style={[styles.status, { color: getStatusColor(item.status) }]}
-              >
-                {item.status}
-              </Text>
-              <Text style={styles.deliveryTime}>
-                Tempo de entrega: {item.deliveryTime}
-              </Text>
+              {/* Informações do pedido */}
+              <View className="flex-1">
+                <Text style={globalStyles.textLarger}>{item.itemName}</Text>
+                <Text
+                  style={[styles.status, { color: getStatusColor(item.status) }]}
+                >
+                  {item.status}
+                </Text>
+                <Text style={globalStyles.textSmallGray}>
+                  Tempo de entrega: {item.deliveryTime}
+                </Text>
+              </View>
+
+              {/* Ícone de Detalhes */}
+              <Pressable onPress={() => console.log(`Pedido ${item.id}`)}>
+                <Feather name="chevron-right" size={24} color="#A0A0A0" />
+              </Pressable>
             </View>
-
-            {/* Ícone de Detalhes */}
-            <Pressable onPress={() => console.log(`Pedido ${item.id}`)}>
-              <Feather name="chevron-right" size={24} color="#A0A0A0" />
-            </Pressable>
-          </View>
-        )}
-      />
-    </View>
+          )}
+        />
+      </View>
+    </TabLayoutWithOutHeader>
   );
 }
 

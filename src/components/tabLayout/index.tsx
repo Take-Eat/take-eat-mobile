@@ -15,7 +15,7 @@ export function TabLayout({ children }: Props) {
     >
       <Container>
         <Header />
-        <View>{children}</View>
+        {children}
       </Container>
     </ScrollView>
   );
@@ -29,7 +29,7 @@ export function TabLayoutWithOutHeader({ children }: Props) {
       showsVerticalScrollIndicator={false}
     >
       <Container>
-        <View>{children}</View>
+        {children}
       </Container>
     </ScrollView>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { ScrollView, Alert, Text } from "react-native";
 import { z } from "zod";
-import { FormCommon, FormSection } from "@/src/components";
+import { FormCommon, FormSection, TabLayoutWithOutHeader } from "@/src/components";
 import { globalStyles } from "@/src/assets/styles/Global";
 
 const ProductSchema = z.object({
@@ -32,7 +32,7 @@ export default function AddProduct() {
   };
 
   return (
-    <ScrollView className="h-24 flex-grow bg-slate-50 p-5">
+    <TabLayoutWithOutHeader>
       <Text className="text-center mb-5" style={globalStyles.heading1}>
         Adicionar Produto
       </Text>
@@ -43,6 +43,6 @@ export default function AddProduct() {
         fields={fields}
         onSubmit={handleSubmit}
       />
-    </ScrollView>
+    </TabLayoutWithOutHeader>
   );
 }

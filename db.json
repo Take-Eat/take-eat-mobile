@@ -285,13 +285,13 @@
 			"id": "5813",
 			"name": "Mayson's Corp",
 			"cnpj": "12345678910112",
-			"type": "distribuidor",
+			"type": "doador",
 			"address": "Itacity",
 			"username": "elmayson",
 			"email": "reis@mail.com",
 			"phone": "12345678910",
 			"password": "123456",
-			"confirmPassword": "123456"
+			"image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353"
 		}
 	]
 }
