@@ -6,9 +6,9 @@ import LogoSvg from "@/src/assets/images/logo.svg";
 
 export default function Header() {
   return (
-    <View className="w-full h-24 flex flex-row justify-between items-center">
-      <Pressable>
-        <LogoSvg className="w-2 h-2" />
+    <View className="w-full h-24 flex-row justify-between items-center">
+      <Pressable className="h-full flex justify-center">
+        <LogoSvg width={140} height={100} />
       </Pressable>
 
       <TouchableOpacity onPress={() => router.push("/(menu)/notifications")}>
