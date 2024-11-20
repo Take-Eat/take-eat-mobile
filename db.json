@@ -255,9 +255,9 @@
     {
       "id": 1,
       "name": "She-Ha",
-      "type": "admin",
+      "type": "entregador",
       "email": "sheha@mail.com",
-      "password": "password123",
+      "password": "123456",
       "image": "https://i0.wp.com/popoca.com.br/wp-content/uploads/2020/06/She-ra.jpg?resize=628%2C353",
       "isActive": true,
       "createdAt": "2024-01-15"
@@ -265,9 +265,9 @@
     {
       "id": 2,
       "name": "Jane Admin",
-      "type": "admin",
+      "type": "distribuidor",
       "email": "jane@mail.com",
-      "password": "1234",
+      "password": "123456",
       "image": "https://via.placeholder.com/100",
       "isActive": true,
       "createdAt": "2024-01-15"
