@@ -3,15 +3,17 @@ import { ScrollView, View, Dimensions, Image, Text } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components";
 import { globalStyles } from "@/src/assets/styles/Global";
+import { isValidCNPJ } from "@/src/utils/validations";
 import { z } from "zod";
 
 
 const formSchema = z.object({
-    name: z.string(),
-    cnpj: z.string(),
-    address: z.string(),
-    ramoAlimenticio: z.string(),
-    horarioRetirada: z.string(),
+    name: z.string({ message: "Campo obrigatório" }),
+    cnpj: z.string({ message: "Campo obrigatório" }).refine(isValidCNPJ, "CPNJ inválido"),
+    address: z.string({ message: "Campo obrigatório" }),
+    ramoAlimenticio: z.string({ message: "Campo obrigatório" }),
+    // Pensar em um padrão de string que informa dia e hora de retirada
+    horarioRetirada: z.string({ message: "Campo obrigatório" }),
 })
 
 export default function Doador() {

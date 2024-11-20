@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import FormInput from "../formInput";
 import CustomButton from "../customButton";
 

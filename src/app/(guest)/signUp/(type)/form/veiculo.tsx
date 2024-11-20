@@ -3,11 +3,12 @@ import { useState } from "react";
 import { Link, useLocalSearchParams } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
+import { isValidCarPlate } from "@/src/utils/validations";
 import { z } from "zod";
 
 const formSchema = z.object({
-    type: z.string(),
-    placa: z.string()
+    type: z.string({ message: "Campo obrigatório" }),
+    placa: z.string({ message: "Campo obrigatório" }).refine(isValidCarPlate, "Placa inválida")
 })
 
 export default function Veiculo() {
