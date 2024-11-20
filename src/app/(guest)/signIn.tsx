@@ -4,8 +4,8 @@ import { useAuth } from "@/src/context/AuthContext";
 import { z } from "zod";
 
 const formSchema = z.object({
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+  email: z.string({ message: "Campo obrigatório" }).email("E-mail inválido"),
+  password: z.string({ message: "Campo obrigatório" }).min(6, "A senha deve ter pelo menos 6 caracteres"),
 });
 
 type iFormSchema = z.infer<typeof formSchema>
