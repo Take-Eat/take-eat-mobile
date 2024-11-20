@@ -2,6 +2,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { colors } from "@/src/assets/styles/Global";
 import {
+  Feather,
   FontAwesome,
   MaterialCommunityIcons,
   MaterialIcons,
@@ -51,11 +52,24 @@ export default function ApoiadorStack() {
           title: "Usar Eat Coin",
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account-cash" size={23} color={color} /> // Ícone da tab
+            <MaterialCommunityIcons
+              name="account-cash"
+              size={23}
+              color={color}
+            /> // Ícone da tab
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="menu"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <Feather name="menu" size={28} color={color} />
           ),
         }}
       />
     </Tabs>
   );
 }
-// spendCoin;

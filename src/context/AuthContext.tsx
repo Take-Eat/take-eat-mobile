@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { User, UserType } from "../types/UserTypes";
 
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { RelativePathString, router } from "expo-router";
 
 interface iLogin {
@@ -57,8 +57,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (data[0]) {
         setUser(data[0]);
         setUserType(data[0].type);
-        await SecureStore.setItemAsync("userType", data[0].type)
-        const url = `/(${data[0].type})` as RelativePathString
+        await SecureStore.setItemAsync("userType", data[0].type);
+        const url = `/(${data[0].type})` as RelativePathString;
         // Resolver essa tipagem
         // Possível resolução: usar uma condição switch/if em cada usuário possível para redirect
         // Mas ai fica feio então tem que procurar outro jeito👍
@@ -72,9 +72,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = async () => {
-    await SecureStore.deleteItemAsync("userType");
+    await SecureStore.setItemAsync("userType", "guest");
+    // await SecureStore.deleteItemAsync("userType");
     setUser(null);
-    setUserType("guest");
+    // setUserType("guest");
     console.log("Usuário deslogado");
   };
 

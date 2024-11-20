@@ -6,36 +6,27 @@ import { z } from "zod";
 
 
 const formSchema = z.object({
-    username: z.string(),
-    email: z.string(),
-    phone: z.string(),
-    password: z.string(),
-    confirm_password: z.string()
-})
+    username: z.string({ message: "Campo obrigatório" }).min(3, "O username deve ter no mínimo 3 caracteres").max(55, "O username deve ter no máximo 55 caracteres"),
+    email: z.string({ message: "Campo obrigatório" }).email("E-mail inválido"),
+    phone: z.string({ message: "Campo obrigatório" }).regex(/^\(?\d{2}\)?[\s-]?\d{4,5}[-]?\d{4}$/, "Número de telefone inválido"),
+    password: z.string({ message: "Campo obrigatório" }).min(6, "A senha deve ter pelo menos 6 caracteres"),
+    confirmPassword: z.string({ message: "Campo obrigatório" })
+}).refine((data) => data.password === data.confirmPassword, {
+    message: "As senhas não coincidem",
+    path: ["confirmPassword"], // O erro será associado ao campo `confirmPassword`
+});
 
 
 export default function SignUpType() {
     const router = useRouter()
-
-    const [form, setForm] = useState({
-        username: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirm_password: ""
-    });
 
     const fields = [
         { label: "Username", key: "username" },
         { label: "E-mail", key: "email" },
         { label: "Telefone", key: "phone" },
         { label: "Senha", key: "password" },
-        { label: "Confirmar Senha", key: "confirm_password" }
+        { label: "Confirmar Senha", key: "confirmPassword" }
     ];
-
-    const handleChange = (key: string, value: string) => {
-        setForm((prev) => ({ ...prev, [key]: value }));
-    };
 
     const { type } = useLocalSearchParams()
 
@@ -50,7 +41,7 @@ export default function SignUpType() {
         } else if (type == "entregador") {
             nextPath = "/(guest)/signUp/(type)/form/entregador";
         }
-        router.push({ pathname: nextPath as RelativePathString, params: form });
+        router.push({ pathname: nextPath as RelativePathString });
     };
 
     return (

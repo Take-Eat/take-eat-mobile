@@ -3,14 +3,15 @@ import { useState } from "react";
 import { Link, useLocalSearchParams, useRouter } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components"
 import { globalStyles } from "@/src/assets/styles/Global";
+import { isValidCNH, isValidCPF } from "@/src/utils/validations";
 import { z } from "zod";
 
 
 const formSchema = z.object({
-    name: z.string(),
-    cpf: z.string(),
-    cnh: z.string(),
-    address: z.string(),
+    name: z.string({ message: "Campo obrigatório" }),
+    cpf: z.string({ message: "Campo obrigatório" }).refine(isValidCPF, "CPF inválido"),
+    cnh: z.string({ message: "Campo obrigatório" }).refine(isValidCNH, "CNH inválida"),
+    address: z.string({ message: "Campo obrigatório" }),
 })
 
 export default function Entregador() {

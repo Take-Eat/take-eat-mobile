@@ -52,6 +52,7 @@ export default function App() {
       {userType === "distribuidor" && <Redirect href={"/(distribuidor)"} />}
       {userType === "guest" && <Redirect href={"/(guest)/signIn"} />}
       {userType === "doador" && <Redirect href={"/(doador)"} />}
+      {userType === "entregador" && <Redirect href={"/(entregador)"} />}
     </>
   );
 }
