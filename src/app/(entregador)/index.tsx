@@ -106,8 +106,8 @@ export default function HomeEntregador() {
 
       {/* Botão de Histórico */}
       <TouchableOpacity
-        className="py-4 items-center"
-        style={[globalStyles.roundedRegular, { backgroundColor: "#28A745" }]}
+        className="py-4 items-center bg-primary"
+        style={[globalStyles.roundedRegular]}
       >
         <Text className="color-white" style={globalStyles.textLargerBold}>
           Ver Histórico de Entregas
