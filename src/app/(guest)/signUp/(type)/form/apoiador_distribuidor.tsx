@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, View, Dimensions } from "react-native";
-import { useLocalSearchParams } from "expo-router";
 import { Container, FormCommon, FormSection } from "@components";
-import { isValidCNPJ } from "@/src/utils/validations";
 import { z } from "zod";
+import { useFormContext } from "@/src/context/FormContext";
+import { useAuth } from "@/src/context/AuthContext";
 
 const formSchema = z.object({
     name: z.string({ message: "Campo obrigatório" }),
-    cnpj: z.string({ message: "Campo obrigatório" }).refine(isValidCNPJ, "CPNJ inválido"),
+    cnpj: z.string({ message: "Campo obrigatório" })
+    // .refine(isValidCNPJ, "CPNJ inválido")
+    ,
     address: z.string({ message: "Campo obrigatório" })
 })
 
+type iFormSchema = z.infer<typeof formSchema>
+
 export default function ApoiadorDistribuidor() {
-    const params = useLocalSearchParams()
+    const { register } = useAuth()
+
+    const { formData, updateFormData } = useFormContext()
 
     const fields = [
         { label: "Nome ou Razão Social", key: "name" },
@@ -20,8 +26,9 @@ export default function ApoiadorDistribuidor() {
         { label: "Endereço", key: "address" }
     ];
 
-    const submit = (data: any) => {
-        console.log(data);
+    const submit = (data: iFormSchema) => {
+        updateFormData(data)
+        register({ ...data, ...formData })
     };
 
     return (

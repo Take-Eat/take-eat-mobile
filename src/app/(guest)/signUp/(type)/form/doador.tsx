@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { ScrollView, View, Dimensions, Image, Text } from "react-native";
-import { Link, useLocalSearchParams } from "expo-router";
+import React from "react";
+import { ScrollView, View, Dimensions } from "react-native";
 import { Container, FormCommon, FormSection } from "@components";
-import { globalStyles } from "@/src/assets/styles/Global";
 import { isValidCNPJ } from "@/src/utils/validations";
 import { z } from "zod";
+import { useAuth } from "@/src/context/AuthContext";
+import { useFormContext } from "@/src/context/FormContext";
 
 
 const formSchema = z.object({
@@ -16,9 +16,12 @@ const formSchema = z.object({
     horarioRetirada: z.string({ message: "Campo obrigatório" }),
 })
 
-export default function Doador() {
-    const params = useLocalSearchParams()
+type iFormSchema = z.infer<typeof formSchema>
 
+export default function Doador() {
+    const { register } = useAuth()
+
+    const { formData, updateFormData } = useFormContext()
 
     const fields = [
         { label: "Nome ou Razão Social", key: "name" },
@@ -29,8 +32,9 @@ export default function Doador() {
     ];
 
 
-    const submit = (data: any) => {
-        console.log(data);
+    const submit = (data: iFormSchema) => {
+        updateFormData(data)
+        register({ ...data, ...formData })
     };
 
     return (

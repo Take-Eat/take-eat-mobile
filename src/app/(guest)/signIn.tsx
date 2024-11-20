@@ -20,11 +20,10 @@ export default function SignIn() {
 
 
     const submit = async (data: any) => {
-        // login(form)
-        console.log(data);
+        // console.log(data);
+        login(data)
 
     }
-
 
     return (
         <ScrollView>

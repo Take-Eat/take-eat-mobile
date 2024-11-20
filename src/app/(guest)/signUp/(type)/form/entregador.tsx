@@ -1,10 +1,8 @@
-import { View, Text, ScrollView, Dimensions, Image } from "react-native";
-import { useState } from "react";
-import { Link, useLocalSearchParams, useRouter } from "expo-router";
+import { View, ScrollView, Dimensions } from "react-native";
 import { Container, FormCommon, FormSection } from "@components"
-import { globalStyles } from "@/src/assets/styles/Global";
 import { isValidCNH, isValidCPF } from "@/src/utils/validations";
 import { z } from "zod";
+import { useFormContext } from "@/src/context/FormContext";
 
 
 const formSchema = z.object({
@@ -14,9 +12,10 @@ const formSchema = z.object({
     address: z.string({ message: "Campo obrigatório" }),
 })
 
-export default function Entregador() {
-    const params = useLocalSearchParams()
+type iFormSchema = z.infer<typeof formSchema>
 
+export default function Entregador() {
+    const { updateFormData } = useFormContext()
 
     const fields = [
         { label: "Nome", key: "name" },
@@ -25,9 +24,8 @@ export default function Entregador() {
         { label: "Endereço", key: "address" },
     ];
 
-
-    const submit = (data: any) => {
-        console.log(data)
+    const submit = (data: iFormSchema) => {
+        updateFormData(data)
     };
 
 
