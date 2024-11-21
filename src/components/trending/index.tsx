@@ -18,7 +18,7 @@ export default function TrendingFoods() {
 
   useEffect(() => {
     async function getFoods() {
-      const response = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}/foods`);
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}foods`);
       const data = await response.json();
       setFoods(data);
     }

@@ -16,7 +16,7 @@ export default function Notifications() {
   useEffect(() => {
     async function getDonors() {
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_API_MOCK}/restaurants`
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
       );
       const data = await response.json();
       setDonor(data);

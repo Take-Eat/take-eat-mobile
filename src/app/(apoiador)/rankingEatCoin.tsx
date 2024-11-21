@@ -25,7 +25,7 @@ export default function RankingEatCoin() {
   useEffect(() => {
     async function getDonor() {
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_API_MOCK}/restaurants`
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
       );
       const data = await response.json();
       setDonor(

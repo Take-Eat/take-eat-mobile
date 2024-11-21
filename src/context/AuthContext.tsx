@@ -48,10 +48,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = async (form: iLogin) => {
     try {
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_API_MOCK}/users?email=${form.email}&password=${form.password}`
+        `${process.env.EXPO_PUBLIC_API_MOCK}users?email=${form.email}&password=${form.password}`
       );
-
       const data = await response.json();
+
       console.log(data[0]);
 
       if (data[0]) {
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const register = async (formData: any) => {
     try {
-      await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}/users`, {
+      await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

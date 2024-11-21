@@ -12,15 +12,15 @@ export default function Donors() {
   const [donor, setDonor] = useState<DonorProps[]>([]);
 
   useEffect(() => {
-    async function getDonor() {
+    async function getDonors() {
       const response = await fetch(
-        "${process.env.EXPO_PUBLIC_API_MOCK}/restaurants"
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
       );
       const data = await response.json();
       setDonor(data);
     }
 
-    getDonor();
+    getDonors();
   }, []);
 
   return (
