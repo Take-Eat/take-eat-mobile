@@ -20,6 +20,7 @@ interface AuthContextType {
   login: ({ email, password }: iLogin) => void;
   logout: () => void;
   register: (formData: any) => void;
+  update: (userData: any) => void;
   userType: UserType;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,15 +36,25 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const getUserType = async () => {
-      // SecureStore.setItemAsync("userType", "guest");
       const token = (await SecureStore.getItemAsync("userType")) as UserType;
       console.log("get user type, effect auth", token, token || "guest");
       setUserType(token || "guest");
       setLoading(false);
     };
 
+    const getUser = async () => {
+      const userData = await SecureStore.getItemAsync("user")
+      if (userData) {
+        setUser(JSON.parse(userData))
+      } else {
+        router.push("/(guest)/signIn")
+      }
+    }
+
     getUserType();
+    getUser()
   }, []);
+
 
   const login = async (form: iLogin) => {
     try {
@@ -58,6 +69,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(data[0]);
         setUserType(data[0].type);
         await SecureStore.setItemAsync("userType", data[0].type);
+        await SecureStore.setItemAsync("user", JSON.stringify(data[0]));
         const url = `/(${data[0].type})` as RelativePathString;
         router.push(url);
       } else {
@@ -70,8 +82,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     await SecureStore.setItemAsync("userType", "guest");
+    await SecureStore.deleteItemAsync("user")
     setUser(null);
     console.log("Usuário deslogado");
+    router.push("/(guest)/signIn")
   };
 
   const register = async (formData: any) => {
@@ -90,6 +104,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const update = async (userData: any) => {
+    try {
+
+      const update = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}users/${user?.id}`
+        , {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData)
+        });
+      setUser(await update.json())
+
+    } catch (error) {
+      console.error("Erro no update:", error);
+    }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -97,6 +129,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         login,
         logout,
         register,
+        update,
         userType,
         loading,
         setLoading,

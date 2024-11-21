@@ -1,5 +1,6 @@
 import { globalStyles } from "@/src/assets/styles/Global";
 import { Header, TabLayout } from "@/src/components";
+import { router } from "expo-router";
 import React from "react";
 import {
   View,
@@ -11,7 +12,7 @@ import {
 } from "react-native";
 
 export default function HomeDoador() {
-  const doaçõesAtivos = [
+  const doacoesAtivos = [
     { id: "1", distribuidor: "Igreja A", alimento: "Banana" },
     { id: "2", distribuidor: "Creche B", alimento: "Melancia" },
   ];
@@ -67,38 +68,36 @@ export default function HomeDoador() {
           <Text className="mb-3" style={globalStyles.textLargerBold}>
             Doações Ativas
           </Text>
-          {doaçõesAtivos.length > 0 ? (
-            <FlatList
-              data={doaçõesAtivos}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => (
-                <View
-                  className="bg-white p-4 mb-3 shadow-black"
-                  style={[styles.shadowCard, globalStyles.roundedRegular]}
+          {doacoesAtivos.length > 0 ? (
+
+            doacoesAtivos.map((item) => (
+              <View
+                className="bg-white p-4 mb-3 shadow-black"
+                style={[styles.shadowCard, globalStyles.roundedRegular]}
+              >
+                <Text style={globalStyles.textRegular}>
+                  Distribuidor: {item.distribuidor}
+                </Text>
+                <Text style={globalStyles.textRegular}>
+                  Alimento: {item.alimento}
+                </Text>
+                <TouchableOpacity
+                  className="py-2 items-center mt-3"
+                  style={[
+                    globalStyles.roundedRegular,
+                    { backgroundColor: "#1E90FF" },
+                  ]}
                 >
-                  <Text style={globalStyles.textRegular}>
-                    Distribuidor: {item.distribuidor}
-                  </Text>
-                  <Text style={globalStyles.textRegular}>
-                    Alimento: {item.alimento}
-                  </Text>
-                  <TouchableOpacity
-                    className="py-2 items-center mt-3"
-                    style={[
-                      globalStyles.roundedRegular,
-                      { backgroundColor: "#1E90FF" },
-                    ]}
+                  <Text
+                    className="color-white"
+                    style={globalStyles.textRegularBold}
                   >
-                    <Text
-                      className="color-white"
-                      style={globalStyles.textRegularBold}
-                    >
-                      Confirmar doação
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            />
+                    Confirmar doação
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ))
+
           ) : (
             <Text
               className="text-center mt-5"
@@ -118,6 +117,7 @@ export default function HomeDoador() {
             Ver Histórico de Doações
           </Text>
         </TouchableOpacity>
+
       </View>
     </TabLayout>
   );

@@ -27,8 +27,8 @@ export default function SignUpType() {
         { label: "Username", key: "username" },
         { label: "E-mail", key: "email" },
         { label: "Telefone", key: "phone" },
-        { label: "Senha", key: "password" },
-        { label: "Confirmar Senha", key: "confirmPassword" }
+        { label: "Senha", key: "password", keyboardType: "password" },
+        { label: "Confirmar Senha", key: "confirmPassword", keyboardType: "password" }
     ];
 
     const { type } = useLocalSearchParams()
