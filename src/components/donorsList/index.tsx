@@ -13,13 +13,15 @@ export default function DonorsList() {
   const [donor, setDonor] = useState<DonorProps[]>([]);
 
   useEffect(() => {
-    async function getDonor() {
-      const response = await fetch("http://192.168.3.27:3000/restaurants");
+    async function getDonors() {
+      const response = await fetch(
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
+      );
       const data = await response.json();
       setDonor(data);
     }
 
-    getDonor();
+    getDonors();
   }, []);
 
   return (

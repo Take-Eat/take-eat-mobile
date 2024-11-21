@@ -1,20 +1,22 @@
+import { z } from "zod";
+
 export type UserType =
-  | "apoiador"
-  | "doador"
-  | "distribuidor"
-  | "entregador"
-  | "admin"
-  | "guest";
+	| "apoiador"
+	| "doador"
+	| "distribuidor"
+	| "entregador"
+	| "admin"
+	| "guest";
 
 export interface User {
-  id: number;
-  name: string;
-  type: UserType;
-  email: string;
-  password: string;
-  image: string;
-  isActive: boolean;
-  createdAt: string;
+	id: number;
+	name: string;
+	type: UserType;
+	email: string;
+	password: string;
+	image: string;
+	isActive: boolean;
+	createdAt: string;
 }
 
 // export interface Apoiador {

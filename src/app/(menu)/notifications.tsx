@@ -16,7 +16,7 @@ export default function Notifications() {
   useEffect(() => {
     async function getDonors() {
       const response = await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/restaurants`
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
       );
       const data = await response.json();
       setDonor(data);
@@ -41,8 +41,15 @@ export default function Notifications() {
                 />
 
                 <View>
-                  <Text className="font-semibold" style={globalStyles.textRegular}>{item.name}</Text>
-                  <Text style={globalStyles.textSmallGray}>precisa falar com você</Text>
+                  <Text
+                    className="font-semibold"
+                    style={globalStyles.textRegular}
+                  >
+                    {item.name}
+                  </Text>
+                  <Text style={globalStyles.textSmallGray}>
+                    precisa falar com você
+                  </Text>
                 </View>
               </View>
 

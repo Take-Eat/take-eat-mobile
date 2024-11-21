@@ -5,7 +5,6 @@ import {
   Feather,
   FontAwesome,
   MaterialCommunityIcons,
-  MaterialIcons,
 } from "@expo/vector-icons";
 
 export default function ApoiadorStack() {

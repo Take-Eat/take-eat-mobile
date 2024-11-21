@@ -20,11 +20,13 @@ export default function RankingEatCoin() {
 
   /**
    * Hook de efeito para buscar os dados dos doadores na API.
-   * A URL usa a variável de ambiente `EXPO_PUBLIC_LOCAL_IP`.
+   * A URL usa a variável de ambiente `EXPO_PUBLIC_API_MOCK`.
    */
   useEffect(() => {
     async function getDonor() {
-      const response = await fetch("http://192.168.3.27:3000/restaurants");
+      const response = await fetch(
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
+      );
       const data = await response.json();
       setDonor(
         data.map((d: DonorProps, index: number) => ({
@@ -50,7 +52,6 @@ export default function RankingEatCoin() {
           data={donor.sort((a, b) => b.coins - a.coins)} // Ordenar pela quantidade de coins
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingBottom: 20, paddingTop: 20 }}
-          nestedScrollEnabled={true}
           renderItem={({ item, index }) => (
             <View
               className="flex-row items-center justify-between p-7 gap-5 mb-5 bg-white shadow-black"
@@ -102,6 +103,7 @@ export default function RankingEatCoin() {
               </View>
             </View>
           )}
+          nestedScrollEnabled={true}
         />
       </View>
     </TabLayoutWithOutHeader>
