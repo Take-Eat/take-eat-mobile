@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Take Eat",
-    "slug": "take eat",
+    "slug": "takeeat",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/logo_take_eat_black.png",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo_take_eat_black.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.isabelle9912.takeeat"
     },
     "web": {
       "bundler": "metro",
@@ -49,6 +50,14 @@
         "tsx",
         "svg"
       ]
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8aad0ef5-49aa-4d63-984c-7042ccd51ba3"
+      }
     }
   }
 }
