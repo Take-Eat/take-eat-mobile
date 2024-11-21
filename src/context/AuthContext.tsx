@@ -29,28 +29,26 @@ interface AuthContextType {
 export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-
   const [user, setUser] = useState<User | null>(null);
   const [userType, setUserType] = useState<UserType>("guest");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getUserType = async () => {
-      SecureStore.setItemAsync("userType", "entregador");
-      const token = await SecureStore.getItemAsync("userType") as UserType
-      console.log("get user type, effect auth", token, token || "guest")
-      setUserType(token || "guest")
-      setLoading(false)
-    }
+      // SecureStore.setItemAsync("userType", "guest");
+      const token = (await SecureStore.getItemAsync("userType")) as UserType;
+      console.log("get user type, effect auth", token, token || "guest");
+      setUserType(token || "guest");
+      setLoading(false);
+    };
 
-    getUserType()
-
-  }, [])
+    getUserType();
+  }, []);
 
   const login = async (form: iLogin) => {
     try {
       const response = await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users?email=${form.email}&password=${form.password}`
+        `${process.env.EXPO_PUBLIC_API_MOCK}/users?email=${form.email}&password=${form.password}`
       );
 
       const data = await response.json();
@@ -78,27 +76,32 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const register = async (formData: any) => {
     try {
-      await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/users`,
-        {
-          method: 'POST',
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      router.push("/(guest)/signIn")
-
+      router.push("/(guest)/signIn");
     } catch (error) {
       console.error("Erro no registro:", error);
     }
-  }
+  };
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, register, userType, loading, setLoading, setUserType }}
+      value={{
+        user,
+        login,
+        logout,
+        register,
+        userType,
+        loading,
+        setLoading,
+        setUserType,
+      }}
     >
       {children}
     </AuthContext.Provider>
