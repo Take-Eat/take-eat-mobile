@@ -14,7 +14,6 @@ import { useAuth } from "@/src/context/AuthContext";
 export default function Menu() {
   const { user, logout } = useAuth();
   const router = useRouter();
-  console.log(user)
 
   const handleLogout = () => {
     Alert.alert("Sair da Conta", "Deseja realmente sair da conta?", [
