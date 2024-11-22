@@ -5,27 +5,14 @@
   },
   "build": {
     "development": {
-      "node": "18.13.0",
-      "npm": {
-        "version": "9.2.0"
-      },
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
-      "android": {
-        "buildType": "apk"
-      },
       "distribution": "internal"
     },
     "production": {
-      "node": "18.13.0",
-      "npm": true,
-      "autoIncrement": true,
-      "env": {
-        "EXPO_PUBLIC_API_URL": "https://api-mock-take-eat.onrender.com/",
-        "EXPO_PUBLIC_LOCAL_API_GOOGLE": "AIzaSyBy-Je5kVGOPI93-kmKHogYBObed_6sXkk"
-      }
+      "autoIncrement": true
     }
   },
   "submit": {

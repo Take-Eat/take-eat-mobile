@@ -9,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "eas-build-pre-install": "bash -c \"[ ! -z \\\"$HOME/take-eat-mobile/eas.json\\\" ] && sed -i -e \\\"s#https://registry.yarnpkg.com#$HOME/take-eat-mobile/eas.json#g\\\" yarn.lock\" || true"
   },
   "jest": {
     "preset": "jest-expo"
@@ -30,7 +31,6 @@
     "expo-status-bar": "~2.0.0",
     "expo-system-ui": "~4.0.2",
     "expo-web-browser": "~14.0.1",
-    "json-server": "^1.0.0-beta.3",
     "nativewind": "^4.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -69,3 +69,6 @@
   },
   "private": true
 }
+
+
+
