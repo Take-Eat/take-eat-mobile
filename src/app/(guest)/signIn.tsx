@@ -25,18 +25,18 @@ export default function SignIn() {
 
   return (
     <ScrollView>
-      <Container>
-        <View style={{ minHeight: Dimensions.get("window").height }}>
-          <FormCommon footerLogin>
-            <FormSection
-              buttonText="Login"
-              schema={formSchema}
-              fields={fields}
-              onSubmit={submit}
-            />
-          </FormCommon>
-        </View>
-      </Container>
+      {/* <Container> */}
+      <View style={{ minHeight: Dimensions.get("window").height }}>
+        <FormCommon footerLogin>
+          <FormSection
+            buttonText="Login"
+            schema={formSchema}
+            fields={fields}
+            onSubmit={submit}
+          />
+        </FormCommon>
+      </View>
+      {/* </Container> */}
     </ScrollView>
   );
 }
