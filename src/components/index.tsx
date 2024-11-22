@@ -20,12 +20,14 @@ import FormCommon from "./formCommon";
 import { TabLayout, TabLayoutWithOutHeader } from "./tabLayout";
 import CustomBottomSheet from "./bottomSheet";
 import BottomSheetContainer from "./bottomSheetContainer";
+import DataUpdate from "./dataUpdate";
 
 export {
   Banner,
   FormCommon,
   FormInput,
   CustomButton,
+  DataUpdate,
   Container,
   Donors,
   DonorsList,
