@@ -20,11 +20,13 @@ export default function RankingEatCoin() {
 
   /**
    * Hook de efeito para buscar os dados dos doadores na API.
-   * A URL usa a variável de ambiente `EXPO_PUBLIC_LOCAL_IP`.
+   * A URL usa a variável de ambiente `EXPO_PUBLIC_API_MOCK`.
    */
   useEffect(() => {
     async function getDonor() {
-      const response = await fetch("http://192.168.3.27:3000/restaurants");
+      const response = await fetch(
+        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
+      );
       const data = await response.json();
       setDonor(
         data.map((d: DonorProps, index: number) => ({

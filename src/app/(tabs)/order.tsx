@@ -23,9 +23,7 @@ export default function Order() {
 
   useEffect(() => {
     async function getOrders() {
-      const response = await fetch(
-        `http://${process.env.EXPO_PUBLIC_LOCAL_IP}:3000/orders`
-      );
+      const response = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}orders`);
       const data = await response.json();
       setOrders(data);
     }

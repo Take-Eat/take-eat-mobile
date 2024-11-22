@@ -1,4 +1,5 @@
-import { globalStyles } from "@/src/assets/styles/Global";
+import { colors, globalStyles } from "@/src/assets/styles/Global";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useRef, useState } from "react";
 import {
   View,
@@ -34,7 +35,7 @@ export default function FormInput({
   return (
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className="mb-1 ml-2" style={globalStyles.heading2}>
-        {title}
+        {title.substring(0, 1).toUpperCase() + title.substring(1)}
       </Text>
       <View
         className={`w-full px-4 bg-gray-600 border-b-2 border-gray-500 flex flex-row items-center ${!editable && "bg-gray-700"
@@ -51,7 +52,7 @@ export default function FormInput({
           placeholder={placeholder}
           placeholderTextColor="#7B7B8B"
           onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
+          secureTextEntry={props?.keyboardType === "password" && !showPassword}
           multiline={isTextArea}
           numberOfLines={isTextArea ? 5 : 1}
           textAlignVertical={isTextArea ? "top" : "center"}
@@ -59,15 +60,12 @@ export default function FormInput({
           {...props}
         />
 
-        {/* {title === "Password" && (
-					<TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-						<Image
-							// source={!showPassword ? "=" : "-"}
-							className="w-6 h-6"
-							resizeMode="contain"
-						/>
-					</TouchableOpacity>
-				)} */}
+        {props?.keyboardType === "password" && (
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <MaterialCommunityIcons name={!showPassword ? "eye-off" : "eye"} size={20} color={colors.gray3} />
+
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

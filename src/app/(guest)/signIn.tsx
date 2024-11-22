@@ -15,7 +15,7 @@ export default function SignIn() {
 
   const fields = [
     { label: "E-mail", key: "email" },
-    { label: "Senha", key: "password" },
+    { label: "Senha", key: "password", keyboardType: "password" },
   ];
 
   const submit = async (data: iFormSchema) => {
