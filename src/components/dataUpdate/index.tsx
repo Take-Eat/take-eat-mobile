@@ -1,10 +1,11 @@
 import { useAuth } from "@/src/context/AuthContext";
-import { FlatList, GestureResponderEvent, SafeAreaView, Text } from "react-native";
+import { FlatList, GestureResponderEvent, SafeAreaView, Text, View } from "react-native";
 import { z } from "zod";
 import FormInput from "../formInput";
 import { useController, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CustomButton from "../customButton";
+import { globalStyles } from "@/src/assets/styles/Global";
 
 const userSchema = z.object({
     username: z.string(),
@@ -40,27 +41,33 @@ export default function DataUpdate({ }) {
     }
 
     return (
-        <SafeAreaView className="min-h-full ">
-            {arrayUserParsed.map((formField) => {
-                const { field } = useController({
-                    control,
-                    name: formField.key,
-                    defaultValue: formField.value
-                });
-                return (
-                    <FormInput
-                        key={formField.key}
-                        name={formField.key}
-                        title={formField.key}
-                        value={field.value}
-                        handleChangeText={field.onChange}
-                    />
-                );
-            })}
+        <View>
+            <Text style={globalStyles.heading1} className="text-center">
+                Editar Dados
+            </Text>
+            <View className="flex gap-2 pt-3 pb-2">
+                {arrayUserParsed.map((formField) => {
+                    const { field } = useController({
+                        control,
+                        name: formField.key,
+                        defaultValue: formField.value
+                    });
+                    return (
+                        <FormInput
+                            key={formField.key}
+                            name={formField.key}
+                            title={formField.key}
+                            value={field.value}
+                            handleChangeText={field.onChange}
+                            editable={formField.key === "cnpj" ? false : true}
+                        />
+                    );
+                })}
+            </View>
             <CustomButton
                 title={"Salvar"}
                 handlePress={handleSubmit(onSubmit)}
-                containerStyles={"mt-2"} />
-        </SafeAreaView>
+            />
+        </View>
     )
 }
