@@ -33,13 +33,13 @@ export default function ApoiadorDistribuidor() {
 
     return (
         <ScrollView>
-            <Container>
-                <View style={{ minHeight: Dimensions.get("window").height }}>
-                    <FormCommon>
-                        <FormSection schema={formSchema} fields={fields} onSubmit={submit} />
-                    </FormCommon>
-                </View>
-            </Container>
+            {/* <Container> */}
+            <View style={{ minHeight: Dimensions.get("window").height }}>
+                <FormCommon>
+                    <FormSection schema={formSchema} fields={fields} onSubmit={submit} />
+                </FormCommon>
+            </View>
+            {/* </Container> */}
         </ScrollView>
     );
 }

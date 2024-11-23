@@ -39,13 +39,13 @@ export default function Doador() {
 
     return (
         <ScrollView>
-            <Container>
-                <View style={{ minHeight: Dimensions.get("window").height }}>
-                    <FormCommon>
-                        <FormSection fields={fields} schema={formSchema} onSubmit={submit} />
-                    </FormCommon>
-                </View>
-            </Container>
+            {/* <Container> */}
+            <View style={{ minHeight: Dimensions.get("window").height }}>
+                <FormCommon>
+                    <FormSection fields={fields} schema={formSchema} onSubmit={submit} />
+                </FormCommon>
+            </View>
+            {/* </Container> */}
         </ScrollView>
     );
 }

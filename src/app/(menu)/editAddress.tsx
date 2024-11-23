@@ -29,7 +29,7 @@ export default function EditAddress() {
                 <Text style={globalStyles.heading1} className="text-center">
                     Editar Endereço
                 </Text>
-                <View className="flex flex-wrap flex-row justify-between gap-2 pt-3 pb-7 ">
+                <View className="flex flex-wrap flex-row justify-between gap-2 pt-3 pb-2">
                     <FormInput
                         otherStyles="w-full"
                         title="Endereço"

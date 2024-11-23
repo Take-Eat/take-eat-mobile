@@ -30,6 +30,7 @@ export default function FormInput({
   ...props
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
+  const editable = props?.editable === undefined ? true : props.editable;
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
@@ -37,7 +38,7 @@ export default function FormInput({
         {title.substring(0, 1).toUpperCase() + title.substring(1)}
       </Text>
       <View
-        className={`w-full px-4 bg-gray-600 border-b-2 border-gray-500 flex flex-row items-center ${!props.editable && "bg-gray-500"
+        className={`w-full px-4 bg-gray-600 border-b-2 border-gray-500 flex flex-row items-center ${!editable && "bg-gray-700"
           }`}
         style={[
           globalStyles.roundedRegular,
@@ -45,7 +46,8 @@ export default function FormInput({
         ]}
       >
         <TextInput
-          className={`flex-1 font-psemibold text-base`}
+          className={`flex-1 font-psemibold text-base ${!editable && "text-gray-400"
+            }`}
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#7B7B8B"
