@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       if (userData) {
         setUser(JSON.parse(userData))
       } else {
-        router.push("/(guest)/signIn")
+        router.push("/(guest)")
       }
     }
 
