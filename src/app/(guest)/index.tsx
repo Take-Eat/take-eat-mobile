@@ -20,6 +20,7 @@ import ImgSVG9 from "@/src/assets/images/landing_page_img_9.svg"
 import ImgSVG10 from "@/src/assets/images/landing_page_img_10.svg"
 import ImgSVGEx from "@/src/assets/images/Ellipse 22.svg"
 import { ScreenFooter } from "react-native-screens";
+import { router } from "expo-router";
 
 export default function GuestHomeScreen() {
   return (
@@ -41,7 +42,7 @@ export default function GuestHomeScreen() {
               Sou empresa e quero doar alimentos de empresas para ONGs e instituições sociais, combatendo o desperdício e a fome
             </Text>
             <View className="bg-primary px-4 py-2 mt-4" style={[globalStyles.roundedRegular, { width: 100 }]}>
-              <Pressable onPress={() => { }}>
+              <Pressable onPress={() => {router.push("/(guest)/signIn") }}>
                 <Text className="text-white text-center">Saiba mais</Text>
               </Pressable>
             </View>

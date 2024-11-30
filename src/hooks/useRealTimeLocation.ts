@@ -4,7 +4,7 @@ import { Region } from "react-native-maps";
 
 export const useRealTimeLocation = () => {
   const [location, setLocation] = useState<Region | null>(null);
-  // const [heading, setHeading] = useState<number | null>(null);
+  const [heading, setHeading] = useState<number | null>(null);
 
   useEffect(() => {
     let locationSubscription: Location.LocationSubscription | null = null;
@@ -30,7 +30,7 @@ export const useRealTimeLocation = () => {
             latitudeDelta: 0.00922,
             longitudeDelta: 0.00421,
           });
-          // setHeading(newHeading || 0); // Define a orientação: nort, sul, leste e por aí vai, piranhaaaaaa
+          setHeading(newHeading || 0); // Define a orientação: nort, sul, leste e por aí vai, piranhaaaaaa
         }
       );
     };
@@ -47,6 +47,6 @@ export const useRealTimeLocation = () => {
 
   return {
     location,
-    //  heading
+    heading,
   };
 };
