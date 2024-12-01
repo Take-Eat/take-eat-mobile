@@ -7,19 +7,20 @@ interface MapDirectionsProps {
   onReady: (distance: number, duration: number) => void;
 }
 
+const API_GOOGLE = "AIzaSyBy-Je5kVGOPI93-kmKHogYBObed_6sXkk";
+
 export default function MapDirections({
   origin,
   destination,
   onReady,
 }: MapDirectionsProps) {
-  if (!origin || !destination || !process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE)
-    return null;
+  if (!origin || !destination || !API_GOOGLE) return null;
 
   return (
     <MapViewDirections
       origin={origin}
       destination={destination}
-      apikey={process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE}
+      apikey={API_GOOGLE}
       strokeWidth={4}
       strokeColor="#F58F00"
       onReady={(result) => {

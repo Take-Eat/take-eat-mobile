@@ -14,7 +14,7 @@ export default function Donors() {
   useEffect(() => {
     async function getDonors() {
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_API_MOCK}restaurants`
+        `https://api-mock-take-eat.onrender.com/restaurants`
       );
       const data = await response.json();
       setDonor(data);

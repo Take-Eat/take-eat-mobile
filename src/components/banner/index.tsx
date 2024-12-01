@@ -1,56 +1,34 @@
-import { globalStyles } from "@/src/assets/styles/Global";
-import { View, Pressable, Image } from "react-native";
-import PagerView from "react-native-pager-view";
+import { View, FlatList } from "react-native";
+import BanerItem from "./banerItem";
+
+const data = [
+  {
+    id: 1,
+    imagem: "https://i.ibb.co/bsxc1wT/banner3.png",
+  },
+  {
+    id: 2,
+
+    imagem: "https://i.ibb.co/rvnyv04/banner1.png",
+  },
+  {
+    id: 3,
+    imagem: "https://i.ibb.co/9bspdRb/banner2.png",
+  },
+];
 
 export default function Banner() {
   return (
     <View className="w-full h-36 md:h-60 2xl mt-5 mb-4">
-      <PagerView style={{ flex: 1 }} initialPage={0} pageMargin={14}>
-        <Pressable
-          className="w-full h-36 md:h-60"
-          style={globalStyles.roundedRegular}
-          key="1"
-          onPress={() => {
-            console.log("CLICOU NO BANNER 2");
-          }}
-        >
-          <Image
-            source={require("../../assets/images/banner1.png")}
-            className="w-full h-36 md:h-60"
-            style={globalStyles.roundedRegular}
-          />
-        </Pressable>
-
-        <Pressable
-          className="w-full h-36 md:h-60"
-          style={globalStyles.roundedRegular}
-          key="2"
-          onPress={() => {
-            console.log("CLICOU NO BANNER 2");
-          }}
-        >
-          <Image
-            source={require("../../assets/images/banner2.png")}
-            className="w-full h-36 md:h-60"
-            style={globalStyles.roundedRegular}
-          />
-        </Pressable>
-
-        <Pressable
-          className="w-full h-36 md:h-60"
-          style={globalStyles.roundedRegular}
-          key="3"
-          onPress={() => {
-            console.log("CLICOU NO BANNER 3");
-          }}
-        >
-          <Image
-            source={require("../../assets/images/banner3.png")}
-            className="w-full h-36 md:h-60"
-            style={globalStyles.roundedRegular}
-          />
-        </Pressable>
-      </PagerView>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <BanerItem id={item.id} image={item.imagem} />
+        )}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ gap: 10 }}
+      />
     </View>
   );
 }
