@@ -18,7 +18,8 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/logo_take_eat_black.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#ffffff",
+        "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
       },
       "package": "com.isabelle9912.takeeat"
     },

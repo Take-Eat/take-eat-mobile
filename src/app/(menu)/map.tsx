@@ -19,12 +19,20 @@ export default function AddressScreen() {
     setDuration(dur);
   };
 
+  const handleResetEntrega = () => {
+    setDestination(null);
+    setDistance(null);
+    setDuration(null);
+    setPrice(null);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <MapContainer
         destination={destination}
         isRunning={isRunning}
         onDirectionsReady={handleDirectionsReady}
+        handleResetEntrega={handleResetEntrega}
       />
 
       <View className="absolute top-10 w-full">

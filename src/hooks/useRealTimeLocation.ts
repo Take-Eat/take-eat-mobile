@@ -10,34 +10,36 @@ export const useRealTimeLocation = () => {
     let locationSubscription: Location.LocationSubscription | null = null;
 
     const startWatching = async () => {
+      // Solicitar permissão
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         alert("Permissão de localização negada!");
         return;
       }
 
+      // Assinar atualizações de localização
       locationSubscription = await Location.watchPositionAsync(
         {
           accuracy: Location.Accuracy.Highest,
-          timeInterval: 1000, // Atualiza a cada 1 segundo
-          distanceInterval: 1, // Atualiza a cada 1 metro
+          timeInterval: 1000, // Atualizar a cada 1 segundo
+          distanceInterval: 1, // Atualizar a cada 1 metro
         },
         (response) => {
           const { latitude, longitude, heading: newHeading } = response.coords;
           setLocation({
             latitude,
             longitude,
-            latitudeDelta: 0.00922,
-            longitudeDelta: 0.00421,
+            latitudeDelta: 0.01, // Ajuste para um zoom melhor no mapa
+            longitudeDelta: 0.01,
           });
-          setHeading(newHeading || 0); // Define a orientação: nort, sul, leste e por aí vai, piranhaaaaaa
+          setHeading(newHeading || 0); // Define a orientação padrão (0°)
         }
       );
     };
 
     startWatching();
 
-    // Limpeza para encerrar a assinatura quando o componente desmonta
+    // Limpeza ao desmontar
     return () => {
       if (locationSubscription) {
         locationSubscription.remove();
