@@ -13,9 +13,10 @@ export default function DoadorStack() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
-        tabBarInactiveTintColor: colors.gray1, // Cor inativa
+        tabBarActiveTintColor: colors.gray4, // Cor ativa das abas
+        tabBarInactiveTintColor: colors.brand4, // Cor inativa
         tabBarShowLabel: false,
+        headerShown: false,
       }}
     >
       <Tabs.Screen
