@@ -15,7 +15,7 @@ export default function HomeDistribuidor() {
       <Banner />
 
       <Section
-        name="Recomendados"
+        name="Prestes a vencer"
         size={globalStyles.heading2}
         lable="Ver mais"
         action={() => {
@@ -26,7 +26,18 @@ export default function HomeDistribuidor() {
       <TrendingFoods />
 
       <Section
-        name="Melhores avaliados"
+        name="Bebidas"
+        size={globalStyles.heading2}
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
+
+      <TrendingFoods />
+
+      <Section
+        name="Não perecíveis"
         size={globalStyles.heading2}
         lable="Ver mais"
         action={() => {
@@ -47,6 +58,14 @@ export default function HomeDistribuidor() {
 
       <Donors />
 
+      <Section
+        name="Apoiadores"
+        size={globalStyles.heading2}
+        lable=""
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
       <Banner />
 
       <Section
@@ -59,6 +78,17 @@ export default function HomeDistribuidor() {
       />
 
       <DonorsList />
+
+      <Section
+        name="Congelados"
+        size={globalStyles.heading2}
+        lable="Ver mais"
+        action={() => {
+          console.log("CLICOU NO VER TODOS");
+        }}
+      />
+
+      <TrendingFoods />
     </TabLayout>
   );
 }
