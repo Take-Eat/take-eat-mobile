@@ -16,7 +16,7 @@ interface CartItem {
   id: string;
   name: string;
   image: string;
-  price: number;
+  priceEntrega: number;
   quantity: number;
 }
 
@@ -25,28 +25,28 @@ const initialCart: CartItem[] = [
     id: "1",
     name: "Cesta de Frutas",
     image: "https://via.placeholder.com/100",
-    price: 2.5,
+    priceEntrega: 2.5,
     quantity: 1,
   },
   {
     id: "2",
     name: "Pão Integral",
     image: "https://via.placeholder.com/100",
-    price: 2.75,
+    priceEntrega: 2.75,
     quantity: 2,
   },
   {
     id: "3",
     name: "Suco Natural",
     image: "https://via.placeholder.com/100",
-    price: 1.0,
+    priceEntrega: 1.0,
     quantity: 1,
   },
   {
     id: "4",
     name: "Cuscuz Pressão",
     image: "https://via.placeholder.com/100",
-    price: 2.0,
+    priceEntrega: 2.0,
     quantity: 1,
   },
 ];
@@ -56,9 +56,7 @@ export default function CartScreen() {
 
   // Função para calcular o valor total
   const calculateTotal = () =>
-    cart
-      .reduce((total, item) => total + item.price * item.quantity, 0)
-      .toFixed(2);
+    cart.reduce((total, item) => total + item.priceEntrega, 0).toFixed(2);
 
   // Função para alterar a quantidade de itens
   const updateQuantity = (id: string, action: "increment" | "decrement") => {
@@ -122,7 +120,7 @@ export default function CartScreen() {
               <View className="flex-1">
                 <Text style={globalStyles.textRegular}>{item.name}</Text>
                 <Text style={globalStyles.textSmallGray}>
-                  Entrega: R$ {item.price.toFixed(2)}
+                  Entrega: R$ {item.priceEntrega.toFixed(2)}
                 </Text>
 
                 {/* Controle de quantidade */}
