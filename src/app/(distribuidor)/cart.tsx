@@ -1,6 +1,3 @@
-import { globalStyles } from "@/src/assets/styles/Global";
-import { TabLayoutWithOutHeader } from "@/src/components";
-import { AntDesign } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   View,
@@ -10,7 +7,12 @@ import {
   StyleSheet,
   Pressable,
   Alert,
+  Modal,
+  TouchableOpacity,
 } from "react-native";
+import { AntDesign, Octicons } from "@expo/vector-icons";
+import { TabLayoutWithOutHeader } from "@/src/components";
+import { globalStyles } from "@/src/assets/styles/Global";
 
 interface CartItem {
   id: string;
@@ -18,6 +20,7 @@ interface CartItem {
   image: string;
   priceEntrega: number;
   quantity: number;
+  maxQuantity: number; // Nova propriedade para quantidade máxima
 }
 
 const initialCart: CartItem[] = [
@@ -27,6 +30,7 @@ const initialCart: CartItem[] = [
     image: "https://via.placeholder.com/100",
     priceEntrega: 2.5,
     quantity: 1,
+    maxQuantity: 1000, // Exemplo de quantidade máxima
   },
   {
     id: "2",
@@ -34,6 +38,7 @@ const initialCart: CartItem[] = [
     image: "https://via.placeholder.com/100",
     priceEntrega: 2.75,
     quantity: 2,
+    maxQuantity: 5,
   },
   {
     id: "3",
@@ -41,6 +46,7 @@ const initialCart: CartItem[] = [
     image: "https://via.placeholder.com/100",
     priceEntrega: 1.0,
     quantity: 1,
+    maxQuantity: 8,
   },
   {
     id: "4",
@@ -48,34 +54,27 @@ const initialCart: CartItem[] = [
     image: "https://via.placeholder.com/100",
     priceEntrega: 2.0,
     quantity: 1,
+    maxQuantity: 6,
   },
 ];
 
 export default function CartScreen() {
   const [cart, setCart] = useState<CartItem[]>(initialCart);
+  const [selectedItem, setSelectedItem] = useState<CartItem | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  // Função para calcular o valor total
   const calculateTotal = () =>
-    cart.reduce((total, item) => total + item.priceEntrega, 0).toFixed(2);
+    cart
+      .reduce((total, item) => total + item.priceEntrega * item.quantity, 0)
+      .toFixed(2);
 
-  // Função para alterar a quantidade de itens
-  const updateQuantity = (id: string, action: "increment" | "decrement") => {
+  const updateQuantity = (id: string, quantity: number) => {
     setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity:
-                action === "increment"
-                  ? item.quantity + 1
-                  : Math.max(1, item.quantity - 1),
-            }
-          : item
-      )
+      prevCart.map((item) => (item.id === id ? { ...item, quantity } : item))
     );
+    setModalVisible(false);
   };
 
-  // Função para remover um item
   const removeItem = (id: string) => {
     Alert.alert(
       "Remover Item",
@@ -123,35 +122,91 @@ export default function CartScreen() {
                   Entrega: R$ {item.priceEntrega.toFixed(2)}
                 </Text>
 
-                {/* Controle de quantidade */}
-                <View className="flex-row items-center mt-2">
-                  <Pressable
-                    className="bg-slate-300 px-2 py-1 rounded mx-1"
-                    onPress={() => updateQuantity(item.id, "decrement")}
-                  >
-                    <AntDesign name="minus" size={14} />
-                  </Pressable>
-                  <Text style={globalStyles.textSmall}>{item.quantity}</Text>
-                  <Pressable
-                    className="bg-slate-300 px-2 py-1 rounded mx-1"
-                    onPress={() => updateQuantity(item.id, "increment")}
-                  >
-                    <AntDesign name="plus" size={14} />
-                  </Pressable>
-                </View>
+                <Text style={globalStyles.textSmallGray}>
+                  Quantidade: {item.quantity}
+                </Text>
               </View>
 
               {/* Botão de remover */}
               <Pressable
-                className="p-2 rounded"
-                style={{ backgroundColor: "#FF6961" }}
+                className="p-3 mr-1"
+                style={[
+                  { backgroundColor: "#FF6961" },
+                  globalStyles.roundedRegular,
+                ]}
                 onPress={() => removeItem(item.id)}
               >
                 <AntDesign name="close" size={14} color={"#FFF"} />
               </Pressable>
+
+              {/* Botão de alterar quantidade */}
+              <Pressable
+                className="p-3 ml-1"
+                style={[
+                  { backgroundColor: "#1E90FF" },
+                  globalStyles.roundedRegular,
+                ]}
+                onPress={() => {
+                  setSelectedItem(item);
+                  setModalVisible(true);
+                }}
+              >
+                <Octicons name="pencil" size={14} color={"#FFF"} />
+              </Pressable>
             </View>
           )}
         />
+
+        {/* Modal para alterar quantidade */}
+        <Modal
+          visible={modalVisible}
+          animationType="slide"
+          transparent={true}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View
+            className="flex-1 justify-center items-center"
+            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+          >
+            <View
+              className="bg-white p-5 items-center"
+              style={[styles.modalContent, globalStyles.roundedRegular]}
+            >
+              <Text style={globalStyles.textLarger}>
+                {selectedItem?.name || "Item"}
+              </Text>
+              <Text style={globalStyles.textRegular}>
+                Selecione a quantidade (máx: {selectedItem?.maxQuantity})
+              </Text>
+
+              <FlatList
+                data={Array.from(
+                  { length: selectedItem?.maxQuantity || 0 },
+                  (_, i) => i + 1
+                )}
+                keyExtractor={(item) => item.toString()}
+                numColumns={5}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    className="m-1 p-3 bg-gray-600 items-center w-14"
+                    style={globalStyles.roundedRegular}
+                    onPress={() => updateQuantity(selectedItem!.id, item)}
+                  >
+                    <Text>{item}</Text>
+                  </TouchableOpacity>
+                )}
+              />
+
+              <Pressable
+                className="mt-5 bg-primary p-3"
+                style={globalStyles.roundedRegular}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={{ color: "#FFF" }}>Fechar</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
 
         {/* Resumo do carrinho */}
         <View
@@ -190,5 +245,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+  },
+  modalContent: {
+    width: "90%",
+    maxHeight: "70%",
   },
 });
