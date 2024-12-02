@@ -26,12 +26,11 @@ export default function ApoiadorStack() {
         }}
       />
       <Tabs.Screen
-        name="donateApoiador"
+        name="donate"
         options={{
-          title: "Doar",
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="money" size={23} color={color} /> // Ícone da tab
+            <FontAwesome name="money" size={28} color={color} />
           ),
         }}
       />

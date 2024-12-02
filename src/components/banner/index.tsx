@@ -1,29 +1,33 @@
 import { View, FlatList } from "react-native";
-import BanerItem from "./banerItem";
+import BannerItem from "./banerItem";
+import { useEffect, useState } from "react";
 
-const data = [
-  {
-    id: 1,
-    imagem: "https://i.ibb.co/bsxc1wT/banner3.png",
-  },
-  {
-    id: 2,
-
-    imagem: "https://i.ibb.co/rvnyv04/banner1.png",
-  },
-  {
-    id: 3,
-    imagem: "https://i.ibb.co/9bspdRb/banner2.png",
-  },
-];
+export interface BannerProps {
+  id: number;
+  image: string;
+}
 
 export default function Banner() {
+
+    const [banner, setBanner] = useState<BannerProps[]>([]);
+
+    useEffect(() => {
+      async function getBanner() {
+        const response = await fetch(
+          `https://api-mock-take-eat.onrender.com/banner`
+        );
+        const data = await response.json();
+        setBanner(data);
+      }
+
+      getBanner();
+    }, []);
   return (
     <View className="w-full h-36 md:h-60 2xl mt-5 mb-4">
       <FlatList
-        data={data}
+        data={banner}
         renderItem={({ item }) => (
-          <BanerItem id={item.id} image={item.imagem} />
+          <BannerItem id={item.id} image={item.image} />
         )}
         horizontal={true}
         showsHorizontalScrollIndicator={false}

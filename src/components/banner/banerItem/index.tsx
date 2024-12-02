@@ -6,7 +6,7 @@ export interface BannerProps {
   image: string;
 }
 
-export default function BanerItem({ id, image }: BannerProps) {
+export default function BannerItem({ id, image }: BannerProps) {
   return (
     <Pressable
       className="w-80 h-36 md:h-60"

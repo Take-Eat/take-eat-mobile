@@ -1,6 +1,10 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { colors } from "../../assets/styles/Global";
 
 export default function DistribuidorStack() {
@@ -22,6 +26,27 @@ export default function DistribuidorStack() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="donate"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="money" size={28} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="search"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={28} color={color} />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="orderTracking"
         options={{
