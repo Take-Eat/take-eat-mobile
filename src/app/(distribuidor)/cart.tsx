@@ -65,7 +65,7 @@ export default function CartScreen() {
 
   const calculateTotal = () =>
     cart
-      .reduce((total, item) => total + item.priceEntrega * item.quantity, 0)
+      .reduce((total, item) => total + item.priceEntrega, 0)
       .toFixed(2);
 
   const updateQuantity = (id: string, quantity: number) => {
