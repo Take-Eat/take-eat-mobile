@@ -69,13 +69,14 @@ export default function Menu() {
               </Pressable>
             </View>
 
+            {/* Cards */}
             <View className="w-full flex gap-3">
               <TouchableOpacity
                 className="w-full"
                 onPress={() => router.push("/(menu)/notifications")}
               >
                 <CardMenu
-                  color="bg-gray-700"
+                  color="bg-white"
                   iconName="notifications"
                   iconSize={25}
                   title="Notificações"
@@ -87,7 +88,7 @@ export default function Menu() {
                 onPress={() => router.push("/(menu)/address")}
               >
                 <CardMenu
-                  color="bg-gray-700"
+                  color="bg-white"
                   iconName="location-sharp"
                   iconSize={25}
                   title="Localização"
@@ -99,7 +100,7 @@ export default function Menu() {
                 onPress={() => router.push("/(menu)/termsOfUse")}
               >
                 <CardMenu
-                  color="bg-gray-700"
+                  color="bg-white"
                   iconName="newspaper"
                   iconSize={25}
                   title="Termos de uso"
@@ -111,7 +112,7 @@ export default function Menu() {
                 onPress={() => router.push("/(menu)/personalData")}
               >
                 <CardMenu
-                  color="bg-gray-700"
+                  color="bg-white"
                   iconName="person-sharp"
                   iconSize={25}
                   title="Meus dados"

@@ -1,7 +1,6 @@
 import { globalStyles } from "@/src/assets/styles/Global";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import { Text, View } from "react-native";
-
+import { StyleSheet, Text, View } from "react-native";
 
 interface Props {
   color: string;
@@ -10,16 +9,11 @@ interface Props {
   title: string;
 }
 
-export default function CardMenu({
-  color,
-  iconName,
-  iconSize,
-  title,
-}: Props) {
+export default function CardMenu({ color, iconName, iconSize, title }: Props) {
   return (
     <View
       className={`${color} w-ful h-[70px] flex-row justify-between items-center p-5`}
-      style={globalStyles.roundedRegular}
+      style={[globalStyles.roundedRegular, styles.shadowCard]}
     >
       <View className="flex-row items-center gap-3">
         <Ionicons name={iconName} size={iconSize || 25} color={"#F58F00"} />
@@ -37,3 +31,12 @@ export default function CardMenu({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  shadowCard: {
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+});
