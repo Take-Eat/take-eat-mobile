@@ -26,7 +26,7 @@ export default function MapSearchBar({ onPlaceSelected }: SearchBarProps) {
         }
       }}
       query={{
-        key: process.env.EXPO_PUBLIC_LOCAL_API_GOOGLE,
+        key: "AIzaSyBy-Je5kVGOPI93-kmKHogYBObed_6sXkk",
         language: "pt-BR",
       }}
       styles={{

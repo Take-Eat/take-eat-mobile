@@ -43,23 +43,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const getUser = async () => {
-      const userData = await SecureStore.getItemAsync("user")
+      const userData = await SecureStore.getItemAsync("user");
       if (userData) {
-        setUser(JSON.parse(userData))
+        setUser(JSON.parse(userData));
       } else {
-        router.push("/(guest)/signIn")
+        router.push("/(guest)");
       }
-    }
+    };
 
     getUserType();
-    getUser()
+    getUser();
   }, []);
-
 
   const login = async (form: iLogin) => {
     try {
       const response = await fetch(
-        `${process.env.EXPO_PUBLIC_API_MOCK}users?email=${form.email}&password=${form.password}`
+        `https://api-mock-take-eat.onrender.com/users?email=${form.email}&password=${form.password}`
       );
       const data = await response.json();
 
@@ -82,15 +81,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const logout = async () => {
     await SecureStore.setItemAsync("userType", "guest");
-    await SecureStore.deleteItemAsync("user")
+    await SecureStore.deleteItemAsync("user");
     setUser(null);
     console.log("Usuário deslogado");
-    router.push("/(guest)/signIn")
+    router.push("/(guest)/signIn");
   };
 
   const register = async (formData: any) => {
     try {
-      await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}users`, {
+      await fetch(`https://api-mock-take-eat.onrender.com/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,21 +105,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const update = async (userData: any) => {
     try {
-
-      const update = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}users/${user?.id}`
-        , {
+      const update = await fetch(
+        `https://api-mock-take-eat.onrender.com/users/${user?.id}`,
+        {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(userData)
-        });
-      setUser(await update.json())
-
+          body: JSON.stringify(userData),
+        }
+      );
+      setUser(await update.json());
     } catch (error) {
       console.error("Erro no update:", error);
     }
-  }
+  };
 
   return (
     <AuthContext.Provider

@@ -1,14 +1,18 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { colors } from "../../assets/styles/Global";
 
 export default function DistribuidorStack() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
-        tabBarInactiveTintColor: colors.gray1, // Cor inativa
+        tabBarActiveTintColor: colors.gray4, // Cor ativa das abas
+        tabBarInactiveTintColor: colors.brand4, // Cor inativa
         tabBarShowLabel: false,
         headerShown: false,
       }}
@@ -22,6 +26,27 @@ export default function DistribuidorStack() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="donate"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="money" size={28} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="search"
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="search" size={28} color={color} />
+          ),
+        }}
+      />
+
       <Tabs.Screen
         name="orderTracking"
         options={{

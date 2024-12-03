@@ -1,30 +1,32 @@
 {
   "expo": {
     "name": "Take Eat",
-    "slug": "take eat",
+    "slug": "takeeat",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo_take_eat_black.png",
+    "icon": "./src/assets/images/icon.png",
     "scheme": "take eat",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/logo_take_eat_black.png",
+      "image": "./src/assets/images/logo-inicial-white.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#695854"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo_take_eat_black.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./src/assets/images/logo-inicial-white.png",
+        "backgroundColor": "#695854",
+        "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+      },
+      "package": "com.isabelle9912.takeeat"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/logo_take_eat_black.png"
+      "favicon": "./src/assets/images/logo_take_eat_black.png"
     },
     "plugins": [
       "expo-router",
@@ -42,13 +44,15 @@
     },
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": [
-        "js",
-        "jsx",
-        "ts",
-        "tsx",
-        "svg"
-      ]
+      "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8aad0ef5-49aa-4d63-984c-7042ccd51ba3"
+      }
     }
   }
 }

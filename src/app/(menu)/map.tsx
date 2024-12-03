@@ -19,12 +19,20 @@ export default function AddressScreen() {
     setDuration(dur);
   };
 
+  const handleResetEntrega = () => {
+    setDestination(null);
+    setDistance(null);
+    setDuration(null);
+    setPrice(null);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <MapContainer
         destination={destination}
         isRunning={isRunning}
         onDirectionsReady={handleDirectionsReady}
+        handleResetEntrega={handleResetEntrega}
       />
 
       <View className="absolute top-10 w-full">
@@ -49,10 +57,11 @@ export default function AddressScreen() {
           <Text className="text-white text-lg font-medium">
             Tempo: {duration.toFixed(2)} min
           </Text>
-
-          <Text className="p-3 bg-primary rounded-lg text-white text-xl font-semibold top-3">
-            Preço: R${price.toFixed(2)}
-          </Text>
+          {!isRunning && (
+            <Text className="p-3 bg-primary rounded-lg text-white text-xl font-semibold top-3">
+              Preço: R${price.toFixed(2)}
+            </Text>
+          )}
         </View>
       )}
     </View>

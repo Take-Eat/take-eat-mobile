@@ -8,6 +8,9 @@
       ],
       "@components": [
         "./src/components/index"
+      ],
+      "@screens": [
+        "./src/screens/index"
       ]
     }
   },

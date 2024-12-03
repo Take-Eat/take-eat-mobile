@@ -23,7 +23,9 @@ export default function Order() {
 
   useEffect(() => {
     async function getOrders() {
-      const response = await fetch(`${process.env.EXPO_PUBLIC_API_MOCK}orders`);
+      const response = await fetch(
+        `https://api-mock-take-eat.onrender.com/orders`
+      );
       const data = await response.json();
       setOrders(data);
     }
@@ -34,7 +36,10 @@ export default function Order() {
   return (
     <SafeAreaView>
       <Container>
-        <Text className="text-primary text-center py-6" style={globalStyles.heading1}>
+        <Text
+          className="text-primary text-center py-6"
+          style={globalStyles.heading1}
+        >
           Histórico
         </Text>
         <FlatList
@@ -57,9 +62,13 @@ export default function Order() {
                     {item.name}
                   </Text>
 
-                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>Prazo de consumo - {item.time}</Text>
+                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>
+                    Prazo de consumo - {item.time}
+                  </Text>
 
-                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>Tipo de alimento - {item.type}</Text>
+                  <Text style={globalStyles.textSmallGray} numberOfLines={1}>
+                    Tipo de alimento - {item.type}
+                  </Text>
                 </View>
               </View>
 
@@ -73,8 +82,8 @@ export default function Order() {
                       item.status === "andamento"
                         ? "motorcycle"
                         : item.status === "concluido"
-                          ? "check"
-                          : ""
+                        ? "check"
+                        : ""
                     }
                     size={15}
                     color="#FF9F1C"

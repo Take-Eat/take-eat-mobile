@@ -34,6 +34,7 @@ export default function RootLayout() {
         <Stack.Screen name="(distribuidor)" options={{ headerShown: false }} />
         <Stack.Screen name="(doador)" options={{ headerShown: false }} />
         <Stack.Screen name="(entregador)" options={{ headerShown: false }} />
+        <Stack.Screen name="(common)" options={{ headerShown: false }} />
       </Stack>
     </AuthProvider>
   );

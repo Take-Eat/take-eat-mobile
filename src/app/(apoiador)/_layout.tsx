@@ -11,9 +11,10 @@ export default function ApoiadorStack() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.brand4, // Cor ativa das abas
-        tabBarInactiveTintColor: colors.gray1, // Cor inativa
+        tabBarActiveTintColor: colors.gray4, // Cor ativa das abas
+        tabBarInactiveTintColor: colors.brand4, // Cor inativa
         tabBarShowLabel: false,
+        headerShown: false,
       }}
     >
       <Tabs.Screen
@@ -26,12 +27,11 @@ export default function ApoiadorStack() {
         }}
       />
       <Tabs.Screen
-        name="donateApoiador"
+        name="donate"
         options={{
-          title: "Doar",
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="money" size={23} color={color} /> // Ícone da tab
+            <FontAwesome name="money" size={28} color={color} />
           ),
         }}
       />
