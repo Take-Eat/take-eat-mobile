@@ -64,9 +64,7 @@ export default function CartScreen() {
   const [modalVisible, setModalVisible] = useState(false);
 
   const calculateTotal = () =>
-    cart
-      .reduce((total, item) => total + item.priceEntrega, 0)
-      .toFixed(2);
+    cart.reduce((total, item) => total + item.priceEntrega, 0).toFixed(2);
 
   const updateQuantity = (id: string, quantity: number) => {
     setCart((prevCart) =>
@@ -180,15 +178,15 @@ export default function CartScreen() {
               </Text>
 
               <FlatList
+                className="w-full"
                 data={Array.from(
                   { length: selectedItem?.maxQuantity || 0 },
                   (_, i) => i + 1
                 )}
                 keyExtractor={(item) => item.toString()}
-                numColumns={5}
                 renderItem={({ item }) => (
                   <TouchableOpacity
-                    className="m-1 p-3 bg-gray-600 items-center w-14"
+                    className="m-1 p-3 bg-gray-600 items-center w-full"
                     style={globalStyles.roundedRegular}
                     onPress={() => updateQuantity(selectedItem!.id, item)}
                   >
